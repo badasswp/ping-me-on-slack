@@ -2,16 +2,16 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ping Me on Slack\n"
-"POT-Creation-Date: 2024-08-05 05:33+0100\n"
-"PO-Revision-Date: 2024-08-05 05:29+0100\n"
+"Project-Id-Version: Ping Me On Slack\n"
+"POT-Creation-Date: 2024-10-13 23:35+0100\n"
+"PO-Revision-Date: 2024-10-13 23:34+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: ping-me-on-slack.php\n"
@@ -23,19 +23,13 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: inc/Services/Access.php:59 inc/Services/Access.php:116
-#: inc/Services/Comment.php:95 inc/Services/Post.php:99
-#: inc/Services/Theme.php:81 inc/Services/User.php:59 inc/Services/User.php:115
-#: inc/Services/User.php:172
-msgid "Ping"
-msgstr ""
-
 #. Plugin Name of the plugin/theme
+#: inc/Admin/Options.php:79
 msgid "Ping Me On Slack"
 msgstr ""
 
 #. Description of the plugin/theme
-#: inc/Services/Admin.php:99
+#: inc/Admin/Options.php:83 inc/Services/Previous.php:99
 msgid "Get notifications on Slack when changes are made on your WP website."
 msgstr ""
 
@@ -51,118 +45,246 @@ msgstr ""
 msgid "https://github.com/badasswp"
 msgstr ""
 
-#: init.php:15
-msgid "Error: Composer is not installed!"
+#: inc/Admin/Options.php:103
+msgid "Actions"
 msgstr ""
 
-#: inc/Services/Access.php:61 inc/Services/Access.php:118
-#: inc/Services/Post.php:101 inc/Services/Theme.php:83 inc/Services/User.php:61
-#: inc/Services/User.php:117 inc/Services/User.php:174
-msgid "ID"
+#: inc/Admin/Options.php:106
+msgid "Save Changes"
 msgstr ""
 
-#: inc/Services/Access.php:63 inc/Services/Access.php:120
-#: inc/Services/Comment.php:99 inc/Services/Post.php:105
-#: inc/Services/Theme.php:87 inc/Services/User.php:63 inc/Services/User.php:119
-#: inc/Services/User.php:176
-msgid "User"
+#: inc/Admin/Options.php:128
+msgid "Slack Options"
 msgstr ""
 
-#: inc/Services/Comment.php:97
-msgid "Comment"
-msgstr ""
-
-#: inc/Services/Comment.php:101
-msgid "Post"
-msgstr ""
-
-#: inc/Services/Post.php:103 inc/Services/Theme.php:85
-msgid "Title"
-msgstr ""
-
-#: inc/Services/Access.php:65 inc/Services/Access.php:122
-#: inc/Services/Comment.php:103 inc/Services/Post.php:107
-#: inc/Services/Theme.php:89 inc/Services/User.php:65 inc/Services/User.php:121
-#: inc/Services/User.php:178
-msgid "Date"
-msgstr ""
-
-#: inc/Services/Admin.php:105
-msgid "John Doe"
-msgstr ""
-
-#: inc/Services/Admin.php:104
+#: inc/Admin/Options.php:133 inc/Services/Previous.php:104
 msgid "Slack Username"
 msgstr ""
 
-#: inc/Services/Admin.php:111
+#: inc/Admin/Options.php:134
+msgid "e.g. John Doe"
+msgstr ""
+
+#: inc/Admin/Options.php:139 inc/Services/Previous.php:111
 msgid "Slack Channel"
 msgstr ""
 
-#: inc/Services/Admin.php:118
-msgid "Slack Webhook"
-msgstr ""
-
-#: inc/Services/Admin.php:112
+#: inc/Admin/Options.php:140 inc/Services/Previous.php:112
 msgid "e.g. #general"
 msgstr ""
 
-#: inc/Services/Admin.php:119
+#: inc/Admin/Options.php:145 inc/Services/Previous.php:118
+msgid "Slack Webhook"
+msgstr ""
+
+#: inc/Admin/Options.php:146 inc/Services/Previous.php:119
 msgid "e.g. https://hooks.slack.com/services/xxxxxx"
 msgstr ""
 
-#: inc/Services/User.php:60
-msgid "A User was just created!"
+#: inc/Admin/Options.php:151
+msgid "Post Options"
 msgstr ""
 
-#: inc/Services/User.php:116
-msgid "A User was just modified!"
+#: inc/Admin/Options.php:155 inc/Admin/Options.php:183
+#: inc/Admin/Options.php:205 inc/Admin/Options.php:227
+msgid "Enable Slack"
 msgstr ""
 
-#: inc/Services/User.php:173
-msgid "A User was just deleted!"
+#: inc/Admin/Options.php:156
+msgid "Enable Slack messages for Post actions."
 msgstr ""
 
-#: inc/Services/Access.php:60
+#: inc/Admin/Options.php:161
+msgid "Draft Message"
+msgstr ""
+
+#: inc/Admin/Options.php:162
+msgid "Message sent when a post is saved as draft."
+msgstr ""
+
+#: inc/Admin/Options.php:167
+msgid "Publish Message"
+msgstr ""
+
+#: inc/Admin/Options.php:168
+msgid "Message sent when a post is published."
+msgstr ""
+
+#: inc/Admin/Options.php:173 inc/Admin/Options.php:195
+msgid "Trash Message"
+msgstr ""
+
+#: inc/Admin/Options.php:174
+msgid "Message sent when a post is trashed."
+msgstr ""
+
+#: inc/Admin/Options.php:179
+msgid "Comment Options"
+msgstr ""
+
+#: inc/Admin/Options.php:184
+msgid "Enable Slack messages for Comment actions."
+msgstr ""
+
+#: inc/Admin/Options.php:189
+msgid "Approval Message"
+msgstr ""
+
+#: inc/Admin/Options.php:190
+msgid "Message sent when a comment is approved."
+msgstr ""
+
+#: inc/Admin/Options.php:196
+msgid "Message sent when a comment is trashed."
+msgstr ""
+
+#: inc/Admin/Options.php:201
+msgid "Access Options"
+msgstr ""
+
+#: inc/Admin/Options.php:206
+msgid "Enable Slack messages for Access actions."
+msgstr ""
+
+#: inc/Admin/Options.php:211
+msgid "Login Message"
+msgstr ""
+
+#: inc/Admin/Options.php:212
+msgid "Message sent when a user has logged in."
+msgstr ""
+
+#: inc/Admin/Options.php:217
+msgid "Logout Message"
+msgstr ""
+
+#: inc/Admin/Options.php:218
+msgid "Message sent when a user has logged out."
+msgstr ""
+
+#: inc/Admin/Options.php:223
+msgid "User Options"
+msgstr ""
+
+#: inc/Admin/Options.php:228
+msgid "Enable Slack messages for User actions."
+msgstr ""
+
+#: inc/Admin/Options.php:233
+msgid "Create Message"
+msgstr ""
+
+#: inc/Admin/Options.php:234
+msgid "Message sent when a user is created."
+msgstr ""
+
+#: inc/Admin/Options.php:239
+msgid "Modify Message"
+msgstr ""
+
+#: inc/Admin/Options.php:240
+msgid "Message sent when a user is modified."
+msgstr ""
+
+#: inc/Admin/Options.php:245
+msgid "Delete Message"
+msgstr ""
+
+#: inc/Admin/Options.php:246
+msgid "Message sent when a user is deleted."
+msgstr ""
+
+#: inc/Admin/Options.php:265
+msgid "Settings Saved."
+msgstr ""
+
+#: inc/Services/Access.php:65
 msgid "A User just logged in!"
 msgstr ""
 
-#: inc/Services/Access.php:117
+#: inc/Services/Access.php:69 inc/Services/Access.php:136
+#: inc/Services/Comment.php:109 inc/Services/Post.php:117
+#: inc/Services/Theme.php:83 inc/Services/User.php:69 inc/Services/User.php:135
+#: inc/Services/User.php:202
+msgid "Ping"
+msgstr ""
+
+#: inc/Services/Access.php:71 inc/Services/Access.php:138
+#: inc/Services/Post.php:119 inc/Services/Theme.php:85 inc/Services/User.php:71
+#: inc/Services/User.php:137 inc/Services/User.php:204
+msgid "ID"
+msgstr ""
+
+#: inc/Services/Access.php:73 inc/Services/Access.php:140
+#: inc/Services/Comment.php:113 inc/Services/Post.php:123
+#: inc/Services/Theme.php:89 inc/Services/User.php:73 inc/Services/User.php:139
+#: inc/Services/User.php:206
+msgid "User"
+msgstr ""
+
+#: inc/Services/Access.php:75 inc/Services/Access.php:142
+#: inc/Services/Comment.php:117 inc/Services/Post.php:125
+#: inc/Services/Theme.php:91 inc/Services/User.php:75 inc/Services/User.php:141
+#: inc/Services/User.php:208
+msgid "Date"
+msgstr ""
+
+#: inc/Services/Access.php:132
 msgid "A User just logged out!"
 msgstr ""
 
-msgid "A Comment was just published!"
+#: inc/Services/Comment.php:65
+msgid "A Comment was just approved!"
 msgstr ""
 
+#: inc/Services/Comment.php:73
 msgid "A Comment was just trashed!"
 msgstr ""
 
+#: inc/Services/Comment.php:111
+msgid "Comment"
+msgstr ""
+
+#: inc/Services/Comment.php:115
+msgid "Post"
+msgstr ""
+
+#: inc/Services/Post.php:65
 msgid "A Post draft was just created!"
 msgstr ""
 
+#: inc/Services/Post.php:73
 msgid "A Post was just published!"
 msgstr ""
 
+#: inc/Services/Post.php:81
 msgid "A Post was just trashed!"
 msgstr ""
 
+#: inc/Services/Post.php:121 inc/Services/Theme.php:87
+msgid "Title"
+msgstr ""
+
+#: inc/Services/Previous.php:105
+msgid "John Doe"
+msgstr ""
+
+#: inc/Services/Theme.php:50
 msgid "A Theme was just switched!"
 msgstr ""
 
-msgid "A Plugin was just installed!"
+#: inc/Services/User.php:65
+msgid "A User was just created!"
 msgstr ""
 
-msgid "A Plugin was just removed!"
+#: inc/Services/User.php:131
+msgid "A User was just modified!"
 msgstr ""
 
-msgid "A Plugin was just activated!"
+#: inc/Services/User.php:198
+msgid "A User was just deleted!"
 msgstr ""
 
-msgid "A Plugin was just de-activated!"
-msgstr ""
-
-msgid "An Image was just uploaded!"
-msgstr ""
-
-msgid "An Image was just deleted!"
+#: ping-me-on-slack.php:32
+msgid "Error: Composer is not installed!"
 msgstr ""
