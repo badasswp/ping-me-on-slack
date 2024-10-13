@@ -23,10 +23,8 @@ class Access extends Service implements Kernel {
 	 * @return void
 	 */
 	public function register(): void {
-		if ( pmos_get_settings( 'enable_access' ) ) {
-			add_action( 'wp_login', [ $this, 'ping_on_user_login' ], 10, 2 );
-			add_action( 'wp_logout', [ $this, 'ping_on_user_logout' ] );
-		}
+		add_action( 'wp_login', [ $this, 'ping_on_user_login' ], 10, 2 );
+		add_action( 'wp_logout', [ $this, 'ping_on_user_logout' ] );
 	}
 
 	/**
@@ -44,6 +42,11 @@ class Access extends Service implements Kernel {
 	 * @return void
 	 */
 	public function ping_on_user_login( $user_login, $user ): void {
+		// Bail out early, if not enabled.
+		if ( ! pmos_get_settings( 'enable_access' ) ) {
+			return;
+		}
+
 		/**
 		 * Filter Slack Client.
 		 *
@@ -104,6 +107,11 @@ class Access extends Service implements Kernel {
 	 * @return void
 	 */
 	public function ping_on_user_logout( $user_id ): void {
+		// Bail out early, if not enabled.
+		if ( ! pmos_get_settings( 'enable_access' ) ) {
+			return;
+		}
+
 		/**
 		 * Filter Slack Client.
 		 *

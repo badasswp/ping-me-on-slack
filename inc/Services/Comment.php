@@ -19,14 +19,11 @@ class Comment extends Service implements Kernel {
 	 * Bind to WP.
 	 *
 	 * @since 1.0.0
-	 * @since 1.1.0 Add stop-gap via `enable_comment` plugin option.
 	 *
 	 * @return void
 	 */
 	public function register(): void {
-		if ( pmos_get_settings( 'enable_comment' ) ) {
-			add_action( 'transition_comment_status', [ $this, 'ping_on_comment_status_change' ], 10, 3 );
-		}
+		add_action( 'transition_comment_status', [ $this, 'ping_on_comment_status_change' ], 10, 3 );
 	}
 
 	/**
@@ -45,6 +42,11 @@ class Comment extends Service implements Kernel {
 	 * @return void
 	 */
 	public function ping_on_comment_status_change( $new_status, $old_status, $comment ): void {
+		// Bail out early, if not enabled.
+		if ( ! pmos_get_settings( 'enable_comment' ) ) {
+			return;
+		}
+
 		// Get Comment.
 		$this->comment = $comment;
 
