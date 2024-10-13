@@ -91,12 +91,12 @@ public function post_message( $message, $post, $event ): string {
 - event _`{string}`_ By default this will be the event that just happened.
 <br/>
 
-#### `ping_me_on_slack_admin_fields`
+#### `ping_me_on_slack_form_fields`
 
 This custom hook (filter) provides a way to implement new Admin fields in the plugin's admin page. For e.g. To add a new text field, you could do:
 
 ```php
-add_filter( 'ping_me_on_slack_admin_fields', [ $this, 'custom_field' ] );
+add_filter( 'ping_me_on_slack_form_fields', [ $this, 'custom_field' ] );
 
 public function custom_field( $fields ): array {
     return wp_parse_args(
