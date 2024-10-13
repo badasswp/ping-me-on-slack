@@ -41,6 +41,11 @@ class User extends Service implements Kernel {
 	 * @return void
 	 */
 	public function ping_on_user_creation( $user_id, $user_data ): void {
+		// Bail out early, if not enabled.
+		if ( ! pmos_get_settings( 'enable_user' ) ) {
+			return;
+		}
+
 		/**
 		 * Filter Slack Client.
 		 *
@@ -97,6 +102,11 @@ class User extends Service implements Kernel {
 	 * @param array $userdata_raw The unedited array of user data that was updated.
 	 */
 	public function ping_on_user_modification( $user_id, $userdata, $userdata_raw ) {
+		// Bail out early, if not enabled.
+		if ( ! pmos_get_settings( 'enable_user' ) ) {
+			return;
+		}
+
 		/**
 		 * Filter Slack Client.
 		 *
@@ -154,6 +164,11 @@ class User extends Service implements Kernel {
 	 * @param WP_User  $user     WP_User object of the deleted user.
 	 */
 	public function ping_on_user_deletion( $user_id, $reassign, $user ) {
+		// Bail out early, if not enabled.
+		if ( ! pmos_get_settings( 'enable_user' ) ) {
+			return;
+		}
+
 		/**
 		 * Filter Slack Client.
 		 *
