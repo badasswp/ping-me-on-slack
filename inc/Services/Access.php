@@ -23,8 +23,10 @@ class Access extends Service implements Kernel {
 	 * @return void
 	 */
 	public function register(): void {
-		add_action( 'wp_login', [ $this, 'ping_on_user_login' ], 10, 2 );
-		add_action( 'wp_logout', [ $this, 'ping_on_user_logout' ] );
+		if ( pmos_get_settings( 'enable_access' ) ) {
+			add_action( 'wp_login', [ $this, 'ping_on_user_login' ], 10, 2 );
+			add_action( 'wp_logout', [ $this, 'ping_on_user_logout' ] );
+		}
 	}
 
 	/**
@@ -54,10 +56,14 @@ class Access extends Service implements Kernel {
 		 */
 		$this->client = apply_filters( 'ping_me_on_slack_login_client', $client = $this->client );
 
+		$access_login = pmos_get_settings( 'access_login' );
+
+		$message = esc_html__( 'A User just logged in!', 'ping-me-on-slack' );
+		$message = empty( $access_login ) ? $message : $access_login;
 		$message = sprintf(
 			"%s: %s \n%s: %s \n%s: %s \n%s: %s",
 			esc_html__( 'Ping', 'ping-me-on-slack' ),
-			esc_html__( 'A User just logged in!', 'ping-me-on-slack' ),
+			esc_html( $message ),
 			esc_html__( 'ID', 'ping-me-on-slack' ),
 			esc_html( $user->ID ),
 			esc_html__( 'User', 'ping-me-on-slack' ),
@@ -111,10 +117,14 @@ class Access extends Service implements Kernel {
 
 		$user = get_user_by( 'id', $user_id );
 
+		$access_logout = pmos_get_settings( 'access_logout' );
+
+		$message = esc_html__( 'A User just logged out!', 'ping-me-on-slack' );
+		$message = empty( $access_logout ) ? $message : $access_logout;
 		$message = sprintf(
 			"%s: %s \n%s: %s \n%s: %s \n%s: %s",
 			esc_html__( 'Ping', 'ping-me-on-slack' ),
-			esc_html__( 'A User just logged out!', 'ping-me-on-slack' ),
+			esc_html( $message ),
 			esc_html__( 'ID', 'ping-me-on-slack' ),
 			esc_html( $user_id ),
 			esc_html__( 'User', 'ping-me-on-slack' ),
