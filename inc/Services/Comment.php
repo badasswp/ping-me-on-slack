@@ -36,6 +36,7 @@ class Comment extends Service implements Kernel {
 	 * Comment status changes.
 	 *
 	 * @since 1.0.0
+	 * @since 1.1.0 Implement custom message feature via plugin options.
 	 *
 	 * @param string      $new_status New Status.
 	 * @param string      $old_status Old Status.
@@ -57,15 +58,19 @@ class Comment extends Service implements Kernel {
 
 		switch ( $new_status ) {
 			case 'approved':
-				$message = $this->get_message(
-					esc_html__( 'A Comment was just published!', 'ping-me-on-slack' )
-				);
+				$comment_publish = pmos_get_settings( 'comment_publish' );
+
+				$message = esc_html__( 'A Comment was just published!', 'ping-me-on-slack' );
+				$message = empty( $comment_publish ) ? $message : $comment_publish;
+				$message = $this->get_message( $message );
 				break;
 
 			case 'trash':
-				$message = $this->get_message(
-					esc_html__( 'A Comment was just trashed!', 'ping-me-on-slack' )
-				);
+				$comment_trash = pmos_get_settings( 'comment_trash' );
+
+				$message = esc_html__( 'A Comment was just trashed!', 'ping-me-on-slack' );
+				$message = empty( $comment_trash ) ? $message : $comment_trash;
+				$message = $this->get_message( $message );
 				break;
 		}
 
