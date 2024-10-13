@@ -22,6 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return mixed
  */
-function pmos_set_settings( $option, $fallback = '' ) {
+function pmos_get_settings( $option, $fallback = '' ) {
 	return get_option( 'ping_me_on_slack', [] )[ $option ] ?? $fallback;
 }
