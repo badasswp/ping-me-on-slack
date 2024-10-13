@@ -1,0 +1,288 @@
+# Copyright (C) badasswp
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Ping Me On Slack\n"
+"POT-Creation-Date: 2024-10-13 23:35+0100\n"
+"PO-Revision-Date: 2024-10-13 23:41+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: ping-me-on-slack.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+
+#. Plugin Name of the plugin/theme
+#: inc/Admin/Options.php:79
+msgid "Ping Me On Slack"
+msgstr "在 Slack 上 Ping Me"
+
+#. Description of the plugin/theme
+#: inc/Admin/Options.php:83 inc/Services/Previous.php:99
+msgid "Get notifications on Slack when changes are made on your WP website."
+msgstr "当您的 WP 网站发生更改时，请在 Slack 上获取通知。"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/badasswp/ping-me-on-slack"
+msgstr "https://github.com/badasswp/ping-me-on-slack"
+
+#. Author of the plugin/theme
+msgid "badasswp"
+msgstr "badasswp"
+
+#. Author URI of the plugin/theme
+msgid "https://github.com/badasswp"
+msgstr "https://github.com/badasswp"
+
+#: inc/Admin/Options.php:103
+msgid "Actions"
+msgstr "操作"
+
+#: inc/Admin/Options.php:106
+msgid "Save Changes"
+msgstr "保存更改"
+
+#: inc/Admin/Options.php:128
+msgid "Slack Options"
+msgstr "Slack 选项"
+
+#: inc/Admin/Options.php:133 inc/Services/Previous.php:104
+msgid "Slack Username"
+msgstr "松弛用户名"
+
+#: inc/Admin/Options.php:134
+msgid "e.g. John Doe"
+msgstr "例如 John Doe"
+
+#: inc/Admin/Options.php:139 inc/Services/Previous.php:111
+msgid "Slack Channel"
+msgstr "Slack 频道"
+
+#: inc/Admin/Options.php:140 inc/Services/Previous.php:112
+msgid "e.g. #general"
+msgstr "例如 #general"
+
+#: inc/Admin/Options.php:145 inc/Services/Previous.php:118
+msgid "Slack Webhook"
+msgstr "松弛Webhook"
+
+#: inc/Admin/Options.php:146 inc/Services/Previous.php:119
+msgid "e.g. https://hooks.slack.com/services/xxxxxx"
+msgstr "例如 https://hooks.slack.com/services/xxxxxx"
+
+#: inc/Admin/Options.php:151
+msgid "Post Options"
+msgstr "文章选项"
+
+#: inc/Admin/Options.php:155 inc/Admin/Options.php:183
+#: inc/Admin/Options.php:205 inc/Admin/Options.php:227
+msgid "Enable Slack"
+msgstr "启用Slack"
+
+#: inc/Admin/Options.php:156
+msgid "Enable Slack messages for Post actions."
+msgstr "为 Post 操作启用 Slack 消息。"
+
+#: inc/Admin/Options.php:161
+msgid "Draft Message"
+msgstr "草稿信息"
+
+#: inc/Admin/Options.php:162
+msgid "Message sent when a post is saved as draft."
+msgstr "将帖子保存为草稿时发送的消息。"
+
+#: inc/Admin/Options.php:167
+msgid "Publish Message"
+msgstr "发布消息"
+
+#: inc/Admin/Options.php:168
+msgid "Message sent when a post is published."
+msgstr "发布帖子时发送的消息。"
+
+#: inc/Admin/Options.php:173 inc/Admin/Options.php:195
+msgid "Trash Message"
+msgstr "垃圾箱消息"
+
+#: inc/Admin/Options.php:174
+msgid "Message sent when a post is trashed."
+msgstr "帖子被丢弃时发送的消息。"
+
+#: inc/Admin/Options.php:179
+msgid "Comment Options"
+msgstr "评论选项"
+
+#: inc/Admin/Options.php:184
+msgid "Enable Slack messages for Comment actions."
+msgstr "为 Comment （评论） 操作启用 Slack 消息。"
+
+#: inc/Admin/Options.php:189
+msgid "Approval Message"
+msgstr "审批消息"
+
+#: inc/Admin/Options.php:190
+msgid "Message sent when a comment is approved."
+msgstr "评论获得批准时发送的消息。"
+
+#: inc/Admin/Options.php:196
+msgid "Message sent when a comment is trashed."
+msgstr "在评论被丢弃时发送的消息。"
+
+#: inc/Admin/Options.php:201
+msgid "Access Options"
+msgstr "访问选项"
+
+#: inc/Admin/Options.php:206
+msgid "Enable Slack messages for Access actions."
+msgstr "为 Access 操作启用 Slack 消息。"
+
+#: inc/Admin/Options.php:211
+msgid "Login Message"
+msgstr "登录信息"
+
+#: inc/Admin/Options.php:212
+msgid "Message sent when a user has logged in."
+msgstr "用户登录时发送的消息。"
+
+#: inc/Admin/Options.php:217
+msgid "Logout Message"
+msgstr "注销消息"
+
+#: inc/Admin/Options.php:218
+msgid "Message sent when a user has logged out."
+msgstr "用户注销时发送的消息。"
+
+#: inc/Admin/Options.php:223
+msgid "User Options"
+msgstr "用户选项"
+
+#: inc/Admin/Options.php:228
+msgid "Enable Slack messages for User actions."
+msgstr "为 User 操作启用 Slack 消息。"
+
+#: inc/Admin/Options.php:233
+msgid "Create Message"
+msgstr "创建消息"
+
+#: inc/Admin/Options.php:234
+msgid "Message sent when a user is created."
+msgstr "创建用户时发送的消息。"
+
+#: inc/Admin/Options.php:239
+msgid "Modify Message"
+msgstr "修改消息"
+
+#: inc/Admin/Options.php:240
+msgid "Message sent when a user is modified."
+msgstr "修改用户时发送的消息。"
+
+#: inc/Admin/Options.php:245
+msgid "Delete Message"
+msgstr "删除消息"
+
+#: inc/Admin/Options.php:246
+msgid "Message sent when a user is deleted."
+msgstr "删除用户时发送的消息。"
+
+#: inc/Admin/Options.php:265
+msgid "Settings Saved."
+msgstr "设置已保存。"
+
+#: inc/Services/Access.php:65
+msgid "A User just logged in!"
+msgstr "用户刚刚登录！"
+
+#: inc/Services/Access.php:69 inc/Services/Access.php:136
+#: inc/Services/Comment.php:109 inc/Services/Post.php:117
+#: inc/Services/Theme.php:83 inc/Services/User.php:69 inc/Services/User.php:135
+#: inc/Services/User.php:202
+msgid "Ping"
+msgstr "注意力"
+
+#: inc/Services/Access.php:71 inc/Services/Access.php:138
+#: inc/Services/Post.php:119 inc/Services/Theme.php:85 inc/Services/User.php:71
+#: inc/Services/User.php:137 inc/Services/User.php:204
+msgid "ID"
+msgstr "数字"
+
+#: inc/Services/Access.php:73 inc/Services/Access.php:140
+#: inc/Services/Comment.php:113 inc/Services/Post.php:123
+#: inc/Services/Theme.php:89 inc/Services/User.php:73 inc/Services/User.php:139
+#: inc/Services/User.php:206
+msgid "User"
+msgstr "用户"
+
+#: inc/Services/Access.php:75 inc/Services/Access.php:142
+#: inc/Services/Comment.php:117 inc/Services/Post.php:125
+#: inc/Services/Theme.php:91 inc/Services/User.php:75 inc/Services/User.php:141
+#: inc/Services/User.php:208
+msgid "Date"
+msgstr "日期"
+
+#: inc/Services/Access.php:132
+msgid "A User just logged out!"
+msgstr "用户刚刚注销！"
+
+#: inc/Services/Comment.php:65
+msgid "A Comment was just approved!"
+msgstr "评论刚刚获得批准！"
+
+#: inc/Services/Comment.php:73
+msgid "A Comment was just trashed!"
+msgstr "一条评论刚刚被丢弃了！"
+
+#: inc/Services/Comment.php:111
+msgid "Comment"
+msgstr "评论"
+
+#: inc/Services/Comment.php:115
+msgid "Post"
+msgstr "文章"
+
+#: inc/Services/Post.php:65
+msgid "A Post draft was just created!"
+msgstr "刚刚创建了帖子草稿！"
+
+#: inc/Services/Post.php:73
+msgid "A Post was just published!"
+msgstr "刚刚发布了一篇帖子！"
+
+#: inc/Services/Post.php:81
+msgid "A Post was just trashed!"
+msgstr "一个帖子刚刚被丢弃了！"
+
+#: inc/Services/Post.php:121 inc/Services/Theme.php:87
+msgid "Title"
+msgstr "标题"
+
+#: inc/Services/Previous.php:105
+msgid "John Doe"
+msgstr "无名氏"
+
+#: inc/Services/Theme.php:50
+msgid "A Theme was just switched!"
+msgstr "主题刚刚切换！"
+
+#: inc/Services/User.php:65
+msgid "A User was just created!"
+msgstr "刚刚创建了一个用户！"
+
+#: inc/Services/User.php:131
+msgid "A User was just modified!"
+msgstr "用户刚刚被修改！"
+
+#: inc/Services/User.php:198
+msgid "A User was just deleted!"
+msgstr "用户刚刚被删除！"
+
+#: ping-me-on-slack.php:32
+msgid "Error: Composer is not installed!"
+msgstr "错误：未安装 Composer！"
