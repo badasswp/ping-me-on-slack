@@ -36,6 +36,7 @@ class Post extends Service implements Kernel {
 	 * Post status changes.
 	 *
 	 * @since 1.0.0
+	 * @since 1.1.0 Implement custom message feature via plugin options.
 	 *
 	 * @param string   $new_status New Status.
 	 * @param string   $old_status Old Status.
@@ -57,21 +58,21 @@ class Post extends Service implements Kernel {
 
 		switch ( $new_status ) {
 			case 'draft':
-				$message = $this->get_message(
-					esc_html__( 'A Post draft was just created!', 'ping-me-on-slack' )
-				);
+				$message = esc_html__( 'A Post draft was just created!', 'ping-me-on-slack' );
+				$message = pmos_get_settings( 'post_draft' ) ?? $message;
+				$message = $this->get_message( $message );
 				break;
 
 			case 'publish':
-				$message = $this->get_message(
-					esc_html__( 'A Post was just published!', 'ping-me-on-slack' )
-				);
+				$message = esc_html__( 'A Post was just published!', 'ping-me-on-slack' );
+				$message = pmos_get_settings( 'post_publish' ) ?? $message;
+				$message = $this->get_message( $message );
 				break;
 
 			case 'trash':
-				$message = $this->get_message(
-					esc_html__( 'A Post was just trashed!', 'ping-me-on-slack' )
-				);
+				$message = esc_html__( 'A Post was just trashed!', 'ping-me-on-slack' );
+				$message = pmos_get_settings( 'post_trash' ) ?? $message;
+				$message = $this->get_message( $message );
 				break;
 		}
 
