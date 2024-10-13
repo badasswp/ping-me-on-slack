@@ -24,7 +24,7 @@ If you have done this successfully, you should have something that looks like so
 https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-Save these details into your PingMeOnSlack options page and you are ready to go!
+Save these details into your __Ping Me On Slack__ options page and you are ready to go!
 
 ![ping-me-on-slack](https://github.com/badasswp/ping-me-on-slack/assets/149586343/1da2be61-ab22-42ac-bf9b-63df814c093d)
 
