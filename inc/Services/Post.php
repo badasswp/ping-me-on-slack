@@ -58,20 +58,26 @@ class Post extends Service implements Kernel {
 
 		switch ( $new_status ) {
 			case 'draft':
+				$post_draft = pmos_get_settings( 'post_draft' );
+
 				$message = esc_html__( 'A Post draft was just created!', 'ping-me-on-slack' );
-				$message = pmos_get_settings( 'post_draft' ) ?? $message;
+				$message = empty( $post_draft ) ? $message : $post_draft;
 				$message = $this->get_message( $message );
 				break;
 
 			case 'publish':
+				$post_publish = pmos_get_settings( 'post_publish' );
+
 				$message = esc_html__( 'A Post was just published!', 'ping-me-on-slack' );
-				$message = pmos_get_settings( 'post_publish' ) ?? $message;
+				$message = empty( $post_publish ) ? $message : $post_publish;
 				$message = $this->get_message( $message );
 				break;
 
 			case 'trash':
+				$post_trash = pmos_get_settings( 'post_trash' );
+
 				$message = esc_html__( 'A Post was just trashed!', 'ping-me-on-slack' );
-				$message = pmos_get_settings( 'post_trash' ) ?? $message;
+				$message = empty( $post_trash ) ? $message : $post_trash;
 				$message = $this->get_message( $message );
 				break;
 		}
