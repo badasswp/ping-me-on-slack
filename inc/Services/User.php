@@ -34,6 +34,7 @@ class User extends Service implements Kernel {
 	 * on user creation.
 	 *
 	 * @since 1.0.0
+	 * @since 1.1.0 Implement custom message feature via plugin options.
 	 *
 	 * @param int     $user_id   User ID.
 	 * @param mixed[] $user_data User Data.
@@ -59,10 +60,14 @@ class User extends Service implements Kernel {
 		 */
 		$this->client = apply_filters( 'ping_me_on_slack_user_creation_client', $client = $this->client );
 
+		$user_create = pmos_get_settings( 'user_create' );
+
+		$message = esc_html__( 'A User was just created!', 'ping-me-on-slack' );
+		$message = empty( $user_create ) ? $message : $user_create;
 		$message = sprintf(
 			"%s: %s \n%s: %s \n%s: %s \n%s: %s",
 			esc_html__( 'Ping', 'ping-me-on-slack' ),
-			esc_html__( 'A User was just created!', 'ping-me-on-slack' ),
+			esc_html( 'A User was just created!', 'ping-me-on-slack' ),
 			esc_html__( 'ID', 'ping-me-on-slack' ),
 			esc_html( $user_id ),
 			esc_html__( 'User', 'ping-me-on-slack' ),
@@ -96,6 +101,7 @@ class User extends Service implements Kernel {
 	 * on user modification/update.
 	 *
 	 * @since 1.0.0
+	 * @since 1.1.0 Implement custom message feature via plugin options.
 	 *
 	 * @param int   $user_id      The ID of the user that was just updated.
 	 * @param array $userdata     The array of user data that was updated.
@@ -120,10 +126,14 @@ class User extends Service implements Kernel {
 		 */
 		$this->client = apply_filters( 'ping_me_on_slack_user_modification_client', $client = $this->client );
 
+		$user_modify = pmos_get_settings( 'user_modify' );
+
+		$message = esc_html__( 'A User was just modified!', 'ping-me-on-slack' );
+		$message = empty( $user_modify ) ? $message : $user_modify;
 		$message = sprintf(
 			"%s: %s \n%s: %s \n%s: %s \n%s: %s",
 			esc_html__( 'Ping', 'ping-me-on-slack' ),
-			esc_html__( 'A User was just modified!', 'ping-me-on-slack' ),
+			esc_html( 'A User was just modified!', 'ping-me-on-slack' ),
 			esc_html__( 'ID', 'ping-me-on-slack' ),
 			esc_html( $user_id ),
 			esc_html__( 'User', 'ping-me-on-slack' ),
@@ -157,6 +167,7 @@ class User extends Service implements Kernel {
 	 * on user deletion.
 	 *
 	 * @since 1.0.0
+	 * @since 1.1.0 Implement custom message feature via plugin options.
 	 *
 	 * @param int      $user_id  ID of the deleted user.
 	 * @param int|null $reassign ID of the user to reassign posts and links to.
@@ -182,10 +193,14 @@ class User extends Service implements Kernel {
 		 */
 		$this->client = apply_filters( 'ping_me_on_slack_user_deletion_client', $client = $this->client );
 
+		$user_delete = pmos_get_settings( 'user_delete' );
+
+		$message = esc_html__( 'A User was just deleted!', 'ping-me-on-slack' );
+		$message = empty( $user_delete ) ? $message : $user_delete;
 		$message = sprintf(
 			"%s: %s \n%s: %s \n%s: %s \n%s: %s",
 			esc_html__( 'Ping', 'ping-me-on-slack' ),
-			esc_html__( 'A User was just deleted!', 'ping-me-on-slack' ),
+			esc_html( 'A User was just deleted!', 'ping-me-on-slack' ),
 			esc_html__( 'ID', 'ping-me-on-slack' ),
 			esc_html( $user_id ),
 			esc_html__( 'User', 'ping-me-on-slack' ),
