@@ -2,16 +2,16 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ping Me on Slack\n"
-"POT-Creation-Date: 2024-08-05 05:33+0100\n"
-"PO-Revision-Date: 2024-09-08 16:21+0100\n"
+"Project-Id-Version: Ping Me On Slack\n"
+"POT-Creation-Date: 2024-10-13 23:35+0100\n"
+"PO-Revision-Date: 2024-10-13 23:47+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: ping-me-on-slack.php\n"
@@ -21,146 +21,318 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: inc/Services/Access.php:59 inc/Services/Access.php:116
-#: inc/Services/Comment.php:95 inc/Services/Post.php:99
-#: inc/Services/Theme.php:81 inc/Services/User.php:59 inc/Services/User.php:115
-#: inc/Services/User.php:172
-msgid "Ping"
-msgstr "Zviždati"
-
 #. Plugin Name of the plugin/theme
+#: inc/Admin/Options.php:79
+#, fuzzy
 msgid "Ping Me On Slack"
-msgstr "Pingajte moju opuštenost"
+msgstr "Pingajte me na Slacku"
 
 #. Description of the plugin/theme
-#: inc/Services/Admin.php:99
+#: inc/Admin/Options.php:83 inc/Services/Previous.php:99
+#, fuzzy
 msgid "Get notifications on Slack when changes are made on your WP website."
 msgstr "Primajte obavijesti na Slacku kada se naprave promjene na vašoj WP web stranici."
 
 #. Plugin URI of the plugin/theme
+#, fuzzy
 msgid "https://github.com/badasswp/ping-me-on-slack"
 msgstr "https://github.com/badasswp/ping-me-on-slack"
 
 #. Author of the plugin/theme
+#, fuzzy
 msgid "badasswp"
 msgstr "badasswp"
 
 #. Author URI of the plugin/theme
+#, fuzzy
 msgid "https://github.com/badasswp"
 msgstr "https://github.com/badasswp"
 
-#: init.php:15
-msgid "Error: Composer is not installed!"
-msgstr "Pogreška: Composer nije instaliran!"
+#: inc/Admin/Options.php:103
+msgid "Actions"
+msgstr "Akcije"
 
-#: inc/Services/Access.php:61 inc/Services/Access.php:118
-#: inc/Services/Post.php:101 inc/Services/Theme.php:83 inc/Services/User.php:61
-#: inc/Services/User.php:117 inc/Services/User.php:174
-msgid "ID"
-msgstr "ID"
+#: inc/Admin/Options.php:106
+msgid "Save Changes"
+msgstr "Spremi Promjene"
 
-#: inc/Services/Access.php:63 inc/Services/Access.php:120
-#: inc/Services/Comment.php:99 inc/Services/Post.php:105
-#: inc/Services/Theme.php:87 inc/Services/User.php:63 inc/Services/User.php:119
-#: inc/Services/User.php:176
-msgid "User"
-msgstr "Korisnik"
+#: inc/Admin/Options.php:128
+#, fuzzy
+msgid "Slack Options"
+msgstr "Opcije zastoja"
 
-#: inc/Services/Comment.php:97
-msgid "Comment"
-msgstr "Komentar"
-
-#: inc/Services/Comment.php:101
-msgid "Post"
-msgstr "Objava"
-
-#: inc/Services/Post.php:103 inc/Services/Theme.php:85
-msgid "Title"
-msgstr "Naslov"
-
-#: inc/Services/Access.php:65 inc/Services/Access.php:122
-#: inc/Services/Comment.php:103 inc/Services/Post.php:107
-#: inc/Services/Theme.php:89 inc/Services/User.php:65 inc/Services/User.php:121
-#: inc/Services/User.php:178
-msgid "Date"
-msgstr "Datum"
-
-#: inc/Services/Admin.php:105
-msgid "John Doe"
-msgstr "John Doe"
-
-#: inc/Services/Admin.php:104
+#: inc/Admin/Options.php:133 inc/Services/Previous.php:104
+#, fuzzy
 msgid "Slack Username"
 msgstr "Slack korisničko ime"
 
-#: inc/Services/Admin.php:111
+#: inc/Admin/Options.php:134
+msgid "e.g. John Doe"
+msgstr "npr. Hrvoje Horvat"
+
+#: inc/Admin/Options.php:139 inc/Services/Previous.php:111
+#, fuzzy
 msgid "Slack Channel"
 msgstr "Kanal Slack"
 
-#: inc/Services/Admin.php:118
-msgid "Slack Webhook"
-msgstr "Slack Webhook"
-
-#: inc/Services/Admin.php:112
+#: inc/Admin/Options.php:140 inc/Services/Previous.php:112
+#, fuzzy
 msgid "e.g. #general"
 msgstr "npr. #general"
 
-#: inc/Services/Admin.php:119
+#: inc/Admin/Options.php:145 inc/Services/Previous.php:118
+#, fuzzy
+msgid "Slack Webhook"
+msgstr "Slack Webhook"
+
+#: inc/Admin/Options.php:146 inc/Services/Previous.php:119
+#, fuzzy
 msgid "e.g. https://hooks.slack.com/services/xxxxxx"
 msgstr "npr. https://hooks.slack.com/services/xxxxxx"
 
-#: inc/Services/User.php:60
-msgid "A User was just created!"
-msgstr "Korisnik je upravo stvoren!"
+#: inc/Admin/Options.php:151
+msgid "Post Options"
+msgstr "Status of the current post"
 
-#: inc/Services/User.php:116
-msgid "A User was just modified!"
-msgstr "Korisnik je upravo izmijenjen!"
+#: inc/Admin/Options.php:155 inc/Admin/Options.php:183
+#: inc/Admin/Options.php:205 inc/Admin/Options.php:227
+#, fuzzy
+msgid "Enable Slack"
+msgstr "Omogući Slack"
 
-#: inc/Services/User.php:173
-msgid "A User was just deleted!"
-msgstr "Korisnik je upravo izbrisan!"
+#: inc/Admin/Options.php:156
+#, fuzzy
+msgid "Enable Slack messages for Post actions."
+msgstr "Omogućite Slack poruke za radnje objave."
 
-#: inc/Services/Access.php:60
+#: inc/Admin/Options.php:161
+#, fuzzy
+msgid "Draft Message"
+msgstr "Nacrt poruke"
+
+#: inc/Admin/Options.php:162
+#, fuzzy
+msgid "Message sent when a post is saved as draft."
+msgstr "Poruka poslana kada je objava spremljena kao skica."
+
+#: inc/Admin/Options.php:167
+#, fuzzy
+msgid "Publish Message"
+msgstr "Objavi poruku"
+
+#: inc/Admin/Options.php:168
+#, fuzzy
+msgid "Message sent when a post is published."
+msgstr "Poruka poslana kada je objava objavljena."
+
+#: inc/Admin/Options.php:173 inc/Admin/Options.php:195
+#, fuzzy
+msgid "Trash Message"
+msgstr "Poruka za smeće"
+
+#: inc/Admin/Options.php:174
+#, fuzzy
+msgid "Message sent when a post is trashed."
+msgstr "Poruka poslana kada je objava uništena."
+
+#: inc/Admin/Options.php:179
+#, fuzzy
+msgid "Comment Options"
+msgstr "Opcije komentara"
+
+#: inc/Admin/Options.php:184
+#, fuzzy
+msgid "Enable Slack messages for Comment actions."
+msgstr "Omogućite Slack poruke za radnje komentara."
+
+#: inc/Admin/Options.php:189
+#, fuzzy
+msgid "Approval Message"
+msgstr "Poruka o odobrenju"
+
+#: inc/Admin/Options.php:190
+#, fuzzy
+msgid "Message sent when a comment is approved."
+msgstr "Poruka se šalje kada je komentar odobren."
+
+#: inc/Admin/Options.php:196
+#, fuzzy
+msgid "Message sent when a comment is trashed."
+msgstr "Poruka poslana kada je komentar uništen."
+
+#: inc/Admin/Options.php:201
+#, fuzzy
+msgid "Access Options"
+msgstr "Mogućnosti pristupa"
+
+#: inc/Admin/Options.php:206
+#, fuzzy
+msgid "Enable Slack messages for Access actions."
+msgstr "Omogućite Slack poruke za akcije programa Access."
+
+#: inc/Admin/Options.php:211
+msgid "Login Message"
+msgstr "Giriş Mesajı"
+
+#: inc/Admin/Options.php:212
+#, fuzzy
+msgid "Message sent when a user has logged in."
+msgstr "Poruka poslana kada se korisnik prijavi."
+
+#: inc/Admin/Options.php:217
+#, fuzzy
+msgid "Logout Message"
+msgstr "Poruka o odjavi"
+
+#: inc/Admin/Options.php:218
+#, fuzzy
+msgid "Message sent when a user has logged out."
+msgstr "Poruka poslana kada se korisnik odjavi."
+
+#: inc/Admin/Options.php:223
+#, fuzzy
+msgid "User Options"
+msgstr "Korisničke opcije"
+
+#: inc/Admin/Options.php:228
+#, fuzzy
+msgid "Enable Slack messages for User actions."
+msgstr "Omogućite Slack poruke za radnje korisnika."
+
+#: inc/Admin/Options.php:233
+#, fuzzy
+msgid "Create Message"
+msgstr "Kreiraj poruku"
+
+#: inc/Admin/Options.php:234
+#, fuzzy
+msgid "Message sent when a user is created."
+msgstr "Poruka se šalje kada se stvori korisnik."
+
+#: inc/Admin/Options.php:239
+#, fuzzy
+msgid "Modify Message"
+msgstr "Izmijeni poruku"
+
+#: inc/Admin/Options.php:240
+#, fuzzy
+msgid "Message sent when a user is modified."
+msgstr "Poruka se šalje kada se korisnik izmijeni."
+
+#: inc/Admin/Options.php:245
+msgid "Delete Message"
+msgstr "Izbriši poruku"
+
+#: inc/Admin/Options.php:246
+#, fuzzy
+msgid "Message sent when a user is deleted."
+msgstr "Poruka se šalje kada se korisnik izbriše."
+
+#: inc/Admin/Options.php:265
+#, fuzzy
+msgid "Settings Saved."
+msgstr "Postavke Spremljene."
+
+#: inc/Services/Access.php:65
+#, fuzzy
 msgid "A User just logged in!"
 msgstr "Korisnik se upravo prijavio!"
 
-#: inc/Services/Access.php:117
+#: inc/Services/Access.php:69 inc/Services/Access.php:136
+#: inc/Services/Comment.php:109 inc/Services/Post.php:117
+#: inc/Services/Theme.php:83 inc/Services/User.php:69 inc/Services/User.php:135
+#: inc/Services/User.php:202
+#, fuzzy
+msgid "Ping"
+msgstr "Zviždati"
+
+#: inc/Services/Access.php:71 inc/Services/Access.php:138
+#: inc/Services/Post.php:119 inc/Services/Theme.php:85 inc/Services/User.php:71
+#: inc/Services/User.php:137 inc/Services/User.php:204
+msgid "ID"
+msgstr "ID oznaka"
+
+#: inc/Services/Access.php:73 inc/Services/Access.php:140
+#: inc/Services/Comment.php:113 inc/Services/Post.php:123
+#: inc/Services/Theme.php:89 inc/Services/User.php:73 inc/Services/User.php:139
+#: inc/Services/User.php:206
+msgid "User"
+msgstr "Korisnik"
+
+#: inc/Services/Access.php:75 inc/Services/Access.php:142
+#: inc/Services/Comment.php:117 inc/Services/Post.php:125
+#: inc/Services/Theme.php:91 inc/Services/User.php:75 inc/Services/User.php:141
+#: inc/Services/User.php:208
+msgid "Date"
+msgstr "Datum"
+
+#: inc/Services/Access.php:132
+#, fuzzy
 msgid "A User just logged out!"
 msgstr "Korisnik se upravo odjavio!"
 
-msgid "A Comment was just published!"
-msgstr "Komentar je upravo objavljen!"
+#: inc/Services/Comment.php:65
+#, fuzzy
+msgid "A Comment was just approved!"
+msgstr "Komentar je upravo odobren!"
 
+#: inc/Services/Comment.php:73
+#, fuzzy
 msgid "A Comment was just trashed!"
 msgstr "Komentar je upravo uništen!"
 
-msgid "A Post draft was just created!"
-msgstr "Upravo je stvoren Post Draft!"
+#: inc/Services/Comment.php:111
+msgid "Comment"
+msgstr "Komentar"
 
+#: inc/Services/Comment.php:115
+msgid "Post"
+msgstr "Objava"
+
+#: inc/Services/Post.php:65
+#, fuzzy
+msgid "A Post draft was just created!"
+msgstr "Upravo je stvoren nacrt posta!"
+
+#: inc/Services/Post.php:73
+#, fuzzy
 msgid "A Post was just published!"
 msgstr "Upravo je objavljen post!"
 
+#: inc/Services/Post.php:81
+#, fuzzy
 msgid "A Post was just trashed!"
 msgstr "A Post je upravo uništen!"
 
+#: inc/Services/Post.php:121 inc/Services/Theme.php:87
+msgid "Title"
+msgstr "Naslov"
+
+#: inc/Services/Previous.php:105
+msgid "John Doe"
+msgstr "John Doe"
+
+#: inc/Services/Theme.php:50
+#, fuzzy
 msgid "A Theme was just switched!"
 msgstr "Tema je upravo zamijenjena!"
 
-msgid "A Plugin was just installed!"
-msgstr "Upravo je instaliran dodatak!"
+#: inc/Services/User.php:65
+#, fuzzy
+msgid "A User was just created!"
+msgstr "Korisnik je upravo stvoren!"
 
-msgid "A Plugin was just removed!"
-msgstr "Dodatak je upravo uklonjen!"
+#: inc/Services/User.php:131
+#, fuzzy
+msgid "A User was just modified!"
+msgstr "Korisnik je upravo izmijenjen!"
 
-msgid "A Plugin was just activated!"
-msgstr "Dodatak je upravo aktiviran!"
+#: inc/Services/User.php:198
+#, fuzzy
+msgid "A User was just deleted!"
+msgstr "Korisnik je upravo izbrisan!"
 
-msgid "A Plugin was just de-activated!"
-msgstr "Dodatak je upravo deaktiviran!"
-
-msgid "An Image was just uploaded!"
-msgstr "Slika je upravo postavljena!"
-
-msgid "An Image was just deleted!"
-msgstr "Slika je upravo izbrisana!"
+#: ping-me-on-slack.php:32
+#, fuzzy
+msgid "Error: Composer is not installed!"
+msgstr "Pogreška: Composer nije instaliran!"
