@@ -30,6 +30,25 @@ Ever needed to keep track of what's happening on your website? No need to look f
 * Get notified when a user creates, modifies or deletes a User.
 * Get notified when a user logs in & out.
 
+= ✨ Getting Started =
+
+1. To get started, you would need to have an incoming webhook of your own. Head over to the URL below and follow the instructions to generate your webhook: [https://api.slack.com/messaging/webhooks](https://api.slack.com/messaging/webhooks).
+
+2. If you have done this successfully, you should have something that looks like so:
+https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
+
+3. Save these details into your "Ping Me On Slack" options page. You can also enable the Post options of your choice and save!
+
+4. Create a Post and save or publish it. You should now get Slack notifications directly.
+
+You can get a taste of how this works, by using the [demo](https://tastewp.com/create/NMS/8.1/6.6.2/ping-me-on-slack/twentytwentythree?ni=true&origin=wp) link.
+
+= 🔌🎨 Plug and Play or Customize =
+
+The Ping Me On Slack plugin is built to work right out of the box. Simply install, activate and start using.
+
+Want to add your personal touch? All of our documentation can be found [here](https://github.com/badasswp/ping-me-on-slack). You can override the plugin's behaviour with custom logic of your own using [hooks](https://github.com/badasswp/ping-me-on-slack?tab=readme-ov-file#hooks).
+
 == Changelog ==
 
 = 1.0.1 =
