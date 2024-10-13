@@ -186,7 +186,7 @@ class Options {
 					'comment_approve' => [
 						'control'     => esc_attr( 'text' ),
 						'placeholder' => esc_attr__( '', 'ping-me-on-slack' ),
-						'label'       => esc_html__( 'Publish Message', 'ping-me-on-slack' ),
+						'label'       => esc_html__( 'Approval Message', 'ping-me-on-slack' ),
 						'summary'     => esc_html__( 'Message sent when a comment is approved.', 'ping-me-on-slack' ),
 					],
 					'comment_trash'   => [
