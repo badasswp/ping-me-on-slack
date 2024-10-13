@@ -17,7 +17,7 @@
 namespace badasswp\PingMeOnSlack;
 
 if ( ! defined( 'ABSPATH' ) ) {
-	wp_die();
+	exit;
 }
 
 require_once __DIR__ . '/init.php';
