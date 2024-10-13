@@ -36,6 +36,7 @@ class Access extends Service implements Kernel {
 	 * on user login.
 	 *
 	 * @since 1.0.0
+	 * @since 1.1.0 Implement custom message feature via plugin options.
 	 *
 	 * @param string   $user_login User Login.
 	 * @param \WP_User $user       WP User.
@@ -97,6 +98,7 @@ class Access extends Service implements Kernel {
 	 * on user logout.
 	 *
 	 * @since 1.0.0
+	 * @since 1.1.0 Implement custom message feature via plugin options.
 	 *
 	 * @param int $user_id User ID.
 	 * @return void
