@@ -124,7 +124,7 @@ class Options {
 	 */
 	public static function get_form_fields() {
 		return [
-			'slack_options' => [
+			'slack_options'   => [
 				'heading'  => esc_html__( 'Slack Options', 'ping-me-on-slack' ),
 				'controls' => [
 					'username' => [
@@ -147,27 +147,27 @@ class Options {
 					],
 				],
 			],
-			'post_options' => [
+			'post_options'    => [
 				'heading'  => esc_html__( 'Post Options', 'ping-me-on-slack' ),
 				'controls' => [
-					'enable_post'    => [
+					'enable_post'  => [
 						'control' => esc_attr( 'checkbox' ),
 						'label'   => esc_html__( 'Enable Slack', 'ping-me-on-slack' ),
 						'summary' => esc_html__( 'Enable Slack messages for Post actions.', 'ping-me-on-slack' ),
 					],
-					'post_draft' => [
+					'post_draft'   => [
 						'control'     => esc_attr( 'text' ),
 						'placeholder' => esc_attr__( '', 'ping-me-on-slack' ),
 						'label'       => esc_html__( 'Draft Message', 'ping-me-on-slack' ),
 						'summary'     => esc_html__( 'Message sent when a post is saved as draft.', 'ping-me-on-slack' ),
 					],
-					'post_publish'  => [
+					'post_publish' => [
 						'control'     => esc_attr( 'text' ),
 						'placeholder' => esc_attr__( '', 'ping-me-on-slack' ),
 						'label'       => esc_html__( 'Publish Message', 'ping-me-on-slack' ),
 						'summary'     => esc_html__( 'Message sent when a post is published.', 'ping-me-on-slack' ),
 					],
-					'post_trash'  => [
+					'post_trash'   => [
 						'control'     => esc_attr( 'text' ),
 						'placeholder' => esc_attr__( '', 'ping-me-on-slack' ),
 						'label'       => esc_html__( 'Trash Message', 'ping-me-on-slack' ),
@@ -178,18 +178,18 @@ class Options {
 			'comment_options' => [
 				'heading'  => esc_html__( 'Comment Options', 'ping-me-on-slack' ),
 				'controls' => [
-					'enable_comment'    => [
+					'enable_comment'  => [
 						'control' => esc_attr( 'checkbox' ),
 						'label'   => esc_html__( 'Enable Slack', 'ping-me-on-slack' ),
 						'summary' => esc_html__( 'Enable Slack messages for Comment actions.', 'ping-me-on-slack' ),
 					],
-					'comment_publish'  => [
+					'comment_publish' => [
 						'control'     => esc_attr( 'text' ),
 						'placeholder' => esc_attr__( '', 'ping-me-on-slack' ),
 						'label'       => esc_html__( 'Publish Message', 'ping-me-on-slack' ),
 						'summary'     => esc_html__( 'Message sent when a comment is published.', 'ping-me-on-slack' ),
 					],
-					'comment_trash'  => [
+					'comment_trash'   => [
 						'control'     => esc_attr( 'text' ),
 						'placeholder' => esc_attr__( '', 'ping-me-on-slack' ),
 						'label'       => esc_html__( 'Trash Message', 'ping-me-on-slack' ),
@@ -197,10 +197,10 @@ class Options {
 					],
 				],
 			],
-			'access_options' => [
+			'access_options'  => [
 				'heading'  => esc_html__( 'Access Options', 'ping-me-on-slack' ),
 				'controls' => [
-					'enable_access'    => [
+					'enable_access' => [
 						'control' => esc_attr( 'checkbox' ),
 						'label'   => esc_html__( 'Enable Slack', 'ping-me-on-slack' ),
 						'summary' => esc_html__( 'Enable Slack messages for Access actions.', 'ping-me-on-slack' ),
@@ -211,7 +211,7 @@ class Options {
 						'label'       => esc_html__( 'Login Message', 'ping-me-on-slack' ),
 						'summary'     => esc_html__( 'Message sent when a user has logged in.', 'ping-me-on-slack' ),
 					],
-					'access_logout'  => [
+					'access_logout' => [
 						'control'     => esc_attr( 'text' ),
 						'placeholder' => esc_attr__( '', 'ping-me-on-slack' ),
 						'label'       => esc_html__( 'Logout Message', 'ping-me-on-slack' ),
@@ -219,27 +219,27 @@ class Options {
 					],
 				],
 			],
-			'user_options' => [
+			'user_options'    => [
 				'heading'  => esc_html__( 'User Options', 'ping-me-on-slack' ),
 				'controls' => [
-					'enable_user'    => [
+					'enable_user' => [
 						'control' => esc_attr( 'checkbox' ),
 						'label'   => esc_html__( 'Enable Slack', 'ping-me-on-slack' ),
 						'summary' => esc_html__( 'Enable Slack messages for User actions.', 'ping-me-on-slack' ),
 					],
-					'user_create'  => [
+					'user_create' => [
 						'control'     => esc_attr( 'text' ),
 						'placeholder' => esc_attr__( '', 'ping-me-on-slack' ),
 						'label'       => esc_html__( 'Create Message', 'ping-me-on-slack' ),
 						'summary'     => esc_html__( 'Message sent when a user is created.', 'ping-me-on-slack' ),
 					],
-					'user_modify'  => [
+					'user_modify' => [
 						'control'     => esc_attr( 'text' ),
 						'placeholder' => esc_attr__( '', 'ping-me-on-slack' ),
 						'label'       => esc_html__( 'Modify Message', 'ping-me-on-slack' ),
 						'summary'     => esc_html__( 'Message sent when a user is modified.', 'ping-me-on-slack' ),
 					],
-					'user_delete'  => [
+					'user_delete' => [
 						'control'     => esc_attr( 'text' ),
 						'placeholder' => esc_attr__( '', 'ping-me-on-slack' ),
 						'label'       => esc_html__( 'Delete Message', 'ping-me-on-slack' ),
