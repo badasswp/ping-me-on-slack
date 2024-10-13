@@ -58,10 +58,10 @@ class Comment extends Service implements Kernel {
 
 		switch ( $new_status ) {
 			case 'approved':
-				$comment_publish = pmos_get_settings( 'comment_publish' );
+				$comment_approve = pmos_get_settings( 'comment_approve' );
 
-				$message = esc_html__( 'A Comment was just published!', 'ping-me-on-slack' );
-				$message = empty( $comment_publish ) ? $message : $comment_publish;
+				$message = esc_html__( 'A Comment was just approved!', 'ping-me-on-slack' );
+				$message = empty( $comment_approve ) ? $message : $comment_approve;
 				$message = $this->get_message( $message );
 				break;
 
