@@ -21,6 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require_once __DIR__ . '/init.php';
+require_once __DIR__ . '/inc/Helpers/functions.php';
 
 // Bail out, if Composer is NOT installed.
 if ( ! file_exists( PING_ME_ON_SLACK ) ) {
