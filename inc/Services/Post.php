@@ -19,11 +19,14 @@ class Post extends Service implements Kernel {
 	 * Bind to WP.
 	 *
 	 * @since 1.0.0
+	 * @since 1.1.0 Add stop-gap via `enable_post` plugin option.
 	 *
 	 * @return void
 	 */
 	public function register(): void {
-		add_action( 'transition_post_status', [ $this, 'ping_on_post_status_change' ], 10, 3 );
+		if ( pmos_get_settings( 'enable_post' ) ) {
+			add_action( 'transition_post_status', [ $this, 'ping_on_post_status_change' ], 10, 3 );
+		}
 	}
 
 	/**
