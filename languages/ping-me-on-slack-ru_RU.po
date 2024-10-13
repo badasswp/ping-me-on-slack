@@ -2,16 +2,16 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ping Me on Slack\n"
-"POT-Creation-Date: 2024-08-05 05:33+0100\n"
-"PO-Revision-Date: 2024-09-08 16:20+0100\n"
+"Project-Id-Version: Ping Me On Slack\n"
+"POT-Creation-Date: 2024-10-13 23:35+0100\n"
+"PO-Revision-Date: 2024-10-13 23:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: ping-me-on-slack.php\n"
@@ -21,146 +21,313 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: inc/Services/Access.php:59 inc/Services/Access.php:116
-#: inc/Services/Comment.php:95 inc/Services/Post.php:99
-#: inc/Services/Theme.php:81 inc/Services/User.php:59 inc/Services/User.php:115
-#: inc/Services/User.php:172
-msgid "Ping"
-msgstr "внимание"
-
 #. Plugin Name of the plugin/theme
+#: inc/Admin/Options.php:79
+#, fuzzy
 msgid "Ping Me On Slack"
-msgstr "Пинг в Slack"
+msgstr "Напишите мне в Slack"
 
 #. Description of the plugin/theme
-#: inc/Services/Admin.php:99
+#: inc/Admin/Options.php:83 inc/Services/Previous.php:99
+#, fuzzy
 msgid "Get notifications on Slack when changes are made on your WP website."
 msgstr "Получайте уведомления в Slack об изменениях на вашем веб-сайте WP."
 
 #. Plugin URI of the plugin/theme
+#, fuzzy
 msgid "https://github.com/badasswp/ping-me-on-slack"
 msgstr "https://github.com/badasswp/ping-me-on-slack"
 
 #. Author of the plugin/theme
+#, fuzzy
 msgid "badasswp"
 msgstr "badasswp"
 
 #. Author URI of the plugin/theme
+#, fuzzy
 msgid "https://github.com/badasswp"
 msgstr "https://github.com/badasswp"
 
-#: init.php:15
-msgid "Error: Composer is not installed!"
-msgstr "Ошибка: Composer не установлен!"
+#: inc/Admin/Options.php:103
+msgid "Actions"
+msgstr "Действия"
 
-#: inc/Services/Access.php:61 inc/Services/Access.php:118
-#: inc/Services/Post.php:101 inc/Services/Theme.php:83 inc/Services/User.php:61
-#: inc/Services/User.php:117 inc/Services/User.php:174
-msgid "ID"
-msgstr "ID"
+#: inc/Admin/Options.php:106
+msgid "Save Changes"
+msgstr "Сохранить изменения"
 
-#: inc/Services/Access.php:63 inc/Services/Access.php:120
-#: inc/Services/Comment.php:99 inc/Services/Post.php:105
-#: inc/Services/Theme.php:87 inc/Services/User.php:63 inc/Services/User.php:119
-#: inc/Services/User.php:176
-msgid "User"
-msgstr "Пользователь"
+#: inc/Admin/Options.php:128
+#, fuzzy
+msgid "Slack Options"
+msgstr "Опции Slack"
 
-#: inc/Services/Comment.php:97
-msgid "Comment"
-msgstr "Комментарии"
-
-#: inc/Services/Comment.php:101
-msgid "Post"
-msgstr "Запись"
-
-#: inc/Services/Post.php:103 inc/Services/Theme.php:85
-msgid "Title"
-msgstr "Заголовок"
-
-#: inc/Services/Access.php:65 inc/Services/Access.php:122
-#: inc/Services/Comment.php:103 inc/Services/Post.php:107
-#: inc/Services/Theme.php:89 inc/Services/User.php:65 inc/Services/User.php:121
-#: inc/Services/User.php:178
-msgid "Date"
-msgstr "Дата"
-
-#: inc/Services/Admin.php:105
-msgid "John Doe"
-msgstr "Иван Иванов"
-
-#: inc/Services/Admin.php:104
+#: inc/Admin/Options.php:133 inc/Services/Previous.php:104
+#, fuzzy
 msgid "Slack Username"
 msgstr "Имя пользователя в Slack"
 
-#: inc/Services/Admin.php:111
+#: inc/Admin/Options.php:134
+msgid "e.g. John Doe"
+msgstr "например, Васильев Андрей"
+
+#: inc/Admin/Options.php:139 inc/Services/Previous.php:111
 msgid "Slack Channel"
-msgstr "Slack канал"
+msgstr "Mattermost канал"
 
-#: inc/Services/Admin.php:118
-msgid "Slack Webhook"
-msgstr "Вебхук Slack"
-
-#: inc/Services/Admin.php:112
+#: inc/Admin/Options.php:140 inc/Services/Previous.php:112
+#, fuzzy
 msgid "e.g. #general"
 msgstr "пример, #общий"
 
-#: inc/Services/Admin.php:119
+#: inc/Admin/Options.php:145 inc/Services/Previous.php:118
+#, fuzzy
+msgid "Slack Webhook"
+msgstr "Вебхук Slack"
+
+#: inc/Admin/Options.php:146 inc/Services/Previous.php:119
+#, fuzzy
 msgid "e.g. https://hooks.slack.com/services/xxxxxx"
 msgstr "пример, https://hooks.slack.com/services/xxxxxx"
 
-#: inc/Services/User.php:60
-msgid "A User was just created!"
-msgstr "Пользователь только что создан!"
+#: inc/Admin/Options.php:151
+msgid "Post Options"
+msgstr "Настройки поста"
 
-#: inc/Services/User.php:116
-msgid "A User was just modified!"
-msgstr "Пользователь был только что изменен!"
+#: inc/Admin/Options.php:155 inc/Admin/Options.php:183
+#: inc/Admin/Options.php:205 inc/Admin/Options.php:227
+#, fuzzy
+msgid "Enable Slack"
+msgstr "Включить Slack"
 
-#: inc/Services/User.php:173
-msgid "A User was just deleted!"
-msgstr "Пользователь только что был удален!"
+#: inc/Admin/Options.php:156
+#, fuzzy
+msgid "Enable Slack messages for Post actions."
+msgstr "Включите сообщения Slack для действий с публикацией."
 
-#: inc/Services/Access.php:60
+#: inc/Admin/Options.php:161
+#, fuzzy
+msgid "Draft Message"
+msgstr "Черновик сообщения"
+
+#: inc/Admin/Options.php:162
+#, fuzzy
+msgid "Message sent when a post is saved as draft."
+msgstr "Сообщение, отправленное при сохранении сообщения как черновик."
+
+#: inc/Admin/Options.php:167
+#, fuzzy
+msgid "Publish Message"
+msgstr "Опубликовать сообщение"
+
+#: inc/Admin/Options.php:168
+#, fuzzy
+msgid "Message sent when a post is published."
+msgstr "Сообщение, отправленное при публикации сообщения."
+
+#: inc/Admin/Options.php:173 inc/Admin/Options.php:195
+#, fuzzy
+msgid "Trash Message"
+msgstr "Сообщение в корзине"
+
+#: inc/Admin/Options.php:174
+#, fuzzy
+msgid "Message sent when a post is trashed."
+msgstr "Сообщение, отправленное при удалении сообщения."
+
+#: inc/Admin/Options.php:179
+msgid "Comment Options"
+msgstr "Настройки Комментариев"
+
+#: inc/Admin/Options.php:184
+#, fuzzy
+msgid "Enable Slack messages for Comment actions."
+msgstr "Включите сообщения Slack для действий с комментариями."
+
+#: inc/Admin/Options.php:189
+#, fuzzy
+msgid "Approval Message"
+msgstr "Сообщение об утверждении"
+
+#: inc/Admin/Options.php:190
+#, fuzzy
+msgid "Message sent when a comment is approved."
+msgstr "Сообщение, отправленное при утверждении комментария."
+
+#: inc/Admin/Options.php:196
+#, fuzzy
+msgid "Message sent when a comment is trashed."
+msgstr "Сообщение, отправленное при удалении комментария."
+
+#: inc/Admin/Options.php:201
+#, fuzzy
+msgid "Access Options"
+msgstr "Варианты доступа"
+
+#: inc/Admin/Options.php:206
+#, fuzzy
+msgid "Enable Slack messages for Access actions."
+msgstr "Включите сообщения Slack для действий Access."
+
+#: inc/Admin/Options.php:211
+msgid "Login Message"
+msgstr "Сообщение авторизации"
+
+#: inc/Admin/Options.php:212
+#, fuzzy
+msgid "Message sent when a user has logged in."
+msgstr "Сообщение, отправленное, когда пользователь вошел в систему."
+
+#: inc/Admin/Options.php:217
+#, fuzzy
+msgid "Logout Message"
+msgstr "Сообщение о выходе из системы"
+
+#: inc/Admin/Options.php:218
+#, fuzzy
+msgid "Message sent when a user has logged out."
+msgstr "Сообщение, отправленное, когда пользователь вышел из системы."
+
+#: inc/Admin/Options.php:223
+msgid "User Options"
+msgstr "Опции пользователя"
+
+#: inc/Admin/Options.php:228
+#, fuzzy
+msgid "Enable Slack messages for User actions."
+msgstr "Включите сообщения Slack для действий пользователя."
+
+#: inc/Admin/Options.php:233
+msgid "Create Message"
+msgstr "Создать сообщение"
+
+#: inc/Admin/Options.php:234
+#, fuzzy
+msgid "Message sent when a user is created."
+msgstr "Сообщение, отправляемое при создании пользователя."
+
+#: inc/Admin/Options.php:239
+#, fuzzy
+msgid "Modify Message"
+msgstr "Изменить сообщение"
+
+#: inc/Admin/Options.php:240
+#, fuzzy
+msgid "Message sent when a user is modified."
+msgstr "Сообщение, отправляемое при изменении пользователя."
+
+#: inc/Admin/Options.php:245
+msgid "Delete Message"
+msgstr "Удалить сообщение"
+
+#: inc/Admin/Options.php:246
+#, fuzzy
+msgid "Message sent when a user is deleted."
+msgstr "Сообщение, отправленное при удалении пользователя."
+
+#: inc/Admin/Options.php:265
+msgid "Settings Saved."
+msgstr "Настройки сохранены."
+
+#: inc/Services/Access.php:65
+#, fuzzy
 msgid "A User just logged in!"
 msgstr "Пользователь только что вошел в систему!"
 
-#: inc/Services/Access.php:117
+#: inc/Services/Access.php:69 inc/Services/Access.php:136
+#: inc/Services/Comment.php:109 inc/Services/Post.php:117
+#: inc/Services/Theme.php:83 inc/Services/User.php:69 inc/Services/User.php:135
+#: inc/Services/User.php:202
+msgid "Ping"
+msgstr "внимание"
+
+#: inc/Services/Access.php:71 inc/Services/Access.php:138
+#: inc/Services/Post.php:119 inc/Services/Theme.php:85 inc/Services/User.php:71
+#: inc/Services/User.php:137 inc/Services/User.php:204
+msgid "ID"
+msgstr "ID"
+
+#: inc/Services/Access.php:73 inc/Services/Access.php:140
+#: inc/Services/Comment.php:113 inc/Services/Post.php:123
+#: inc/Services/Theme.php:89 inc/Services/User.php:73 inc/Services/User.php:139
+#: inc/Services/User.php:206
+msgid "User"
+msgstr "Пользователь"
+
+#: inc/Services/Access.php:75 inc/Services/Access.php:142
+#: inc/Services/Comment.php:117 inc/Services/Post.php:125
+#: inc/Services/Theme.php:91 inc/Services/User.php:75 inc/Services/User.php:141
+#: inc/Services/User.php:208
+msgid "Date"
+msgstr "Дата"
+
+#: inc/Services/Access.php:132
+#, fuzzy
 msgid "A User just logged out!"
 msgstr "Пользователь только что вышел из системы!"
 
-msgid "A Comment was just published!"
-msgstr "Комментарий только что был опубликован!"
+#: inc/Services/Comment.php:65
+#, fuzzy
+msgid "A Comment was just approved!"
+msgstr "Комментарий только что был одобрен!"
 
+#: inc/Services/Comment.php:73
+#, fuzzy
 msgid "A Comment was just trashed!"
 msgstr "Комментарий был просто выброшен в мусор!"
 
+#: inc/Services/Comment.php:111
+#, fuzzy
+msgid "Comment"
+msgstr "Комментарий"
+
+#: inc/Services/Comment.php:115
+msgid "Post"
+msgstr "Запись"
+
+#: inc/Services/Post.php:65
+#, fuzzy
 msgid "A Post draft was just created!"
 msgstr "Черновик поста только что был создан!"
 
+#: inc/Services/Post.php:73
+#, fuzzy
 msgid "A Post was just published!"
 msgstr "Пост только что был опубликован!"
 
+#: inc/Services/Post.php:81
+#, fuzzy
 msgid "A Post was just trashed!"
 msgstr "Пост был просто разгромлен!"
 
+#: inc/Services/Post.php:121 inc/Services/Theme.php:87
+msgid "Title"
+msgstr "Заголовок"
+
+#: inc/Services/Previous.php:105
+msgid "John Doe"
+msgstr "Иван Иванов"
+
+#: inc/Services/Theme.php:50
+#, fuzzy
 msgid "A Theme was just switched!"
 msgstr "Тема только что была изменена!"
 
-msgid "A Plugin was just installed!"
-msgstr "Плагин только что установили!"
+#: inc/Services/User.php:65
+#, fuzzy
+msgid "A User was just created!"
+msgstr "Пользователь только что создан!"
 
-msgid "A Plugin was just removed!"
-msgstr "Плагин только что был удален!"
+#: inc/Services/User.php:131
+#, fuzzy
+msgid "A User was just modified!"
+msgstr "Пользователь был только что изменен!"
 
-msgid "A Plugin was just activated!"
-msgstr "Плагин только что был активирован!"
+#: inc/Services/User.php:198
+#, fuzzy
+msgid "A User was just deleted!"
+msgstr "Пользователь только что был удален!"
 
-msgid "A Plugin was just de-activated!"
-msgstr "Плагин только что был деактивирован!"
-
-msgid "An Image was just uploaded!"
-msgstr "Изображение только что было загружено!"
-
-msgid "An Image was just deleted!"
-msgstr "Изображение только что было удалено!"
+#: ping-me-on-slack.php:32
+#, fuzzy
+msgid "Error: Composer is not installed!"
+msgstr "Ошибка: Composer не установлен!"
