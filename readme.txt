@@ -51,6 +51,14 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 
 == Changelog ==
 
+= 1.1.0 =
+* Refactor Options to use Form, Options class.
+* Implement new plugin options for Post, Comment and others.
+* Update README notes.
+* Update unit tests.
+* Update translation files.
+* Tested up to WP 6.6.2
+
 = 1.0.1 =
 * Change plugin name to `Ping Me On Slack`.
 * Update unit tests.
