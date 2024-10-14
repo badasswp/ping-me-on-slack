@@ -53,7 +53,7 @@ class UserTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'enable_user' => true
+					'enable_user' => true,
 				]
 			);
 
@@ -61,7 +61,7 @@ class UserTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'user_create' => ''
+					'user_create' => '',
 				]
 			);
 
@@ -125,7 +125,7 @@ class UserTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'enable_user' => true
+					'enable_user' => true,
 				]
 			);
 
@@ -133,7 +133,7 @@ class UserTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'user_modify' => ''
+					'user_modify' => '',
 				]
 			);
 
@@ -197,7 +197,7 @@ class UserTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'enable_user' => true
+					'enable_user' => true,
 				]
 			);
 
@@ -205,7 +205,7 @@ class UserTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'user_delete' => ''
+					'user_delete' => '',
 				]
 			);
 

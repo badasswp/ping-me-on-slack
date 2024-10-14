@@ -45,7 +45,7 @@ class PostTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'enable_user' => true
+					'enable_user' => true,
 				]
 			);
 
@@ -62,7 +62,7 @@ class PostTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'enable_post' => true
+					'enable_post' => true,
 				]
 			);
 
@@ -82,7 +82,7 @@ class PostTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'enable_post' => true
+					'enable_post' => true,
 				]
 			);
 
@@ -90,7 +90,7 @@ class PostTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'post_publish' => ''
+					'post_publish' => '',
 				]
 			);
 

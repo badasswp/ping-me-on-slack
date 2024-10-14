@@ -50,7 +50,7 @@ class AccessTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'enable_access' => true
+					'enable_access' => true,
 				]
 			);
 
@@ -58,7 +58,7 @@ class AccessTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'access_login' => ''
+					'access_login' => '',
 				]
 			);
 
@@ -114,7 +114,7 @@ class AccessTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'enable_access' => true
+					'enable_access' => true,
 				]
 			);
 
@@ -122,7 +122,7 @@ class AccessTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'access_logout' => ''
+					'access_logout' => '',
 				]
 			);
 

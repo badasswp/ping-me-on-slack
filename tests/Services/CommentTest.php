@@ -45,7 +45,7 @@ class CommentTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'enable_comment' => true
+					'enable_comment' => true,
 				]
 			);
 
@@ -62,7 +62,7 @@ class CommentTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'enable_comment' => true
+					'enable_comment' => true,
 				]
 			);
 
@@ -70,7 +70,7 @@ class CommentTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'comment_trash' => ''
+					'comment_trash' => '',
 				]
 			);
 
