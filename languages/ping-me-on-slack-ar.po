@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ping Me On Slack\n"
 "POT-Creation-Date: 2024-10-13 23:35+0100\n"
-"PO-Revision-Date: 2024-10-14 00:07+0100\n"
+"PO-Revision-Date: 2024-10-14 06:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -23,18 +23,15 @@ msgstr ""
 
 #. Plugin Name of the plugin/theme
 #: inc/Admin/Options.php:79
-#, fuzzy
 msgid "Ping Me On Slack"
 msgstr "بينغ لي على الركود"
 
 #. Description of the plugin/theme
 #: inc/Admin/Options.php:83 inc/Services/Previous.php:99
-#, fuzzy
 msgid "Get notifications on Slack when changes are made on your WP website."
 msgstr "احصل على إشعارات على Slack عند إجراء تغييرات على موقع WP الخاص بك."
 
 #. Plugin URI of the plugin/theme
-#, fuzzy
 msgid "https://github.com/badasswp/ping-me-on-slack"
 msgstr "https://github.com/badasswp/ping-me-on-slack"
 
@@ -43,7 +40,6 @@ msgid "badasswp"
 msgstr "‫badasswp"
 
 #. Author URI of the plugin/theme
-#, fuzzy
 msgid "https://github.com/badasswp"
 msgstr "https://github.com/badasswp"
 
@@ -56,12 +52,10 @@ msgid "Save Changes"
 msgstr "حفظ التغييرات"
 
 #: inc/Admin/Options.php:128
-#, fuzzy
 msgid "Slack Options"
 msgstr "خيارات الركود"
 
 #: inc/Admin/Options.php:133 inc/Services/Previous.php:104
-#, fuzzy
 msgid "Slack Username"
 msgstr "اسم مستخدم سلاك"
 
@@ -70,22 +64,18 @@ msgid "e.g. John Doe"
 msgstr "مثلاً: جوني دوو"
 
 #: inc/Admin/Options.php:139 inc/Services/Previous.php:111
-#, fuzzy
 msgid "Slack Channel"
 msgstr "قناة سلاك"
 
 #: inc/Admin/Options.php:140 inc/Services/Previous.php:112
-#, fuzzy
 msgid "e.g. #general"
 msgstr "على سبيل المثال #general"
 
 #: inc/Admin/Options.php:145 inc/Services/Previous.php:118
-#, fuzzy
 msgid "Slack Webhook"
 msgstr "سلاك ويب هوك"
 
 #: inc/Admin/Options.php:146 inc/Services/Previous.php:119
-#, fuzzy
 msgid "e.g. https://hooks.slack.com/services/xxxxxx"
 msgstr "على سبيل المثال https://hooks.slack.com/services/xxxxxx"
 
@@ -95,77 +85,62 @@ msgstr "خيارات المقالة"
 
 #: inc/Admin/Options.php:155 inc/Admin/Options.php:183
 #: inc/Admin/Options.php:205 inc/Admin/Options.php:227
-#, fuzzy
 msgid "Enable Slack"
 msgstr "تمكين فترة الركود"
 
 #: inc/Admin/Options.php:156
-#, fuzzy
 msgid "Enable Slack messages for Post actions."
 msgstr "قم بتمكين رسائل Slack لإجراءات النشر."
 
 #: inc/Admin/Options.php:161
-#, fuzzy
 msgid "Draft Message"
 msgstr "مسودة الرسالة"
 
 #: inc/Admin/Options.php:162
-#, fuzzy
 msgid "Message sent when a post is saved as draft."
 msgstr "رسالة يتم إرسالها عند حفظ منشور كمسودة."
 
 #: inc/Admin/Options.php:167
-#, fuzzy
 msgid "Publish Message"
 msgstr "نشر الرسالة"
 
 #: inc/Admin/Options.php:168
-#, fuzzy
 msgid "Message sent when a post is published."
 msgstr "يتم إرسال الرسالة عند نشر منشور."
 
 #: inc/Admin/Options.php:173 inc/Admin/Options.php:195
-#, fuzzy
 msgid "Trash Message"
 msgstr "رسالة سلة المهملات"
 
 #: inc/Admin/Options.php:174
-#, fuzzy
 msgid "Message sent when a post is trashed."
 msgstr "يتم إرسال الرسالة عند حذف منشور."
 
 #: inc/Admin/Options.php:179
-#, fuzzy
 msgid "Comment Options"
 msgstr "خيارات التعليق"
 
 #: inc/Admin/Options.php:184
-#, fuzzy
 msgid "Enable Slack messages for Comment actions."
 msgstr "فعل رسائل Slack لإجراءات التعليق."
 
 #: inc/Admin/Options.php:189
-#, fuzzy
 msgid "Approval Message"
 msgstr "رسالة الموافقة"
 
 #: inc/Admin/Options.php:190
-#, fuzzy
 msgid "Message sent when a comment is approved."
 msgstr "يتم إرسال الرسالة عند الموافقة على تعليق."
 
 #: inc/Admin/Options.php:196
-#, fuzzy
 msgid "Message sent when a comment is trashed."
 msgstr "يتم إرسال الرسالة عند حذف تعليق."
 
 #: inc/Admin/Options.php:201
-#, fuzzy
 msgid "Access Options"
 msgstr "خيارات الوصول"
 
 #: inc/Admin/Options.php:206
-#, fuzzy
 msgid "Enable Slack messages for Access actions."
 msgstr "قم بتمكين رسائل Slack لإجراءات الوصول."
 
@@ -174,17 +149,14 @@ msgid "Login Message"
 msgstr "رسالة تسجيل الدخول"
 
 #: inc/Admin/Options.php:212
-#, fuzzy
 msgid "Message sent when a user has logged in."
 msgstr "يتم إرسال الرسالة عندما يقوم المستخدم بتسجيل الدخول."
 
 #: inc/Admin/Options.php:217
-#, fuzzy
 msgid "Logout Message"
 msgstr "رسالة تسجيل الخروج"
 
 #: inc/Admin/Options.php:218
-#, fuzzy
 msgid "Message sent when a user has logged out."
 msgstr "يتم إرسال الرسالة عندما يقوم المستخدم بتسجيل الخروج."
 
@@ -193,7 +165,6 @@ msgid "User Options"
 msgstr "خيارات المستخدم"
 
 #: inc/Admin/Options.php:228
-#, fuzzy
 msgid "Enable Slack messages for User actions."
 msgstr "قم بتمكين رسائل Slack لإجراءات المستخدم."
 
@@ -202,17 +173,14 @@ msgid "Create Message"
 msgstr "إنشاء رسالة"
 
 #: inc/Admin/Options.php:234
-#, fuzzy
 msgid "Message sent when a user is created."
 msgstr "يتم إرسال الرسالة عند إنشاء مستخدم."
 
 #: inc/Admin/Options.php:239
-#, fuzzy
 msgid "Modify Message"
 msgstr "تعديل الرسالة"
 
 #: inc/Admin/Options.php:240
-#, fuzzy
 msgid "Message sent when a user is modified."
 msgstr "يتم إرسال الرسالة عند تعديل مستخدم."
 
@@ -221,7 +189,6 @@ msgid "Delete Message"
 msgstr "حذف الرسالة"
 
 #: inc/Admin/Options.php:246
-#, fuzzy
 msgid "Message sent when a user is deleted."
 msgstr "يتم إرسال الرسالة عند حذف مستخدم."
 
@@ -230,7 +197,6 @@ msgid "Settings Saved."
 msgstr "تم حفظ الإعدادات."
 
 #: inc/Services/Access.php:65
-#, fuzzy
 msgid "A User just logged in!"
 msgstr "مستخدم قام بتسجيل الدخول للتو!"
 
@@ -262,17 +228,14 @@ msgid "Date"
 msgstr "تاريخ"
 
 #: inc/Services/Access.php:132
-#, fuzzy
 msgid "A User just logged out!"
 msgstr "مستخدم قام بتسجيل الخروج للتو!"
 
 #: inc/Services/Comment.php:65
-#, fuzzy
 msgid "A Comment was just approved!"
 msgstr "تمت الموافقة على التعليق للتو!"
 
 #: inc/Services/Comment.php:73
-#, fuzzy
 msgid "A Comment was just trashed!"
 msgstr "تم حذف تعليق للتو!"
 
@@ -285,17 +248,14 @@ msgid "Post"
 msgstr "منشور"
 
 #: inc/Services/Post.php:65
-#, fuzzy
 msgid "A Post draft was just created!"
 msgstr "تم إنشاء مسودة ما بعد للتو!"
 
 #: inc/Services/Post.php:73
-#, fuzzy
 msgid "A Post was just published!"
 msgstr "تم نشر منشور للتو!"
 
 #: inc/Services/Post.php:81
-#, fuzzy
 msgid "A Post was just trashed!"
 msgstr "تم حذف منشور للتو!"
 
@@ -308,26 +268,21 @@ msgid "John Doe"
 msgstr "جون دو"
 
 #: inc/Services/Theme.php:50
-#, fuzzy
 msgid "A Theme was just switched!"
 msgstr "تم تبديل موضوع للتو!"
 
 #: inc/Services/User.php:65
-#, fuzzy
 msgid "A User was just created!"
 msgstr "تم إنشاء مستخدم للتو!"
 
 #: inc/Services/User.php:131
-#, fuzzy
 msgid "A User was just modified!"
 msgstr "تم تعديل المستخدم للتو!"
 
 #: inc/Services/User.php:198
-#, fuzzy
 msgid "A User was just deleted!"
 msgstr "تم حذف مستخدم للتو!"
 
 #: ping-me-on-slack.php:32
-#, fuzzy
 msgid "Error: Composer is not installed!"
 msgstr "خطأ: لم يتم تثبيت الملحن!"
