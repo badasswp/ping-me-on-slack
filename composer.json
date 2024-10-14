@@ -16,8 +16,7 @@
     }
   ],
   "require": {
-    "alek13/slack": "^2.1",
-    "htmlburger/carbon-fields": "^3.6"
+    "alek13/slack": "^2.1"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.6",
