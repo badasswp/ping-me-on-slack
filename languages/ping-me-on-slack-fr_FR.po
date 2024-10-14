@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ping Me On Slack\n"
 "POT-Creation-Date: 2024-10-13 23:35+0100\n"
-"PO-Revision-Date: 2024-10-14 00:00+0100\n"
+"PO-Revision-Date: 2024-10-14 06:35+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -23,18 +23,15 @@ msgstr ""
 
 #. Plugin Name of the plugin/theme
 #: inc/Admin/Options.php:79
-#, fuzzy
 msgid "Ping Me On Slack"
 msgstr "Envoyez-moi un ping sur Slack"
 
 #. Description of the plugin/theme
 #: inc/Admin/Options.php:83 inc/Services/Previous.php:99
-#, fuzzy
 msgid "Get notifications on Slack when changes are made on your WP website."
 msgstr "Recevez des notifications sur Slack lorsque des modifications sont apportées sur votre site Web WP."
 
 #. Plugin URI of the plugin/theme
-#, fuzzy
 msgid "https://github.com/badasswp/ping-me-on-slack"
 msgstr "https://github.com/badasswp/ping-me-on-slack"
 
@@ -43,7 +40,6 @@ msgid "badasswp"
 msgstr "badasswp"
 
 #. Author URI of the plugin/theme
-#, fuzzy
 msgid "https://github.com/badasswp"
 msgstr "https://github.com/badasswp"
 
@@ -56,12 +52,10 @@ msgid "Save Changes"
 msgstr "Sauvegarder les Changements"
 
 #: inc/Admin/Options.php:128
-#, fuzzy
 msgid "Slack Options"
 msgstr "Slack Options"
 
 #: inc/Admin/Options.php:133 inc/Services/Previous.php:104
-#, fuzzy
 msgid "Slack Username"
 msgstr "Nom d’utilisateur Slack"
 
@@ -74,17 +68,14 @@ msgid "Slack Channel"
 msgstr "Slack Channel"
 
 #: inc/Admin/Options.php:140 inc/Services/Previous.php:112
-#, fuzzy
 msgid "e.g. #general"
 msgstr "par exemple #general"
 
 #: inc/Admin/Options.php:145 inc/Services/Previous.php:118
-#, fuzzy
 msgid "Slack Webhook"
 msgstr "Slack Webhook"
 
 #: inc/Admin/Options.php:146 inc/Services/Previous.php:119
-#, fuzzy
 msgid "e.g. https://hooks.slack.com/services/xxxxxx"
 msgstr "par exemple https://hooks.slack.com/services/xxxxxx"
 
@@ -94,67 +85,54 @@ msgstr "Options de l'article"
 
 #: inc/Admin/Options.php:155 inc/Admin/Options.php:183
 #: inc/Admin/Options.php:205 inc/Admin/Options.php:227
-#, fuzzy
 msgid "Enable Slack"
 msgstr "Activer Slack"
 
 #: inc/Admin/Options.php:156
-#, fuzzy
 msgid "Enable Slack messages for Post actions."
 msgstr "Activez les messages Slack pour les actions de publication."
 
 #: inc/Admin/Options.php:161
-#, fuzzy
 msgid "Draft Message"
 msgstr "Brouillon de message"
 
 #: inc/Admin/Options.php:162
-#, fuzzy
 msgid "Message sent when a post is saved as draft."
 msgstr "Message envoyé lorsqu’un message est enregistré en tant que brouillon."
 
 #: inc/Admin/Options.php:167
-#, fuzzy
 msgid "Publish Message"
 msgstr "Publier le message"
 
 #: inc/Admin/Options.php:168
-#, fuzzy
 msgid "Message sent when a post is published."
 msgstr "Message envoyé lors de la publication d’un message."
 
 #: inc/Admin/Options.php:173 inc/Admin/Options.php:195
-#, fuzzy
 msgid "Trash Message"
 msgstr "Message poubelle"
 
 #: inc/Admin/Options.php:174
-#, fuzzy
 msgid "Message sent when a post is trashed."
 msgstr "Message envoyé lorsqu’un message est supprimé."
 
 #: inc/Admin/Options.php:179
-#, fuzzy
 msgid "Comment Options"
 msgstr "Options de commentaire"
 
 #: inc/Admin/Options.php:184
-#, fuzzy
 msgid "Enable Slack messages for Comment actions."
 msgstr "Activez les messages Slack pour les actions de commentaire."
 
 #: inc/Admin/Options.php:189
-#, fuzzy
 msgid "Approval Message"
 msgstr "Message d’approbation"
 
 #: inc/Admin/Options.php:190
-#, fuzzy
 msgid "Message sent when a comment is approved."
 msgstr "Message envoyé lorsqu’un commentaire est approuvé."
 
 #: inc/Admin/Options.php:196
-#, fuzzy
 msgid "Message sent when a comment is trashed."
 msgstr "Message envoyé lorsqu’un commentaire est supprimé."
 
@@ -163,7 +141,6 @@ msgid "Access Options"
 msgstr "Options d'accès"
 
 #: inc/Admin/Options.php:206
-#, fuzzy
 msgid "Enable Slack messages for Access actions."
 msgstr "Activez les messages Slack pour les actions Access."
 
@@ -172,17 +149,14 @@ msgid "Login Message"
 msgstr "Message de connexion"
 
 #: inc/Admin/Options.php:212
-#, fuzzy
 msgid "Message sent when a user has logged in."
 msgstr "Message envoyé lorsqu’un utilisateur s’est connecté."
 
 #: inc/Admin/Options.php:217
-#, fuzzy
 msgid "Logout Message"
 msgstr "Message de déconnexion"
 
 #: inc/Admin/Options.php:218
-#, fuzzy
 msgid "Message sent when a user has logged out."
 msgstr "Message envoyé lorsqu’un utilisateur s’est déconnecté."
 
@@ -191,7 +165,6 @@ msgid "User Options"
 msgstr "Options de l’utilisateur"
 
 #: inc/Admin/Options.php:228
-#, fuzzy
 msgid "Enable Slack messages for User actions."
 msgstr "Activez les messages Slack pour les actions de l’utilisateur."
 
@@ -200,17 +173,14 @@ msgid "Create Message"
 msgstr "Créer une conversation"
 
 #: inc/Admin/Options.php:234
-#, fuzzy
 msgid "Message sent when a user is created."
 msgstr "Message envoyé lors de la création d’un utilisateur."
 
 #: inc/Admin/Options.php:239
-#, fuzzy
 msgid "Modify Message"
 msgstr "Modifier le message"
 
 #: inc/Admin/Options.php:240
-#, fuzzy
 msgid "Message sent when a user is modified."
 msgstr "Message envoyé lors de la modification d’un utilisateur."
 
@@ -219,7 +189,6 @@ msgid "Delete Message"
 msgstr "Supprimer le message"
 
 #: inc/Admin/Options.php:246
-#, fuzzy
 msgid "Message sent when a user is deleted."
 msgstr "Message envoyé lors de la suppression d’un utilisateur."
 
@@ -228,7 +197,6 @@ msgid "Settings Saved."
 msgstr "Paramètres Sauvegardés."
 
 #: inc/Services/Access.php:65
-#, fuzzy
 msgid "A User just logged in!"
 msgstr "Un utilisateur vient de se connecter !"
 
@@ -260,17 +228,14 @@ msgid "Date"
 msgstr "Date"
 
 #: inc/Services/Access.php:132
-#, fuzzy
 msgid "A User just logged out!"
 msgstr "Un utilisateur vient de se déconnecter !"
 
 #: inc/Services/Comment.php:65
-#, fuzzy
 msgid "A Comment was just approved!"
 msgstr "Un commentaire vient d’être approuvé !"
 
 #: inc/Services/Comment.php:73
-#, fuzzy
 msgid "A Comment was just trashed!"
 msgstr "Un commentaire vient d’être détruit !"
 
@@ -283,17 +248,14 @@ msgid "Post"
 msgstr "Article"
 
 #: inc/Services/Post.php:65
-#, fuzzy
 msgid "A Post draft was just created!"
 msgstr "Un brouillon de Post vient d’être créé !"
 
 #: inc/Services/Post.php:73
-#, fuzzy
 msgid "A Post was just published!"
 msgstr "Un article vient d’être publié !"
 
 #: inc/Services/Post.php:81
-#, fuzzy
 msgid "A Post was just trashed!"
 msgstr "Un courrier vient d’être détruit !"
 
@@ -306,26 +268,21 @@ msgid "John Doe"
 msgstr "John Doe"
 
 #: inc/Services/Theme.php:50
-#, fuzzy
 msgid "A Theme was just switched!"
 msgstr "Un thème vient d’être changé !"
 
 #: inc/Services/User.php:65
-#, fuzzy
 msgid "A User was just created!"
 msgstr "Un utilisateur vient de se créer !"
 
 #: inc/Services/User.php:131
-#, fuzzy
 msgid "A User was just modified!"
 msgstr "Un utilisateur vient d’être modifié !"
 
 #: inc/Services/User.php:198
-#, fuzzy
 msgid "A User was just deleted!"
 msgstr "Un utilisateur vient d’être supprimé !"
 
 #: ping-me-on-slack.php:32
-#, fuzzy
 msgid "Error: Composer is not installed!"
 msgstr "Erreur : Composer n’est pas installé !"
