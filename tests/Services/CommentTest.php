@@ -41,6 +41,14 @@ class CommentTest extends TestCase {
 		$comment = Mockery::mock( \WP_Comment::class )->makePartial();
 		$comment->shouldAllowMockingProtectedMethods();
 
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'enable_comment' => true
+				]
+			);
+
 		$this->comment->ping_on_comment_status_change( 'approved', 'approved', $comment );
 
 		$this->assertConditionsMet();
@@ -49,6 +57,22 @@ class CommentTest extends TestCase {
 	public function test_ping_on_comment_status_change_passes() {
 		$comment = Mockery::mock( \WP_Comment::class )->makePartial();
 		$comment->shouldAllowMockingProtectedMethods();
+
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'enable_comment' => true
+				]
+			);
+
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'comment_trash' => ''
+				]
+			);
 
 		\WP_Mock::userFunction(
 			'esc_html__',
