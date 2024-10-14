@@ -86,18 +86,26 @@ class PluginTest extends TestCase {
 		);
 
 		\WP_Mock::expectActionAdded(
-			'plugins_loaded',
+			'admin_init',
 			[
 				Service::$services['PingMeOnSlack\Services\Admin'],
-				'carbon_fields_init',
+				'register_options_init',
 			]
 		);
 
 		\WP_Mock::expectActionAdded(
-			'carbon_fields_register_fields',
+			'admin_menu',
 			[
 				Service::$services['PingMeOnSlack\Services\Admin'],
-				'get_admin_page',
+				'register_options_menu',
+			]
+		);
+
+		\WP_Mock::expectActionAdded(
+			'admin_enqueue_scripts',
+			[
+				Service::$services['PingMeOnSlack\Services\Admin'],
+				'register_options_styles',
 			]
 		);
 
