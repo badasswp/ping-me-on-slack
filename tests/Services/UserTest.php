@@ -49,6 +49,22 @@ class UserTest extends TestCase {
 
 		\WP_Mock::expectFilter( 'ping_me_on_slack_user_creation_client', $this->user->client );
 
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'enable_user' => true
+				]
+			);
+
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'user_create' => ''
+				]
+			);
+
 		\WP_Mock::userFunction(
 			'esc_html__',
 			[
@@ -62,7 +78,7 @@ class UserTest extends TestCase {
 		\WP_Mock::userFunction(
 			'esc_html',
 			[
-				'times'  => 3,
+				'times'  => 4,
 				'return' => function ( $text ) {
 					return $text;
 				},
@@ -105,6 +121,22 @@ class UserTest extends TestCase {
 
 		\WP_Mock::expectFilter( 'ping_me_on_slack_user_modification_client', $this->user->client );
 
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'enable_user' => true
+				]
+			);
+
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'user_modify' => ''
+				]
+			);
+
 		\WP_Mock::userFunction(
 			'esc_html__',
 			[
@@ -118,7 +150,7 @@ class UserTest extends TestCase {
 		\WP_Mock::userFunction(
 			'esc_html',
 			[
-				'times'  => 3,
+				'times'  => 4,
 				'return' => function ( $text ) {
 					return $text;
 				},
@@ -161,6 +193,22 @@ class UserTest extends TestCase {
 
 		\WP_Mock::expectFilter( 'ping_me_on_slack_user_deletion_client', $this->user->client );
 
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'enable_user' => true
+				]
+			);
+
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'user_delete' => ''
+				]
+			);
+
 		\WP_Mock::userFunction(
 			'esc_html__',
 			[
@@ -174,7 +222,7 @@ class UserTest extends TestCase {
 		\WP_Mock::userFunction(
 			'esc_html',
 			[
-				'times'  => 3,
+				'times'  => 4,
 				'return' => function ( $text ) {
 					return $text;
 				},
