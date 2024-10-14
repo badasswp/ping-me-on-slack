@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ping Me On Slack\n"
 "POT-Creation-Date: 2024-10-13 23:35+0100\n"
-"PO-Revision-Date: 2024-10-14 00:04+0100\n"
+"PO-Revision-Date: 2024-10-14 06:33+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -23,28 +23,23 @@ msgstr ""
 
 #. Plugin Name of the plugin/theme
 #: inc/Admin/Options.php:79
-#, fuzzy
 msgid "Ping Me On Slack"
 msgstr "Hazme ping en Slack"
 
 #. Description of the plugin/theme
 #: inc/Admin/Options.php:83 inc/Services/Previous.php:99
-#, fuzzy
 msgid "Get notifications on Slack when changes are made on your WP website."
 msgstr "Reciba notificaciones en Slack cuando se realicen cambios en su sitio web de WP."
 
 #. Plugin URI of the plugin/theme
-#, fuzzy
 msgid "https://github.com/badasswp/ping-me-on-slack"
 msgstr "https://github.com/badasswp/ping-me-on-slack"
 
 #. Author of the plugin/theme
-#, fuzzy
 msgid "badasswp"
 msgstr "badasswp"
 
 #. Author URI of the plugin/theme
-#, fuzzy
 msgid "https://github.com/badasswp"
 msgstr "https://github.com/badasswp"
 
@@ -57,12 +52,10 @@ msgid "Save Changes"
 msgstr "Guardar Cambios"
 
 #: inc/Admin/Options.php:128
-#, fuzzy
 msgid "Slack Options"
 msgstr "Opciones de Slack"
 
 #: inc/Admin/Options.php:133 inc/Services/Previous.php:104
-#, fuzzy
 msgid "Slack Username"
 msgstr "Nombre de usuario de Slack"
 
@@ -75,12 +68,10 @@ msgid "Slack Channel"
 msgstr "Canal Slack"
 
 #: inc/Admin/Options.php:140 inc/Services/Previous.php:112
-#, fuzzy
 msgid "e.g. #general"
 msgstr "p. ej. #general"
 
 #: inc/Admin/Options.php:145 inc/Services/Previous.php:118
-#, fuzzy
 msgid "Slack Webhook"
 msgstr "Slack Webhook"
 
@@ -94,12 +85,10 @@ msgstr "Opciones de Publicación"
 
 #: inc/Admin/Options.php:155 inc/Admin/Options.php:183
 #: inc/Admin/Options.php:205 inc/Admin/Options.php:227
-#, fuzzy
 msgid "Enable Slack"
 msgstr "Habilitar Slack"
 
 #: inc/Admin/Options.php:156
-#, fuzzy
 msgid "Enable Slack messages for Post actions."
 msgstr "Habilita los mensajes de Slack para las acciones de publicación."
 
@@ -108,37 +97,30 @@ msgid "Draft Message"
 msgstr "Borrador de mensaje"
 
 #: inc/Admin/Options.php:162
-#, fuzzy
 msgid "Message sent when a post is saved as draft."
 msgstr "Mensaje que se envía cuando una publicación se guarda como borrador."
 
 #: inc/Admin/Options.php:167
-#, fuzzy
 msgid "Publish Message"
 msgstr "Publicar mensaje"
 
 #: inc/Admin/Options.php:168
-#, fuzzy
 msgid "Message sent when a post is published."
 msgstr "Mensaje que se envía cuando se publica una entrada."
 
 #: inc/Admin/Options.php:173 inc/Admin/Options.php:195
-#, fuzzy
 msgid "Trash Message"
 msgstr "Mensaje de papelera"
 
 #: inc/Admin/Options.php:174
-#, fuzzy
 msgid "Message sent when a post is trashed."
 msgstr "Mensaje enviado cuando se tira una publicación a la papelera."
 
 #: inc/Admin/Options.php:179
-#, fuzzy
 msgid "Comment Options"
 msgstr "Opciones de comentarios"
 
 #: inc/Admin/Options.php:184
-#, fuzzy
 msgid "Enable Slack messages for Comment actions."
 msgstr "Habilite los mensajes de Slack para las acciones de comentario."
 
@@ -147,22 +129,18 @@ msgid "Approval Message"
 msgstr "Mensaje de autorización"
 
 #: inc/Admin/Options.php:190
-#, fuzzy
 msgid "Message sent when a comment is approved."
 msgstr "Mensaje enviado cuando se aprueba un comentario."
 
 #: inc/Admin/Options.php:196
-#, fuzzy
 msgid "Message sent when a comment is trashed."
 msgstr "Mensaje enviado cuando se tira a la papelera un comentario."
 
 #: inc/Admin/Options.php:201
-#, fuzzy
 msgid "Access Options"
 msgstr "Opciones de acceso"
 
 #: inc/Admin/Options.php:206
-#, fuzzy
 msgid "Enable Slack messages for Access actions."
 msgstr "Habilite los mensajes de Slack para las acciones de acceso."
 
@@ -171,17 +149,14 @@ msgid "Login Message"
 msgstr "Mensaje de inicio de sesión"
 
 #: inc/Admin/Options.php:212
-#, fuzzy
 msgid "Message sent when a user has logged in."
 msgstr "Mensaje enviado cuando un usuario ha iniciado sesión."
 
 #: inc/Admin/Options.php:217
-#, fuzzy
 msgid "Logout Message"
 msgstr "Mensaje de cierre de sesión"
 
 #: inc/Admin/Options.php:218
-#, fuzzy
 msgid "Message sent when a user has logged out."
 msgstr "Mensaje enviado cuando un usuario ha cerrado la sesión."
 
@@ -190,7 +165,6 @@ msgid "User Options"
 msgstr "Opciones de usuario"
 
 #: inc/Admin/Options.php:228
-#, fuzzy
 msgid "Enable Slack messages for User actions."
 msgstr "Habilite los mensajes de Slack para las acciones del usuario."
 
@@ -199,17 +173,14 @@ msgid "Create Message"
 msgstr "Crear mensaje"
 
 #: inc/Admin/Options.php:234
-#, fuzzy
 msgid "Message sent when a user is created."
 msgstr "Mensaje enviado cuando se crea un usuario."
 
 #: inc/Admin/Options.php:239
-#, fuzzy
 msgid "Modify Message"
 msgstr "Modificar mensaje"
 
 #: inc/Admin/Options.php:240
-#, fuzzy
 msgid "Message sent when a user is modified."
 msgstr "Mensaje enviado cuando se modifica un usuario."
 
@@ -218,7 +189,6 @@ msgid "Delete Message"
 msgstr "Borrar Mensaje"
 
 #: inc/Admin/Options.php:246
-#, fuzzy
 msgid "Message sent when a user is deleted."
 msgstr "Mensaje enviado cuando se elimina un usuario."
 
