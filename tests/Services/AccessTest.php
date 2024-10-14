@@ -46,6 +46,22 @@ class AccessTest extends TestCase {
 
 		\WP_Mock::expectFilter( 'ping_me_on_slack_login_client', $this->access->client );
 
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'enable_access' => true
+				]
+			);
+
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'access_login' => ''
+				]
+			);
+
 		\WP_Mock::userFunction(
 			'esc_html__',
 			[
@@ -59,7 +75,7 @@ class AccessTest extends TestCase {
 		\WP_Mock::userFunction(
 			'esc_html',
 			[
-				'times'  => 3,
+				'times'  => 4,
 				'return' => function ( $text ) {
 					return $text;
 				},
@@ -94,6 +110,22 @@ class AccessTest extends TestCase {
 		$user             = Mockery::mock( \WP_User::class )->makePartial();
 		$user->user_login = 'john@doe.com';
 
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'enable_access' => true
+				]
+			);
+
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'access_logout' => ''
+				]
+			);
+
 		\WP_Mock::userFunction( 'get_user_by' )
 			->once()
 			->with( 'id', 1 )
@@ -114,7 +146,7 @@ class AccessTest extends TestCase {
 		\WP_Mock::userFunction(
 			'esc_html',
 			[
-				'times'  => 3,
+				'times'  => 4,
 				'return' => function ( $text ) {
 					return $text;
 				},
