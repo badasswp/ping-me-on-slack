@@ -41,6 +41,14 @@ class PostTest extends TestCase {
 		$post = Mockery::mock( \WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
 
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'enable_user' => true
+				]
+			);
+
 		$this->post->ping_on_post_status_change( 'draft', 'draft', $post );
 
 		$this->assertConditionsMet();
@@ -49,6 +57,14 @@ class PostTest extends TestCase {
 	public function test_ping_on_post_status_change_bails_if_new_status_is_auto_draft() {
 		$post = Mockery::mock( \WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
+
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'enable_post' => true
+				]
+			);
 
 		$this->post->ping_on_post_status_change( 'auto-draft', 'draft', $post );
 
@@ -61,6 +77,22 @@ class PostTest extends TestCase {
 		$post->post_type = 'post';
 
 		$this->post->post = $post;
+
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'enable_post' => true
+				]
+			);
+
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'post_publish' => ''
+				]
+			);
 
 		\WP_Mock::userFunction(
 			'esc_html__',
