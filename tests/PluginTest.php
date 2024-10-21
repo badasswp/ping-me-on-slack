@@ -19,6 +19,18 @@ use PingMeOnSlack\Services\Comment;
 /**
  * @covers \PingMeOnSlack\Plugin::get_instance
  * @covers \PingMeOnSlack\Plugin::run
+ * @covers \PingMeOnSlack\Abstracts\Service::__construct
+ * @covers \PingMeOnSlack\Abstracts\Service::get_instance
+ * @covers \PingMeOnSlack\Core\Client::__construct
+ * @covers \PingMeOnSlack\Core\Container::__construct
+ * @covers \PingMeOnSlack\Core\Container::register
+ * @covers \PingMeOnSlack\Services\Access::register
+ * @covers \PingMeOnSlack\Services\Admin::register
+ * @covers \PingMeOnSlack\Services\Boot::register
+ * @covers \PingMeOnSlack\Services\Comment::register
+ * @covers \PingMeOnSlack\Services\Post::register
+ * @covers \PingMeOnSlack\Services\Theme::register
+ * @covers \PingMeOnSlack\Services\User::register
  */
 class PluginTest extends TestCase {
 	public array $services;

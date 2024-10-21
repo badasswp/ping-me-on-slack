@@ -12,6 +12,7 @@ use PingMeOnSlack\Services\Post;
  * @covers \PingMeOnSlack\Services\Post::register
  * @covers \PingMeOnSlack\Services\Post::ping_on_post_status_change
  * @covers \PingMeOnSlack\Services\Post::get_message
+ * @covers pmos_get_settings
  */
 class PostTest extends TestCase {
 	public Client $client;

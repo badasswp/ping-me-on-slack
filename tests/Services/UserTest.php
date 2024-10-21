@@ -13,6 +13,7 @@ use PingMeOnSlack\Services\User;
  * @covers \PingMeOnSlack\Services\User::ping_on_user_creation
  * @covers \PingMeOnSlack\Services\User::ping_on_user_modification
  * @covers \PingMeOnSlack\Services\User::ping_on_user_deletion
+ * @covers pmos_get_settings
  */
 class UserTest extends TestCase {
 	public Client $client;
