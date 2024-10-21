@@ -7,7 +7,7 @@ use WP_Mock\Tools\TestCase;
 use PingMeOnSlack\Interfaces\Kernel;
 
 /**
- * @covers \PingMeOnSlack\Interfaces\Kernel::__construct
+ * @covers \PingMeOnSlack\Interfaces\Kernel::register
  */
 class KernelTest extends TestCase {
 	public Kernel $kernel;
