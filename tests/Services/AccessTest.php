@@ -12,6 +12,7 @@ use PingMeOnSlack\Services\Access;
  * @covers \PingMeOnSlack\Services\Access::register
  * @covers \PingMeOnSlack\Services\Access::ping_on_user_login
  * @covers \PingMeOnSlack\Services\Access::ping_on_user_logout
+ * @covers pmos_get_settings
  */
 class AccessTest extends TestCase {
 	public Client $client;

@@ -10,6 +10,8 @@ use PingMeOnSlack\Abstracts\Service;
 /**
  * @covers \PingMeOnSlack\Abstracts\Service::__construct
  * @covers \PingMeOnSlack\Abstracts\Service::get_instance
+ * @covers \PingMeOnSlack\Abstracts\Service::get_date
+ * @covers \PingMeOnSlack\Abstracts\Service::register
  * @covers \PingMeOnSlack\Core\Client::__construct
  */
 class ServiceTest extends TestCase {

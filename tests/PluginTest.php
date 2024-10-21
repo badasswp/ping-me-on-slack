@@ -17,7 +17,7 @@ use PingMeOnSlack\Services\Access;
 use PingMeOnSlack\Services\Comment;
 
 /**
- * @covers \PingMeOnSlack\Plugin::__construct
+ * @covers \PingMeOnSlack\Plugin::get_instance
  * @covers \PingMeOnSlack\Plugin::run
  */
 class PluginTest extends TestCase {
