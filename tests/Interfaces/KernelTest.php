@@ -10,6 +10,8 @@ use PingMeOnSlack\Interfaces\Kernel;
  * @covers \PingMeOnSlack\Interfaces\Kernel::__construct
  */
 class KernelTest extends TestCase {
+	public Kernel $kernel;
+
 	public function setUp(): void {
 		\WP_Mock::setUp();
 

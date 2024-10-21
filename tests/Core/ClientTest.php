@@ -11,6 +11,8 @@ use Maknz\Slack\Client as SlackClient;
  * @covers \PingMeOnSlack\Core\Client::__construct
  */
 class ClientTest extends TestCase {
+	public Client $client;
+
 	public function setUp(): void {
 		\WP_Mock::setUp();
 

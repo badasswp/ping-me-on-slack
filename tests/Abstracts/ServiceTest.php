@@ -11,6 +11,8 @@ use PingMeOnSlack\Abstracts\Service;
  * @covers \PingMeOnSlack\Abstracts\Service::__construct
  */
 class ServiceTest extends TestCase {
+	public Service $service;
+
 	public function setUp(): void {
 		\WP_Mock::setUp();
 

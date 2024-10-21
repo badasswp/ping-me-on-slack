@@ -14,6 +14,9 @@ use PingMeOnSlack\Services\Post;
  * @covers \PingMeOnSlack\Services\Post::get_message
  */
 class PostTest extends TestCase {
+	public Client $client;
+	public Post $post;
+
 	public function setUp(): void {
 		\WP_Mock::setUp();
 

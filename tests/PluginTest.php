@@ -21,6 +21,8 @@ use PingMeOnSlack\Services\Comment;
  * @covers \PingMeOnSlack\Plugin::run
  */
 class PluginTest extends TestCase {
+	public array $services;
+
 	public function setUp(): void {
 		\WP_Mock::setUp();
 	}

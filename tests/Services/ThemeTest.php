@@ -14,6 +14,9 @@ use PingMeOnSlack\Services\Theme;
  * @covers \PingMeOnSlack\Services\Theme::get_message
  */
 class ThemeTest extends TestCase {
+	public Client $client;
+	public Theme $theme;
+
 	public function setUp(): void {
 		\WP_Mock::setUp();
 

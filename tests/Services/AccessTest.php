@@ -14,6 +14,9 @@ use PingMeOnSlack\Services\Access;
  * @covers \PingMeOnSlack\Services\Access::ping_on_user_logout
  */
 class AccessTest extends TestCase {
+	public Client $client;
+	public Access $access;
+
 	public function setUp(): void {
 		\WP_Mock::setUp();
 

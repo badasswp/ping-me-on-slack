@@ -15,6 +15,9 @@ use PingMeOnSlack\Services\User;
  * @covers \PingMeOnSlack\Services\User::ping_on_user_deletion
  */
 class UserTest extends TestCase {
+	public Client $client;
+	public User $user;
+
 	public function setUp(): void {
 		\WP_Mock::setUp();
 

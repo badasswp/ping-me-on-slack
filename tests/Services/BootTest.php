@@ -12,6 +12,9 @@ use PingMeOnSlack\Services\Boot;
  * @covers \PingMeOnSlack\Services\Boot::register
  */
 class BootTest extends TestCase {
+	public Client $client;
+	public Boot $boot;
+
 	public function setUp(): void {
 		\WP_Mock::setUp();
 

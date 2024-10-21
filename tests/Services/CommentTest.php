@@ -14,6 +14,9 @@ use PingMeOnSlack\Services\Comment;
  * @covers \PingMeOnSlack\Services\Comment::get_message
  */
 class CommentTest extends TestCase {
+	public Client $client;
+	public Comment $comment;
+
 	public function setUp(): void {
 		\WP_Mock::setUp();
 

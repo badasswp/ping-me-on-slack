@@ -8,18 +8,21 @@ use WP_Mock\Tools\TestCase;
 use PingMeOnSlack\Services\Boot;
 use PingMeOnSlack\Services\Post;
 use PingMeOnSlack\Services\User;
-use PingMeOnSlack\Core\Container;
 use PingMeOnSlack\Services\Admin;
 use PingMeOnSlack\Services\Theme;
 use PingMeOnSlack\Services\Access;
 use PingMeOnSlack\Services\Comment;
 use PingMeOnSlack\Abstracts\Service;
 
+use PingMeOnSlack\Core\Container;
+
 /**
  * @covers \PingMeOnSlack\Core\Container::__construct
  * @covers \PingMeOnSlack\Core\Container::register
  */
 class ContainerTest extends TestCase {
+	public Container $container;
+
 	public function setUp(): void {
 		\WP_Mock::setUp();
 
