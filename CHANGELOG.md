@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1
+* Add Screenshot images.
+* Fixed Spanish translation.
+* Update README notes.
+* Tested up to WP 6.6.2
+
 ## 1.1.0
 * Refactor Options to use Form, Options class.
 * Implement new plugin options for Post, Comment and others.
