@@ -5,6 +5,7 @@ on:
     workflows: ["PingMeOnSlack CI"]
     types: [completed]
     branches: [master]
+    conclusions: [success]
 
 permissions:
   contents: write
