@@ -12,6 +12,7 @@ use PingMeOnSlack\Services\Comment;
  * @covers \PingMeOnSlack\Services\Comment::register
  * @covers \PingMeOnSlack\Services\Comment::ping_on_comment_status_change
  * @covers \PingMeOnSlack\Services\Comment::get_message
+ * @covers pmos_get_settings
  */
 class CommentTest extends TestCase {
 	public Client $client;

@@ -10,6 +10,7 @@ use PingMeOnSlack\Services\Boot;
 /**
  * @covers \PingMeOnSlack\Services\Boot::__construct
  * @covers \PingMeOnSlack\Services\Boot::register
+ * @covers \PingMeOnSlack\Services\Boot::ping_me_on_slack_translation
  */
 class BootTest extends TestCase {
 	public Client $client;
