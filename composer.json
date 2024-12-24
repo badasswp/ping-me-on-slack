@@ -40,6 +40,7 @@
     "lint": "vendor/bin/phpcs -v",
     "lint:fix": "vendor/bin/phpcbf -v",
     "test": "vendor/bin/phpunit --testdox",
-    "analyse": "vendor/bin/phpstan analyse --memory-limit=2048M"
+    "analyse": "vendor/bin/phpstan analyse --memory-limit=2048M",
+    "coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-cobertura cobertura.xml && coveralls --repo-token=y3WNWpke7zaMKYGRD4ZkfkungAEtN7Gmd --file=cobertura.xml"
   }
 }
