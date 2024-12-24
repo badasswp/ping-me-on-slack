@@ -2,6 +2,8 @@
 
 Get notifications on Slack when changes are made on your WP website.
 
+[![Coverage Status](https://coveralls.io/repos/github/badasswp/ping-me-on-slack/badge.svg?branch=master)](https://coveralls.io/github/badasswp/ping-me-on-slack?branch=master)
+
 ![screenshot-1](https://github.com/user-attachments/assets/667ab2fb-24c1-4d4d-ae83-5a89fc848710)
 
 ## Download
