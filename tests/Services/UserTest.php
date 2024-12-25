@@ -44,6 +44,26 @@ class UserTest extends TestCase {
 		$this->assertConditionsMet();
 	}
 
+	public function test_ping_on_user_creation_fails() {
+		$user_login = 'john@doe.com';
+
+		$user             = Mockery::mock( \WP_User::class )->makePartial();
+		$user->ID         = 1;
+		$user->user_login = 'john@doe.com';
+
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'enable_user' => false,
+				]
+			);
+
+		$this->user->ping_on_user_creation( $user->ID, [] );
+
+		$this->assertConditionsMet();
+	}
+
 	public function test_ping_on_user_creation() {
 		$user_login = 'john@doe.com';
 
