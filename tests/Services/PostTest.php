@@ -176,7 +176,7 @@ class PostTest extends TestCase {
 
 		$this->post->shouldReceive( 'get_message' )
 			->andReturnUsing(
-				function( $arg ) {
+				function ( $arg ) {
 					return $arg;
 				}
 			);
@@ -227,7 +227,7 @@ class PostTest extends TestCase {
 
 		$this->post->shouldReceive( 'get_message' )
 			->andReturnUsing(
-				function( $arg ) {
+				function ( $arg ) {
 					return $arg;
 				}
 			);
