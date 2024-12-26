@@ -36,14 +36,8 @@ class ClientTest extends TestCase {
 	}
 
 	public function test_args_set_up_default() {
-		$this->assertSame(
-			'#general',
-			$this->client->args['channel']
-		);
-		$this->assertSame(
-			'Bryan',
-			$this->client->args['username']
-		);
+		$this->assertSame( '#general', $this->client->args['channel'] );
+		$this->assertSame( 'Bryan', $this->client->args['username'] );
 		$this->assertConditionsMet();
 	}
 
