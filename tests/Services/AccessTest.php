@@ -55,14 +55,7 @@ class AccessTest extends TestCase {
 			->andReturn(
 				[
 					'enable_access' => true,
-				]
-			);
-
-		\WP_Mock::userFunction( 'get_option' )
-			->with( 'ping_me_on_slack', [] )
-			->andReturn(
-				[
-					'access_login' => '',
+					'access_login'  => '',
 				]
 			);
 
