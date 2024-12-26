@@ -30,6 +30,17 @@ Ever needed to keep track of what's happening on your website? No need to look f
 * Get notified when a user creates, modifies or deletes a User.
 * Get notified when a user logs in & out.
 
+= ✔️ Features =
+
+Our plugin comes with everything you need to help you send notifications to Slack.
+
+✔️ <strong>Send notifications</strong> from WP website to Slack.
+✔️ <strong>Customise messages</strong>.
+✔️ <strong>Enable & disable notifications</strong>.
+✔️ <strong>Plugin Options page</strong>.
+✔️ <strong>Custom Hooks</strong> to help you customize plugin behaviour.
+✔️ Available in <strong>mutiple langauges</strong> such as Arabic, Chinese, Hebrew, Hindi, Russian, German, Italian, Croatian, Spanish & French languages.
+
 = ✨ Getting Started =
 
 1. To get started, you would need to have an incoming webhook of your own. Head over to the URL below and follow the instructions to generate your webhook: [https://api.slack.com/messaging/webhooks](https://api.slack.com/messaging/webhooks).
