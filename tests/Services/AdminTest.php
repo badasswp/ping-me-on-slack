@@ -230,7 +230,7 @@ class AdminTest extends TestCase {
 
 		\WP_Mock::userFunction( 'sanitize_text_field' )
 			->andReturnUsing(
-				function( $arg ) {
+				function ( $arg ) {
 					return $arg;
 				}
 			);
