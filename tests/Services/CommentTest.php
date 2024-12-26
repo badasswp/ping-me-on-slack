@@ -100,7 +100,7 @@ class CommentTest extends TestCase {
 
 		$this->comment->shouldReceive( 'get_message' )
 			->andReturnUsing(
-				function( $arg ) {
+				function ( $arg ) {
 					return $arg;
 				}
 			);
@@ -141,7 +141,7 @@ class CommentTest extends TestCase {
 
 		$this->comment->shouldReceive( 'get_message' )
 			->andReturnUsing(
-				function( $arg ) {
+				function ( $arg ) {
 					return $arg;
 				}
 			);
@@ -182,7 +182,7 @@ class CommentTest extends TestCase {
 
 		$this->comment->shouldReceive( 'get_message' )
 			->andReturnUsing(
-				function( $arg ) {
+				function ( $arg ) {
 					return $arg;
 				}
 			);
@@ -223,7 +223,7 @@ class CommentTest extends TestCase {
 
 		$this->comment->shouldReceive( 'get_message' )
 			->andReturnUsing(
-				function( $arg ) {
+				function ( $arg ) {
 					return $arg;
 				}
 			);
