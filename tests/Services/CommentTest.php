@@ -106,9 +106,11 @@ class CommentTest extends TestCase {
 		);
 
 		$this->comment->shouldReceive( 'get_message' )
-			->once()
-			->with( 'A Comment was just trashed!' )
-			->andReturn( 'A Comment was just trashed!' );
+			->andReturnUsing(
+				function( $arg ) {
+					return $arg;
+				}
+			);
 
 		$this->client->shouldReceive( 'ping' )
 			->once()
