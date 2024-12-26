@@ -243,6 +243,70 @@ class AccessTest extends TestCase {
 		$this->assertConditionsMet();
 	}
 
+	public function test_ping_on_user_logout_with_custom_option() {
+		$user_id = 1;
+
+		$user             = Mockery::mock( \WP_User::class )->makePartial();
+		$user->user_login = 'john@doe.com';
+
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'enable_access' => true,
+					'access_logout' => 'Custom Message: A User just logged out!',
+				]
+			);
+
+		\WP_Mock::userFunction( 'get_user_by' )
+			->once()
+			->with( 'id', 1 )
+			->andReturn( $user );
+
+		\WP_Mock::expectFilter( 'ping_me_on_slack_logout_client', $this->access->client );
+
+		\WP_Mock::userFunction(
+			'esc_html__',
+			[
+				'times'  => 5,
+				'return' => function ( $text, $domain = 'ping-me-on-slack' ) {
+					return $text;
+				},
+			]
+		);
+
+		\WP_Mock::userFunction(
+			'esc_html',
+			[
+				'times'  => 4,
+				'return' => function ( $text ) {
+					return $text;
+				},
+			]
+		);
+
+		$message = "Ping: Custom Message: A User just logged out! \nID: 1 \nUser: john@doe.com \nDate: 08:57:13, 01-07-2024";
+
+		\WP_Mock::expectFilter(
+			'ping_me_on_slack_logout_message',
+			$message,
+			$user
+		);
+
+		$this->access->shouldReceive( 'get_date' )
+			->once()
+			->with()
+			->andReturn( '08:57:13, 01-07-2024' );
+
+		$this->access->client->shouldReceive( 'ping' )
+			->once()
+			->with( $message );
+
+		$this->access->ping_on_user_logout( $user_id );
+
+		$this->assertConditionsMet();
+	}
+
 	public function test_ping_on_user_logout_fails() {
 		$user_id = 1;
 
