@@ -126,6 +126,13 @@ class Admin extends Service implements Kernel {
 	 * @return void
 	 */
 	public function register_options_styles(): void {
+		$screen = get_current_screen();
+
+		// Bail out, if not plugin Admin page.
+		if ( ! is_object( $screen ) || 'toplevel_page_ping-me-on-slack' !== $screen->id ) {
+			return;
+		}
+
 		wp_enqueue_style(
 			Options::get_page_slug(),
 			plugins_url( 'ping-me-on-slack/styles.css' ),
