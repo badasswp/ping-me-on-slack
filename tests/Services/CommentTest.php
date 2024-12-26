@@ -75,6 +75,47 @@ class CommentTest extends TestCase {
 		$this->assertConditionsMet();
 	}
 
+	public function test_ping_on_comment_status_change_passes_on_approved() {
+		$comment = Mockery::mock( \WP_Comment::class )->makePartial();
+		$comment->shouldAllowMockingProtectedMethods();
+
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'enable_comment'  => true,
+					'comment_approve' => '',
+				]
+			);
+
+		\WP_Mock::userFunction(
+			'esc_html__',
+			[
+				'times'  => 1,
+				'return' => function ( $text ) {
+					return $text;
+				},
+			]
+		);
+
+		$this->comment->shouldReceive( 'get_message' )
+			->andReturnUsing(
+				function( $arg ) {
+					return $arg;
+				}
+			);
+
+		$this->client->shouldReceive( 'ping' )
+			->once()
+			->with( 'A Comment was just approved!' );
+
+		\WP_Mock::expectFilter( 'ping_me_on_slack_comment_client', $this->client );
+
+		$this->comment->ping_on_comment_status_change( 'approved', 'draft', $comment );
+
+		$this->assertConditionsMet();
+	}
+
 	public function test_ping_on_comment_status_change_passes_on_trash() {
 		$comment = Mockery::mock( \WP_Comment::class )->makePartial();
 		$comment->shouldAllowMockingProtectedMethods();
