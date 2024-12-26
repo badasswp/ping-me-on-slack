@@ -75,7 +75,7 @@ class CommentTest extends TestCase {
 		$this->assertConditionsMet();
 	}
 
-	public function test_ping_on_comment_status_change_passes_on_approved() {
+	public function test_ping_on_comment_status_change_passes_on_trash() {
 		$comment = Mockery::mock( \WP_Comment::class )->makePartial();
 		$comment->shouldAllowMockingProtectedMethods();
 
