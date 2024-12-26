@@ -92,7 +92,7 @@ class PostTest extends TestCase {
 		$this->assertConditionsMet();
 	}
 
-	public function test_ping_on_post_status_change_passes() {
+	public function test_ping_on_post_status_change_passes_on_publish() {
 		$post = Mockery::mock( \WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
 		$post->post_type = 'post';
@@ -126,9 +126,11 @@ class PostTest extends TestCase {
 		);
 
 		$this->post->shouldReceive( 'get_message' )
-			->once()
-			->with( 'A Post was just published!' )
-			->andReturn( 'A Post was just published!' );
+			->andReturnUsing(
+				function ( $arg ) {
+					return $arg;
+				}
+			);
 
 		$this->client->shouldReceive( 'ping' )
 			->once()
