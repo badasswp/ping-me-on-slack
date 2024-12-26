@@ -43,6 +43,8 @@ class ClientTest extends TestCase {
 
 	public function test_ping() {
 		$this->client->ping( 'Ping: A post was just published!' );
+
+		$this->assertInstanceOf( \Maknz\Slack\Client::class, $this->client->slack );
 		$this->assertConditionsMet();
 	}
 }
