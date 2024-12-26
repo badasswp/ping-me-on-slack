@@ -103,14 +103,7 @@ class PostTest extends TestCase {
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
-					'enable_post' => true,
-				]
-			);
-
-		\WP_Mock::userFunction( 'get_option' )
-			->with( 'ping_me_on_slack', [] )
-			->andReturn(
-				[
+					'enable_post'  => true,
 					'post_publish' => '',
 				]
 			);
