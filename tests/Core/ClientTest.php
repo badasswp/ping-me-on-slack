@@ -9,6 +9,7 @@ use Maknz\Slack\Client as SlackClient;
 
 /**
  * @covers \PingMeOnSlack\Core\Client::__construct
+ * @covers \PingMeOnSlack\Core\Client::ping
  */
 class ClientTest extends TestCase {
 	public Client $client;
@@ -43,6 +44,11 @@ class ClientTest extends TestCase {
 			'Bryan',
 			$this->client->args['username']
 		);
+		$this->assertConditionsMet();
+	}
+
+	public function test_ping() {
+		$this->client->ping( 'Ping: A post was just published!' );
 		$this->assertConditionsMet();
 	}
 }
