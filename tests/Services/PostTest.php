@@ -41,6 +41,23 @@ class PostTest extends TestCase {
 		$this->assertConditionsMet();
 	}
 
+	public function test_ping_on_post_status_change_fails() {
+		$post = Mockery::mock( \WP_Post::class )->makePartial();
+		$post->shouldAllowMockingProtectedMethods();
+
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'enable_user' => false,
+				]
+			);
+
+		$this->post->ping_on_post_status_change( 'draft', 'publish', $post );
+
+		$this->assertConditionsMet();
+	}
+
 	public function test_ping_on_post_status_change_bails_if_status_is_unchanged() {
 		$post = Mockery::mock( \WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
