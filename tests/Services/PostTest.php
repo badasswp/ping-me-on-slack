@@ -312,6 +312,50 @@ class PostTest extends TestCase {
 		$this->assertConditionsMet();
 	}
 
+	public function test_ping_on_post_status_change_passes_on_trash_with_custom_post_option() {
+		$post = Mockery::mock( \WP_Post::class )->makePartial();
+		$post->shouldAllowMockingProtectedMethods();
+		$post->post_type = 'post';
+
+		$this->post->post = $post;
+
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'enable_post' => true,
+					'post_trash'  => 'Custom Message: Your post is now trashed!',
+				]
+			);
+
+		\WP_Mock::userFunction(
+			'esc_html__',
+			[
+				'times'  => 1,
+				'return' => function ( $text ) {
+					return $text;
+				},
+			]
+		);
+
+		$this->post->shouldReceive( 'get_message' )
+			->andReturnUsing(
+				function ( $arg ) {
+					return $arg;
+				}
+			);
+
+		$this->client->shouldReceive( 'ping' )
+			->once()
+			->with( 'Custom Message: Your post is now trashed!' );
+
+		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $this->client );
+
+		$this->post->ping_on_post_status_change( 'trash', 'publish', $post );
+
+		$this->assertConditionsMet();
+	}
+
 	public function test_get_message() {
 		$post = Mockery::mock( \WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
