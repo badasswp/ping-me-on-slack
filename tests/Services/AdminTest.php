@@ -7,7 +7,7 @@ use WP_Mock\Tools\TestCase;
 use PingMeOnSlack\Services\Admin;
 
 /**
- * @covers \PingMeOnSlack\Core\Converter::__construct
+ * @covers \PingMeOnSlack\Core\Client::__construct
  * @covers \PingMeOnSlack\Services\Admin::__construct
  * @covers \PingMeOnSlack\Services\Admin::register
  * @covers \PingMeOnSlack\Services\Admin::register_options_menu
