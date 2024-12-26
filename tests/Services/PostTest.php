@@ -192,14 +192,7 @@ class PostTest extends TestCase {
 			->andReturn(
 				[
 					'enable_post' => true,
-				]
-			);
-
-		\WP_Mock::userFunction( 'get_option' )
-			->with( 'ping_me_on_slack', [] )
-			->andReturn(
-				[
-					'post_draft' => '',
+					'post_draft'  => '',
 				]
 			);
 
@@ -243,14 +236,7 @@ class PostTest extends TestCase {
 			->andReturn(
 				[
 					'enable_post' => true,
-				]
-			);
-
-		\WP_Mock::userFunction( 'get_option' )
-			->with( 'ping_me_on_slack', [] )
-			->andReturn(
-				[
-					'post_trash' => '',
+					'post_trash'  => '',
 				]
 			);
 
