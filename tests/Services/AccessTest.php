@@ -183,4 +183,23 @@ class AccessTest extends TestCase {
 
 		$this->assertConditionsMet();
 	}
+
+	public function test_ping_on_user_logout_fails() {
+		$user_id = 1;
+
+		$user             = Mockery::mock( \WP_User::class )->makePartial();
+		$user->user_login = 'john@doe.com';
+
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'enable_access' => false,
+				]
+			);
+
+		$this->access->ping_on_user_logout( $user_id );
+
+		$this->assertConditionsMet();
+	}
 }
