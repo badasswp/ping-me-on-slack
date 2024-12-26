@@ -84,14 +84,7 @@ class CommentTest extends TestCase {
 			->andReturn(
 				[
 					'enable_comment' => true,
-				]
-			);
-
-		\WP_Mock::userFunction( 'get_option' )
-			->with( 'ping_me_on_slack', [] )
-			->andReturn(
-				[
-					'comment_trash' => '',
+					'comment_trash'  => '',
 				]
 			);
 
