@@ -74,6 +74,166 @@ class OptionsTest extends TestCase {
 		);
 	}
 
+	public function test_get_form_fields() {
+		\WP_Mock::userFunction(
+			'esc_html__',
+			[
+				'return' => function ( $text, $domain = 'ping-me-on-slack' ) {
+					return $text;
+				},
+			]
+		);
+
+		\WP_Mock::userFunction(
+			'esc_attr',
+			[
+				'return' => function ( $text, $domain = 'ping-me-on-slack' ) {
+					return $text;
+				},
+			]
+		);
+
+		\WP_Mock::userFunction(
+			'esc_attr__',
+			[
+				'return' => function ( $text, $domain = 'ping-me-on-slack' ) {
+					return $text;
+				},
+			]
+		);
+
+		$form_fields = Options::get_form_fields();
+
+		$this->assertSame(
+			$form_fields,
+			[
+				'slack_options' => [
+					'heading'  => 'Slack Options',
+					'controls' => [
+						'username' => [
+							'control'     => 'text',
+							'placeholder' => '',
+							'label'       => 'Slack Username',
+							'summary'     => 'e.g. John Doe',
+						],
+						'channel'  => [
+							'control'     => 'text',
+							'placeholder' => '',
+							'label'       => 'Slack Channel',
+							'summary'     => 'e.g. #general',
+						],
+						'webhook'  => [
+							'control'     => 'text',
+							'placeholder' => '',
+							'label'       => 'Slack Webhook',
+							'summary'     => 'e.g. https://hooks.slack.com/services/xxxxxx',
+						],
+					],
+				],
+				'post_options'  => [
+					'heading'  => 'Post Options',
+					'controls' => [
+						'enable_post'  => [
+							'control' => 'checkbox',
+							'label'   => 'Enable Slack',
+							'summary' => 'Enable Slack messages for Post actions.',
+						],
+						'post_draft'   => [
+							'control'     => 'text',
+							'placeholder' => '',
+							'label'       => 'Draft Message',
+							'summary'     => 'Message sent when a post is saved as draft.',
+						],
+						'post_publish' => [
+							'control'     => 'text',
+							'placeholder' => '',
+							'label'       => 'Publish Message',
+							'summary'     => 'Message sent when a post is published.',
+						],
+						'post_trash'   => [
+							'control'     => 'text',
+							'placeholder' => '',
+							'label'       => 'Trash Message',
+							'summary'     => 'Message sent when a post is trashed.',
+						],
+					],
+				],
+				'comment_options'  => [
+					'heading'  => 'Comment Options',
+					'controls' => [
+						'enable_comment'  => [
+							'control' => 'checkbox',
+							'label'   => 'Enable Slack',
+							'summary' => 'Enable Slack messages for Comment actions.',
+						],
+						'comment_approve' => [
+							'control'     => 'text',
+							'placeholder' => '',
+							'label'       => 'Approval Message',
+							'summary'     => 'Message sent when a comment is approved.',
+						],
+						'comment_trash'   => [
+							'control'     => 'text',
+							'placeholder' => '',
+							'label'       => 'Trash Message',
+							'summary'     => 'Message sent when a comment is trashed.',
+						],
+					],
+				],
+				'access_options'  => [
+					'heading'  => 'Access Options',
+					'controls' => [
+						'enable_access'  => [
+							'control' => 'checkbox',
+							'label'   => 'Enable Slack',
+							'summary' => 'Enable Slack messages for Access actions.',
+						],
+						'access_login' => [
+							'control'     => 'text',
+							'placeholder' => '',
+							'label'       => 'Login Message',
+							'summary'     => 'Message sent when a user has logged in.',
+						],
+						'access_logout'   => [
+							'control'     => 'text',
+							'placeholder' => '',
+							'label'       => 'Logout Message',
+							'summary'     => 'Message sent when a user has logged out.',
+						],
+					],
+				],
+				'user_options'  => [
+					'heading'  => 'User Options',
+					'controls' => [
+						'enable_user'  => [
+							'control' => 'checkbox',
+							'label'   => 'Enable Slack',
+							'summary' => 'Enable Slack messages for User actions.',
+						],
+						'user_create'   => [
+							'control'     => 'text',
+							'placeholder' => '',
+							'label'       => 'Create Message',
+							'summary'     => 'Message sent when a user is created.',
+						],
+						'user_modify' => [
+							'control'     => 'text',
+							'placeholder' => '',
+							'label'       => 'Modify Message',
+							'summary'     => 'Message sent when a user is modified.',
+						],
+						'user_delete'   => [
+							'control'     => 'text',
+							'placeholder' => '',
+							'label'       => 'Delete Message',
+							'summary'     => 'Message sent when a user is deleted.',
+						],
+					],
+				],
+			]
+		);
+	}
+
 	public function test_get_form_notice() {
 		\WP_Mock::userFunction(
 			'esc_html__',
