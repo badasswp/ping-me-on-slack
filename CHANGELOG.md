@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.2
+* Prevent style bleeding from Options page.
+* Update Unit Tests & Tests Coverage.
+* Update README notes.
+* Tested up to WP 6.7.1
+
 ## 1.1.1
 * Add Screenshot images.
 * Fixed Spanish translation.
