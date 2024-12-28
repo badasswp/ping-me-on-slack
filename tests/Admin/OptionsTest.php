@@ -107,7 +107,7 @@ class OptionsTest extends TestCase {
 		$this->assertSame(
 			$form_fields,
 			[
-				'slack_options' => [
+				'slack_options'   => [
 					'heading'  => 'Slack Options',
 					'controls' => [
 						'username' => [
@@ -130,7 +130,7 @@ class OptionsTest extends TestCase {
 						],
 					],
 				],
-				'post_options'  => [
+				'post_options'    => [
 					'heading'  => 'Post Options',
 					'controls' => [
 						'enable_post'  => [
@@ -158,7 +158,7 @@ class OptionsTest extends TestCase {
 						],
 					],
 				],
-				'comment_options'  => [
+				'comment_options' => [
 					'heading'  => 'Comment Options',
 					'controls' => [
 						'enable_comment'  => [
@@ -183,18 +183,18 @@ class OptionsTest extends TestCase {
 				'access_options'  => [
 					'heading'  => 'Access Options',
 					'controls' => [
-						'enable_access'  => [
+						'enable_access' => [
 							'control' => 'checkbox',
 							'label'   => 'Enable Slack',
 							'summary' => 'Enable Slack messages for Access actions.',
 						],
-						'access_login' => [
+						'access_login'  => [
 							'control'     => 'text',
 							'placeholder' => '',
 							'label'       => 'Login Message',
 							'summary'     => 'Message sent when a user has logged in.',
 						],
-						'access_logout'   => [
+						'access_logout' => [
 							'control'     => 'text',
 							'placeholder' => '',
 							'label'       => 'Logout Message',
@@ -202,15 +202,15 @@ class OptionsTest extends TestCase {
 						],
 					],
 				],
-				'user_options'  => [
+				'user_options'    => [
 					'heading'  => 'User Options',
 					'controls' => [
-						'enable_user'  => [
+						'enable_user' => [
 							'control' => 'checkbox',
 							'label'   => 'Enable Slack',
 							'summary' => 'Enable Slack messages for User actions.',
 						],
-						'user_create'   => [
+						'user_create' => [
 							'control'     => 'text',
 							'placeholder' => '',
 							'label'       => 'Create Message',
@@ -222,7 +222,7 @@ class OptionsTest extends TestCase {
 							'label'       => 'Modify Message',
 							'summary'     => 'Message sent when a user is modified.',
 						],
-						'user_delete'   => [
+						'user_delete' => [
 							'control'     => 'text',
 							'placeholder' => '',
 							'label'       => 'Delete Message',
