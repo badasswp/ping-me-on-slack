@@ -15,6 +15,15 @@ use PingMeOnSlack\Interfaces\Kernel;
 
 class Theme extends Service implements Kernel {
 	/**
+	 * WP Theme.
+	 *
+	 * @since 1.1.3
+	 *
+	 * @var \WP_Theme
+	 */
+	public \WP_Theme $theme;
+
+	/**
 	 * Bind to WP.
 	 *
 	 * @since 1.0.0

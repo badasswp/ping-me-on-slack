@@ -16,6 +16,24 @@ use PingMeOnSlack\Interfaces\Kernel;
 
 class Post extends Service implements Kernel {
 	/**
+	 * WP Post.
+	 *
+	 * @since 1.1.3
+	 *
+	 * @var \WP_Post
+	 */
+	public \WP_Post $post;
+
+	/**
+	 * Post Event.
+	 *
+	 * @since 1.1.3
+	 *
+	 * @var string
+	 */
+	public string $event;
+
+	/**
 	 * Bind to WP.
 	 *
 	 * @since 1.0.0

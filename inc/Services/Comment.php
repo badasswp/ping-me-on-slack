@@ -16,6 +16,24 @@ use PingMeOnSlack\Interfaces\Kernel;
 
 class Comment extends Service implements Kernel {
 	/**
+	 * WP Comment.
+	 *
+	 * @since 1.1.3
+	 *
+	 * @var \WP_Comment
+	 */
+	public \WP_Comment $comment;
+
+	/**
+	 * Comment Event.
+	 *
+	 * @since 1.1.3
+	 *
+	 * @var string
+	 */
+	public string $event;
+
+	/**
 	 * Bind to WP.
 	 *
 	 * @since 1.0.0
