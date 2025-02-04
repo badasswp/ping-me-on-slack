@@ -58,7 +58,7 @@ class User extends Service implements Kernel {
 		 * @param Client $client Client Instance.
 		 * @return Client
 		 */
-		$this->client = apply_filters( 'ping_me_on_slack_user_creation_client', $client = $this->client );
+		$client = apply_filters( 'ping_me_on_slack_user_creation_client', $client = $this->get_client() );
 
 		$user_create = pmos_get_settings( 'user_create' );
 
@@ -91,7 +91,7 @@ class User extends Service implements Kernel {
 		 */
 		$message = (string) apply_filters( 'ping_me_on_slack_user_creation_message', $message, $user_id );
 
-		$this->client->ping( $message );
+		$client->ping( $message );
 	}
 
 	/**
@@ -124,7 +124,7 @@ class User extends Service implements Kernel {
 		 * @param Client $client Client Instance.
 		 * @return Client
 		 */
-		$this->client = apply_filters( 'ping_me_on_slack_user_modification_client', $client = $this->client );
+		$client = apply_filters( 'ping_me_on_slack_user_modification_client', $client = $this->get_client() );
 
 		$user_modify = pmos_get_settings( 'user_modify' );
 
@@ -157,7 +157,7 @@ class User extends Service implements Kernel {
 		 */
 		$message = (string) apply_filters( 'ping_me_on_slack_user_modification_message', $message, $user_id );
 
-		$this->client->ping( $message );
+		$client->ping( $message );
 	}
 
 	/*
@@ -191,7 +191,7 @@ class User extends Service implements Kernel {
 		 * @param Client $client Client Instance.
 		 * @return Client
 		 */
-		$this->client = apply_filters( 'ping_me_on_slack_user_deletion_client', $client = $this->client );
+		$client = apply_filters( 'ping_me_on_slack_user_deletion_client', $client = $this->get_client() );
 
 		$user_delete = pmos_get_settings( 'user_delete' );
 
@@ -224,6 +224,6 @@ class User extends Service implements Kernel {
 		 */
 		$message = (string) apply_filters( 'ping_me_on_slack_user_deletion_message', $message, $user_id );
 
-		$this->client->ping( $message );
+		$client->ping( $message );
 	}
 }

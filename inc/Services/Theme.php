@@ -70,9 +70,9 @@ class Theme extends Service implements Kernel {
 		 * @param Client $client Client Instance.
 		 * @return Client
 		 */
-		$this->client = apply_filters( 'ping_me_on_slack_theme_client', $client = $this->client );
+		$client = apply_filters( 'ping_me_on_slack_theme_client', $client = $this->get_client() );
 
-		$this->client->ping( $message );
+		$client->ping( $message );
 	}
 
 	/**
