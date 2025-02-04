@@ -63,10 +63,10 @@ class Client implements Dispatcher {
 			 *
 			 * @since 1.0.0
 			 *
-			 * @param \RuntimeException $e Exception object.
+			 * @param string $e Exception error message.
 			 * @return void
 			 */
-			do_action( 'ping_me_on_slack_on_ping_error', $e );
+			do_action( 'ping_me_on_slack_on_ping_error', $e->getMessage() );
 		}
 	}
 }
