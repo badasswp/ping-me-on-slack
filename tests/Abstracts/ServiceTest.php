@@ -6,29 +6,20 @@ use Mockery;
 use WP_Mock\Tools\TestCase;
 use PingMeOnSlack\Core\Client;
 use PingMeOnSlack\Abstracts\Service;
+use PingMeOnSlack\Interfaces\Dispatcher;
 
 /**
- * @covers \PingMeOnSlack\Abstracts\Service::__construct
  * @covers \PingMeOnSlack\Abstracts\Service::get_instance
  * @covers \PingMeOnSlack\Abstracts\Service::get_date
+ * @covers \PingMeOnSlack\Abstracts\Service::get_dispatcher
+ * @covers \PingMeOnSlack\Abstracts\Service::get_client
  * @covers \PingMeOnSlack\Abstracts\Service::register
- * @covers \PingMeOnSlack\Core\Client::__construct
  */
 class ServiceTest extends TestCase {
 	public Service $service;
 
 	public function setUp(): void {
 		\WP_Mock::setUp();
-
-		\WP_Mock::userFunction( 'get_option' )
-			->once()
-			->with( 'ping_me_on_slack', [] )
-			->andReturn(
-				[
-					'channel'  => '#general',
-					'username' => 'Bryan',
-				]
-			);
 
 		$this->service = new ConcreteService();
 	}
@@ -38,16 +29,6 @@ class ServiceTest extends TestCase {
 	}
 
 	public function test_get_instance_returns_singleton() {
-		\WP_Mock::userFunction( 'get_option' )
-			->once()
-			->with( 'ping_me_on_slack', [] )
-			->andReturn(
-				[
-					'channel'  => '#general',
-					'username' => 'Bryan',
-				]
-			);
-
 		$expected_1 = ConcreteService::get_instance();
 		$expected_2 = ConcreteService::get_instance();
 
@@ -69,8 +50,22 @@ class ServiceTest extends TestCase {
 		$this->assertConditionsMet();
 	}
 
-	public function test_client_returns_client_instance() {
-		$this->assertInstanceOf( Client::class, $this->service->client );
+	public function test_get_client_returns_client_instance() {
+		$service = Mockery::mock( ConcreteService::class )->makePartial();
+		$service->shouldAllowMockingProtectedMethods();
+
+		$this->assertInstanceOf( Client::class, $service->get_client() );
+		$this->assertConditionsMet();
+	}
+
+	public function test_get_dispatcher_returns_dispatcher() {
+		$service = Mockery::mock( ConcreteService::class )->makePartial();
+		$service->shouldAllowMockingProtectedMethods();
+
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->assertInstanceOf( Dispatcher::class, $service->get_dispatcher( $client ) );
 		$this->assertConditionsMet();
 	}
 }

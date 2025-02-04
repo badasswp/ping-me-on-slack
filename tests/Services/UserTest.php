@@ -8,7 +8,6 @@ use PingMeOnSlack\Core\Client;
 use PingMeOnSlack\Services\User;
 
 /**
- * @covers \PingMeOnSlack\Services\User::__construct
  * @covers \PingMeOnSlack\Services\User::register
  * @covers \PingMeOnSlack\Services\User::ping_on_user_creation
  * @covers \PingMeOnSlack\Services\User::ping_on_user_modification
@@ -71,7 +70,13 @@ class UserTest extends TestCase {
 		$user->ID         = 1;
 		$user->user_login = 'john@doe.com';
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_user_creation_client', $this->user->client );
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->user->shouldReceive( 'get_client' )
+			->andReturn( $client );
+
+		\WP_Mock::expectFilter( 'ping_me_on_slack_user_creation_client', $client );
 
 		\WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
@@ -127,7 +132,7 @@ class UserTest extends TestCase {
 			->with()
 			->andReturn( '08:57:13, 01-07-2024' );
 
-		$this->user->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( $message );
 
@@ -163,7 +168,13 @@ class UserTest extends TestCase {
 		$user->ID         = 1;
 		$user->user_login = 'john@doe.com';
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_user_modification_client', $this->user->client );
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->user->shouldReceive( 'get_client' )
+			->andReturn( $client );
+
+		\WP_Mock::expectFilter( 'ping_me_on_slack_user_modification_client', $client );
 
 		\WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
@@ -219,7 +230,7 @@ class UserTest extends TestCase {
 			->with()
 			->andReturn( '08:57:13, 01-07-2024' );
 
-		$this->user->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( $message );
 
@@ -255,7 +266,13 @@ class UserTest extends TestCase {
 		$user->ID         = 1;
 		$user->user_login = 'john@doe.com';
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_user_deletion_client', $this->user->client );
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->user->shouldReceive( 'get_client' )
+			->andReturn( $client );
+
+		\WP_Mock::expectFilter( 'ping_me_on_slack_user_deletion_client', $client );
 
 		\WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
@@ -306,7 +323,7 @@ class UserTest extends TestCase {
 			->with()
 			->andReturn( '08:57:13, 01-07-2024' );
 
-		$this->user->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( $message );
 

@@ -8,7 +8,6 @@ use PingMeOnSlack\Core\Client;
 use PingMeOnSlack\Services\Comment;
 
 /**
- * @covers \PingMeOnSlack\Services\Comment::__construct
  * @covers \PingMeOnSlack\Services\Comment::register
  * @covers \PingMeOnSlack\Services\Comment::ping_on_comment_status_change
  * @covers \PingMeOnSlack\Services\Comment::get_message
@@ -79,6 +78,12 @@ class CommentTest extends TestCase {
 		$comment = Mockery::mock( \WP_Comment::class )->makePartial();
 		$comment->shouldAllowMockingProtectedMethods();
 
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->comment->shouldReceive( 'get_client' )
+			->andReturn( $client );
+
 		\WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
@@ -105,11 +110,11 @@ class CommentTest extends TestCase {
 				}
 			);
 
-		$this->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( 'A Comment was just approved!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_comment_client', $this->client );
+		\WP_Mock::expectFilter( 'ping_me_on_slack_comment_client', $client );
 
 		$this->comment->ping_on_comment_status_change( 'approved', 'draft', $comment );
 
@@ -119,6 +124,12 @@ class CommentTest extends TestCase {
 	public function test_ping_on_comment_status_change_passes_on_approved_with_custom_option() {
 		$comment = Mockery::mock( \WP_Comment::class )->makePartial();
 		$comment->shouldAllowMockingProtectedMethods();
+
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->comment->shouldReceive( 'get_client' )
+			->andReturn( $client );
 
 		\WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
@@ -146,11 +157,11 @@ class CommentTest extends TestCase {
 				}
 			);
 
-		$this->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( 'Custom Message: Your comment is approved!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_comment_client', $this->client );
+		\WP_Mock::expectFilter( 'ping_me_on_slack_comment_client', $client );
 
 		$this->comment->ping_on_comment_status_change( 'approved', 'draft', $comment );
 
@@ -160,6 +171,12 @@ class CommentTest extends TestCase {
 	public function test_ping_on_comment_status_change_passes_on_trash() {
 		$comment = Mockery::mock( \WP_Comment::class )->makePartial();
 		$comment->shouldAllowMockingProtectedMethods();
+
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->comment->shouldReceive( 'get_client' )
+			->andReturn( $client );
 
 		\WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
@@ -187,11 +204,11 @@ class CommentTest extends TestCase {
 				}
 			);
 
-		$this->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( 'A Comment was just trashed!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_comment_client', $this->client );
+		\WP_Mock::expectFilter( 'ping_me_on_slack_comment_client', $client );
 
 		$this->comment->ping_on_comment_status_change( 'trash', 'approved', $comment );
 
@@ -201,6 +218,12 @@ class CommentTest extends TestCase {
 	public function test_ping_on_comment_status_change_passes_on_trash_with_custom_option() {
 		$comment = Mockery::mock( \WP_Comment::class )->makePartial();
 		$comment->shouldAllowMockingProtectedMethods();
+
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->comment->shouldReceive( 'get_client' )
+			->andReturn( $client );
 
 		\WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
@@ -228,11 +251,11 @@ class CommentTest extends TestCase {
 				}
 			);
 
-		$this->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( 'Custom Message: Your comment is trashed!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_comment_client', $this->client );
+		\WP_Mock::expectFilter( 'ping_me_on_slack_comment_client', $client );
 
 		$this->comment->ping_on_comment_status_change( 'trash', 'approved', $comment );
 
