@@ -15,6 +15,25 @@ use PingMeOnSlack\Interfaces\Dispatcher;
 
 class Client implements Dispatcher {
 	/**
+	 * Get Slack Client.
+	 *
+	 * @since 1.1.3
+	 *
+	 * @return SlackClient
+	 */
+	protected function get_slack_client(): SlackClient {
+		$settings = get_option( 'ping_me_on_slack', [] );
+
+		return new SlackClient(
+			$settings['webhook'] ?? '',
+			[
+				'channel'  => $settings['channel'] ?? '',
+				'username' => $settings['username'] ?? '',
+			]
+		);
+	}
+
+	/**
 	 * Ping Slack.
 	 *
 	 * This method handles the Remote POST calls
@@ -26,18 +45,8 @@ class Client implements Dispatcher {
 	 * @return void
 	 */
 	public function ping( $message ): void {
-		$settings = get_option( 'ping_me_on_slack', [] );
-
-		$slack = new SlackClient(
-			$settings['webhook'] ?? '',
-			[
-				'channel'  => $settings['channel'] ?? '',
-				'username' => $settings['username'] ?? '',
-			]
-		);
-
 		try {
-			$slack->send( $message );
+			$this->get_slack_client()->send( $message );
 		} catch ( \Exception $e ) {
 			error_log(
 				sprintf(
