@@ -8,7 +8,6 @@ use PingMeOnSlack\Core\Client;
 use PingMeOnSlack\Services\Access;
 
 /**
- * @covers \PingMeOnSlack\Services\Access::__construct
  * @covers \PingMeOnSlack\Services\Access::register
  * @covers \PingMeOnSlack\Services\Access::ping_on_user_login
  * @covers \PingMeOnSlack\Services\Access::ping_on_user_logout
@@ -48,7 +47,13 @@ class AccessTest extends TestCase {
 		$user     = Mockery::mock( \WP_User::class )->makePartial();
 		$user->ID = 1;
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_login_client', $this->access->client );
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->access->shouldReceive( 'get_client' )
+			->andReturn( $client );
+
+		\WP_Mock::expectFilter( 'ping_me_on_slack_login_client', $client );
 
 		\WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
@@ -92,7 +97,7 @@ class AccessTest extends TestCase {
 			->with()
 			->andReturn( '08:57:13, 01-07-2024' );
 
-		$this->access->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( $message );
 
@@ -107,7 +112,13 @@ class AccessTest extends TestCase {
 		$user     = Mockery::mock( \WP_User::class )->makePartial();
 		$user->ID = 1;
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_login_client', $this->access->client );
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->access->shouldReceive( 'get_client' )
+			->andReturn( $client );
+
+		\WP_Mock::expectFilter( 'ping_me_on_slack_login_client', $client );
 
 		\WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
@@ -151,7 +162,7 @@ class AccessTest extends TestCase {
 			->with()
 			->andReturn( '08:57:13, 01-07-2024' );
 
-		$this->access->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( $message );
 
@@ -185,6 +196,12 @@ class AccessTest extends TestCase {
 		$user             = Mockery::mock( \WP_User::class )->makePartial();
 		$user->user_login = 'john@doe.com';
 
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->access->shouldReceive( 'get_client' )
+			->andReturn( $client );
+
 		\WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
@@ -199,7 +216,7 @@ class AccessTest extends TestCase {
 			->with( 'id', 1 )
 			->andReturn( $user );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_logout_client', $this->access->client );
+		\WP_Mock::expectFilter( 'ping_me_on_slack_logout_client', $client );
 
 		\WP_Mock::userFunction(
 			'esc_html__',
@@ -234,7 +251,7 @@ class AccessTest extends TestCase {
 			->with()
 			->andReturn( '08:57:13, 01-07-2024' );
 
-		$this->access->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( $message );
 
@@ -248,6 +265,12 @@ class AccessTest extends TestCase {
 
 		$user             = Mockery::mock( \WP_User::class )->makePartial();
 		$user->user_login = 'john@doe.com';
+
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->access->shouldReceive( 'get_client' )
+			->andReturn( $client );
 
 		\WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
@@ -263,7 +286,7 @@ class AccessTest extends TestCase {
 			->with( 'id', 1 )
 			->andReturn( $user );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_logout_client', $this->access->client );
+		\WP_Mock::expectFilter( 'ping_me_on_slack_logout_client', $client );
 
 		\WP_Mock::userFunction(
 			'esc_html__',
@@ -298,7 +321,7 @@ class AccessTest extends TestCase {
 			->with()
 			->andReturn( '08:57:13, 01-07-2024' );
 
-		$this->access->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( $message );
 

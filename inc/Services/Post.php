@@ -16,6 +16,24 @@ use PingMeOnSlack\Interfaces\Kernel;
 
 class Post extends Service implements Kernel {
 	/**
+	 * WP Post.
+	 *
+	 * @since 1.1.3
+	 *
+	 * @var \WP_Post
+	 */
+	public \WP_Post $post;
+
+	/**
+	 * Post Event.
+	 *
+	 * @since 1.1.3
+	 *
+	 * @var string
+	 */
+	public string $event;
+
+	/**
 	 * Bind to WP.
 	 *
 	 * @since 1.0.0
@@ -58,6 +76,9 @@ class Post extends Service implements Kernel {
 		// Get Event Type.
 		$this->event = $new_status;
 
+		// Set Message.
+		$message = '';
+
 		switch ( $new_status ) {
 			case 'draft':
 				$post_draft = pmos_get_settings( 'post_draft' );
@@ -95,9 +116,9 @@ class Post extends Service implements Kernel {
 		 * @param Client $client Client Instance.
 		 * @return Client
 		 */
-		$this->client = apply_filters( "ping_me_on_slack_{$this->post->post_type}_client", $client = $this->client );
+		$client = apply_filters( "ping_me_on_slack_{$this->post->post_type}_client", $client = $this->get_client() );
 
-		$this->client->ping( $message );
+		$client->ping( $message );
 	}
 
 	/**

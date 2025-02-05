@@ -8,7 +8,6 @@ use PingMeOnSlack\Core\Client;
 use PingMeOnSlack\Services\Boot;
 
 /**
- * @covers \PingMeOnSlack\Services\Boot::__construct
  * @covers \PingMeOnSlack\Services\Boot::register
  * @covers \PingMeOnSlack\Services\Boot::ping_me_on_slack_translation
  */

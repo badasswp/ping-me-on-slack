@@ -16,6 +16,24 @@ use PingMeOnSlack\Interfaces\Kernel;
 
 class Comment extends Service implements Kernel {
 	/**
+	 * WP Comment.
+	 *
+	 * @since 1.1.3
+	 *
+	 * @var \WP_Comment
+	 */
+	public \WP_Comment $comment;
+
+	/**
+	 * Comment Event.
+	 *
+	 * @since 1.1.3
+	 *
+	 * @var string
+	 */
+	public string $event;
+
+	/**
 	 * Bind to WP.
 	 *
 	 * @since 1.0.0
@@ -58,6 +76,9 @@ class Comment extends Service implements Kernel {
 		// Get Event Type.
 		$this->event = $new_status;
 
+		// Set Message.
+		$message = '';
+
 		switch ( $new_status ) {
 			case 'approved':
 				$comment_approve = pmos_get_settings( 'comment_approve' );
@@ -87,9 +108,9 @@ class Comment extends Service implements Kernel {
 		 * @param Client $client Client Instance.
 		 * @return Client
 		 */
-		$this->client = apply_filters( 'ping_me_on_slack_comment_client', $client = $this->client );
+		$client = apply_filters( 'ping_me_on_slack_comment_client', $client = $this->get_client() );
 
-		$this->client->ping( $message );
+		$client->ping( $message );
 	}
 
 	/**

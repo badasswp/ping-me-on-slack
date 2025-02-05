@@ -8,7 +8,6 @@ use PingMeOnSlack\Core\Client;
 use PingMeOnSlack\Services\Post;
 
 /**
- * @covers \PingMeOnSlack\Services\Post::__construct
  * @covers \PingMeOnSlack\Services\Post::register
  * @covers \PingMeOnSlack\Services\Post::ping_on_post_status_change
  * @covers \PingMeOnSlack\Services\Post::get_message
@@ -97,6 +96,12 @@ class PostTest extends TestCase {
 		$post->shouldAllowMockingProtectedMethods();
 		$post->post_type = 'post';
 
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->post->shouldReceive( 'get_client' )
+			->andReturn( $client );
+
 		$this->post->post = $post;
 
 		\WP_Mock::userFunction( 'get_option' )
@@ -125,11 +130,11 @@ class PostTest extends TestCase {
 				}
 			);
 
-		$this->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( 'A Post was just published!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $this->client );
+		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
 
 		$this->post->ping_on_post_status_change( 'publish', 'draft', $post );
 
@@ -140,6 +145,12 @@ class PostTest extends TestCase {
 		$post = Mockery::mock( \WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
 		$post->post_type = 'post';
+
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->post->shouldReceive( 'get_client' )
+			->andReturn( $client );
 
 		$this->post->post = $post;
 
@@ -169,11 +180,11 @@ class PostTest extends TestCase {
 				}
 			);
 
-		$this->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( 'Custom Message: Your post is now published!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $this->client );
+		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
 
 		$this->post->ping_on_post_status_change( 'publish', 'draft', $post );
 
@@ -184,6 +195,12 @@ class PostTest extends TestCase {
 		$post = Mockery::mock( \WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
 		$post->post_type = 'post';
+
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->post->shouldReceive( 'get_client' )
+			->andReturn( $client );
 
 		$this->post->post = $post;
 
@@ -213,11 +230,11 @@ class PostTest extends TestCase {
 				}
 			);
 
-		$this->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( 'A Post draft was just created!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $this->client );
+		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
 
 		$this->post->ping_on_post_status_change( 'draft', 'auto-draft', $post );
 
@@ -228,6 +245,12 @@ class PostTest extends TestCase {
 		$post = Mockery::mock( \WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
 		$post->post_type = 'post';
+
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->post->shouldReceive( 'get_client' )
+			->andReturn( $client );
 
 		$this->post->post = $post;
 
@@ -257,11 +280,11 @@ class PostTest extends TestCase {
 				}
 			);
 
-		$this->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( 'Custom Message: Your post is now drafted!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $this->client );
+		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
 
 		$this->post->ping_on_post_status_change( 'draft', 'auto-draft', $post );
 
@@ -272,6 +295,12 @@ class PostTest extends TestCase {
 		$post = Mockery::mock( \WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
 		$post->post_type = 'post';
+
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->post->shouldReceive( 'get_client' )
+			->andReturn( $client );
 
 		$this->post->post = $post;
 
@@ -301,11 +330,11 @@ class PostTest extends TestCase {
 				}
 			);
 
-		$this->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( 'A Post was just trashed!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $this->client );
+		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
 
 		$this->post->ping_on_post_status_change( 'trash', 'publish', $post );
 
@@ -316,6 +345,12 @@ class PostTest extends TestCase {
 		$post = Mockery::mock( \WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
 		$post->post_type = 'post';
+
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->post->shouldReceive( 'get_client' )
+			->andReturn( $client );
 
 		$this->post->post = $post;
 
@@ -345,11 +380,11 @@ class PostTest extends TestCase {
 				}
 			);
 
-		$this->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( 'Custom Message: Your post is now trashed!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $this->client );
+		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
 
 		$this->post->ping_on_post_status_change( 'trash', 'publish', $post );
 
