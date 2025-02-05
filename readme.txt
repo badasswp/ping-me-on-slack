@@ -69,6 +69,11 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 
 == Changelog ==
 
+= 1.1.3 =
+* Refactor Slack client using DI.
+* Fix failing unit tests.
+* Tested up to WP 6.7.1.
+
 = 1.1.2 =
 * Prevent style bleeding from Options page.
 * Update Unit Tests & Tests Coverage.
