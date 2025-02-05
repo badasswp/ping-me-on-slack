@@ -58,7 +58,7 @@ class Access extends Service implements Kernel {
 		 * @param Client $client Client Instance.
 		 * @return Client
 		 */
-		$this->client = apply_filters( 'ping_me_on_slack_login_client', $client = $this->client );
+		$client = apply_filters( 'ping_me_on_slack_login_client', $client = $this->get_client() );
 
 		$access_login = pmos_get_settings( 'access_login' );
 
@@ -91,7 +91,7 @@ class Access extends Service implements Kernel {
 		 */
 		$message = (string) apply_filters( 'ping_me_on_slack_login_message', $message, $user );
 
-		$this->client->ping( $message );
+		$client->ping( $message );
 	}
 
 	/**
@@ -123,7 +123,7 @@ class Access extends Service implements Kernel {
 		 * @param Client $client Client Instance.
 		 * @return Client
 		 */
-		$this->client = apply_filters( 'ping_me_on_slack_logout_client', $client = $this->client );
+		$client = apply_filters( 'ping_me_on_slack_logout_client', $client = $this->get_client() );
 
 		$user = get_user_by( 'id', $user_id );
 
@@ -158,6 +158,6 @@ class Access extends Service implements Kernel {
 		 */
 		$message = (string) apply_filters( 'ping_me_on_slack_logout_message', $message, $user );
 
-		$this->client->ping( $message );
+		$client->ping( $message );
 	}
 }

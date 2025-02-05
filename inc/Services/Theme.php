@@ -15,6 +15,15 @@ use PingMeOnSlack\Interfaces\Kernel;
 
 class Theme extends Service implements Kernel {
 	/**
+	 * WP Theme.
+	 *
+	 * @since 1.1.3
+	 *
+	 * @var \WP_Theme
+	 */
+	public \WP_Theme $theme;
+
+	/**
 	 * Bind to WP.
 	 *
 	 * @since 1.0.0
@@ -61,9 +70,9 @@ class Theme extends Service implements Kernel {
 		 * @param Client $client Client Instance.
 		 * @return Client
 		 */
-		$this->client = apply_filters( 'ping_me_on_slack_theme_client', $client = $this->client );
+		$client = apply_filters( 'ping_me_on_slack_theme_client', $client = $this->get_client() );
 
-		$this->client->ping( $message );
+		$client->ping( $message );
 	}
 
 	/**

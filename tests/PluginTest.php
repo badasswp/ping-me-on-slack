@@ -19,9 +19,7 @@ use PingMeOnSlack\Services\Comment;
 /**
  * @covers \PingMeOnSlack\Plugin::get_instance
  * @covers \PingMeOnSlack\Plugin::run
- * @covers \PingMeOnSlack\Abstracts\Service::__construct
  * @covers \PingMeOnSlack\Abstracts\Service::get_instance
- * @covers \PingMeOnSlack\Core\Client::__construct
  * @covers \PingMeOnSlack\Core\Container::__construct
  * @covers \PingMeOnSlack\Core\Container::register
  * @covers \PingMeOnSlack\Services\Access::register
@@ -52,17 +50,6 @@ class PluginTest extends TestCase {
 	}
 
 	public function test_plugin_runs_singleton_instance() {
-		\WP_Mock::userFunction( 'get_option' )
-			->times( 7 )
-			->with( 'ping_me_on_slack', [] )
-			->andReturn(
-				[
-					'webhook'  => 'https://hooks.services.slack.com',
-					'channel'  => '#general',
-					'username' => 'Bryan',
-				]
-			);
-
 		$this->services = [
 			'Access'  => Access::get_instance(),
 			'Admin'   => Admin::get_instance(),

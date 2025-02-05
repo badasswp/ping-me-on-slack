@@ -8,7 +8,6 @@ use PingMeOnSlack\Core\Client;
 use PingMeOnSlack\Services\Theme;
 
 /**
- * @covers \PingMeOnSlack\Services\Theme::__construct
  * @covers \PingMeOnSlack\Services\Theme::register
  * @covers \PingMeOnSlack\Services\Theme::ping_on_theme_change
  * @covers \PingMeOnSlack\Services\Theme::get_message
@@ -56,6 +55,12 @@ class ThemeTest extends TestCase {
 		$theme2 = Mockery::mock( \WP_Theme::class )->makePartial();
 		$theme2->shouldAllowMockingProtectedMethods();
 
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$this->theme->shouldReceive( 'get_client' )
+			->andReturn( $client );
+
 		\WP_Mock::userFunction(
 			'esc_html__',
 			[
@@ -71,11 +76,11 @@ class ThemeTest extends TestCase {
 			->with( 'A Theme was just switched!' )
 			->andReturn( 'A Theme was just switched!' );
 
-		$this->client->shouldReceive( 'ping' )
+		$client->shouldReceive( 'ping' )
 			->once()
 			->with( 'A Theme was just switched!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_theme_client', $this->client );
+		\WP_Mock::expectFilter( 'ping_me_on_slack_theme_client', $client );
 
 		$this->theme->ping_on_theme_change( 'Divi', $theme1, $theme2 );
 
