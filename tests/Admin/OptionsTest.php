@@ -123,7 +123,7 @@ class OptionsTest extends TestCase {
 							'summary'     => 'e.g. #general',
 						],
 						'webhook'  => [
-							'control'     => 'text',
+							'control'     => 'password',
 							'placeholder' => '',
 							'label'       => 'Slack Webhook',
 							'summary'     => 'e.g. https://hooks.slack.com/services/xxxxxx',

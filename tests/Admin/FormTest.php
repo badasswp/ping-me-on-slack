@@ -17,6 +17,7 @@ use PingMeOnSlack\Admin\Form;
  * @covers \PingMeOnSlack\Admin\Form::get_setting
  * @covers \PingMeOnSlack\Admin\Form::get_form_control
  * @covers \PingMeOnSlack\Admin\Form::get_text_control
+ * @covers \PingMeOnSlack\Admin\Form::get_password_control
  * @covers \PingMeOnSlack\Admin\Form::get_checkbox_control
  * @covers \PingMeOnSlack\Admin\Form::get_select_control
  * @covers \PingMeOnSlack\Admin\Form::get_form_submit
@@ -44,9 +45,9 @@ class FormTest extends TestCase {
 					'option'  => 'plugin_option',
 				],
 				'fields' => [
-					'form_group_1',
-					'form_group_2',
-					'form_group_3',
+					[ 'form_group_1' ],
+					[ 'form_group_2' ],
+					[ 'form_group_3' ],
 				],
 				'submit' => [
 					'heading' => 'Plugin Title',
@@ -142,9 +143,9 @@ class FormTest extends TestCase {
 		\WP_Mock::expectFilter(
 			'ping_me_on_slack_form_fields',
 			[
-				'form_group_1',
-				'form_group_2',
-				'form_group_3',
+				[ 'form_group_1' ],
+				[ 'form_group_2' ],
+				[ 'form_group_3' ],
 			]
 		);
 
@@ -154,7 +155,7 @@ class FormTest extends TestCase {
 				function ( $arg ) {
 					return sprintf(
 						'<section>%s</section>',
-						$arg
+						json_encode( $arg )
 					);
 				}
 			);
@@ -162,7 +163,7 @@ class FormTest extends TestCase {
 		$form_main = $this->form->get_form_main();
 
 		$this->assertSame(
-			'<section>form_group_1</section><section>form_group_2</section><section>form_group_3</section>',
+			'<section>["form_group_1"]</section><section>["form_group_2"]</section><section>["form_group_3"]</section>',
 			$form_main
 		);
 	}
@@ -263,6 +264,33 @@ class FormTest extends TestCase {
 		$this->assertSame( 'Text Control', $control );
 	}
 
+	public function test_get_form_control_returns_password_control() {
+		$this->form->shouldReceive( 'get_password_control' )
+			->once()
+			->with(
+				[
+					'control'     => 'password',
+					'placeholder' => 'Password Placeholder',
+					'label'       => 'Password Label',
+					'summary'     => 'Password Summary',
+				],
+				'password_name'
+			)
+			->andReturn( 'Password Control' );
+
+		$control = $this->form->get_form_control(
+			[
+				'control'     => 'password',
+				'placeholder' => 'Password Placeholder',
+				'label'       => 'Password Label',
+				'summary'     => 'Password Summary',
+			],
+			'password_name'
+		);
+
+		$this->assertSame( 'Password Control', $control );
+	}
+
 	public function test_get_form_control_returns_select_control() {
 		$this->form->shouldReceive( 'get_select_control' )
 			->once()
@@ -333,6 +361,26 @@ class FormTest extends TestCase {
 
 		$this->assertSame(
 			'<input type="text" placeholder="Text Placeholder" value="Text Name" name="text_name"/>',
+			$control
+		);
+	}
+
+	public function test_get_password_control() {
+		$this->form->shouldReceive( 'get_setting' )
+			->times( 1 )->with( 'text_name' )->andReturn( 'Text Name' );
+
+		$control = $this->form->get_password_control(
+			[
+				'control'     => 'text',
+				'placeholder' => 'Text Placeholder',
+				'label'       => 'Text Label',
+				'summary'     => 'Text Summary',
+			],
+			'text_name'
+		);
+
+		$this->assertSame(
+			'<input type="password" placeholder="Text Placeholder" value="Text Name" name="text_name"/>',
 			$control
 		);
 	}

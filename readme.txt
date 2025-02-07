@@ -3,7 +3,7 @@ Contributors: badasswp
 Tags: slack, ping, notify, chat.
 Requires at least: 4.0
 Tested up to: 6.7.1
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 Requires PHP: 8.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -68,6 +68,12 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 4. Ping Me On Slack Options - Save Options.
 
 == Changelog ==
+
+= 1.1.4 =
+* Custom filter `ping_me_on_slack_dispatcher` for global Slack client.
+* Feat: New Password control in Form options.
+* Updated unit tests.
+* Tested up to WP 6.7.1
 
 = 1.1.3 =
 * Refactor Slack client using DI.

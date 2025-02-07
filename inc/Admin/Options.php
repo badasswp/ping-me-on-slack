@@ -140,7 +140,7 @@ class Options {
 						'summary'     => esc_html__( 'e.g. #general', 'ping-me-on-slack' ),
 					],
 					'webhook'  => [
-						'control'     => esc_attr( 'text' ),
+						'control'     => esc_attr( 'password' ),
 						'placeholder' => esc_attr( '' ),
 						'label'       => esc_html__( 'Slack Webhook', 'ping-me-on-slack' ),
 						'summary'     => esc_html__( 'e.g. https://hooks.slack.com/services/xxxxxx', 'ping-me-on-slack' ),

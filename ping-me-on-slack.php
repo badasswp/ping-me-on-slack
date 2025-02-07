@@ -3,7 +3,7 @@
  * Plugin Name: Ping Me On Slack
  * Plugin URI:  https://github.com/badasswp/ping-me-on-slack
  * Description: Get notifications on Slack when changes are made on your WP website.
- * Version:     1.1.3
+ * Version:     1.1.4
  * Author:      badasswp
  * Author URI:  https://github.com/badasswp
  * License:     GPL v2 or later
