@@ -65,7 +65,16 @@ abstract class Service implements Kernel {
 	 * @return void
 	 */
 	protected function get_dispatcher( Dispatcher $dispatcher ): Dispatcher {
-		return $dispatcher;
+		/**
+		 * Filter Dispatcher.
+		 *
+		 * Customise the Dispatch client here, you can
+		 * make this extensible.
+		 *
+		 * @since 1.1.4
+		 * @return Dispatcher Client.
+		 */
+		return apply_filters( 'ping_me_on_slack_dispatcher', $dispatcher );
 	}
 
 	/**
