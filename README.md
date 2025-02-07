@@ -42,6 +42,25 @@ Ever needed to keep track of what's happening on your website? No need to look f
 
 ### Hooks
 
+#### `ping_me_on_slack_dispatcher`
+
+This custom hook (filter) provides the ability to customise the global Slack client. For e.g. To use your own custom Slack client, you can do:
+
+```php
+use MySlackClient;
+
+add_filter( 'ping_me_on_slack_dispatcher', [ $this, 'slack_client' ], 10, 1 );
+
+public function slack_client( $client ) {
+    return new MySlackClient();
+}
+```
+
+**Parameters**
+
+- client _`{\PingMeOnSlack\Interfaces\Dispatcher}`_ By default this will be the global Slack client class that implements the `Dispatcher` interface.
+<br/>
+
 #### `ping_me_on_slack_{$post_type}_client`
 
 This custom hook (filter) provides the ability to customise the Slack client. For e.g. To send with a custom username, you could do:
