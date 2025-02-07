@@ -69,6 +69,12 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 
 == Changelog ==
 
+= 1.1.4 =
+* Custom filter `ping_me_on_slack_dispatcher` for global Slack client.
+* Feat: New Password control in Form options.
+* Updated unit tests.
+* Tested up to WP 6.7.1
+
 = 1.1.3 =
 * Refactor Slack client using DI.
 * Fix failing unit tests.
