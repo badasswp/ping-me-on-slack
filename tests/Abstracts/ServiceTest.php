@@ -54,6 +54,12 @@ class ServiceTest extends TestCase {
 		$service = Mockery::mock( ConcreteService::class )->makePartial();
 		$service->shouldAllowMockingProtectedMethods();
 
+		$client = Mockery::mock( Client::class )->makePartial();
+		$client->shouldAllowMockingProtectedMethods();
+
+		$service->shouldReceive( 'get_dispatcher' )
+			->andReturn( $client );
+
 		$this->assertInstanceOf( Client::class, $service->get_client() );
 		$this->assertConditionsMet();
 	}
@@ -64,6 +70,8 @@ class ServiceTest extends TestCase {
 
 		$client = Mockery::mock( Client::class )->makePartial();
 		$client->shouldAllowMockingProtectedMethods();
+
+		\WP_Mock::expectFilter( 'ping_me_on_slack_dispatcher', $client );
 
 		$this->assertInstanceOf( Dispatcher::class, $service->get_dispatcher( $client ) );
 		$this->assertConditionsMet();
