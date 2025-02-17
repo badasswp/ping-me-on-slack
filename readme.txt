@@ -69,8 +69,10 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 
 == Changelog ==
 
-= Unreleased =
+= 1.1.5 =
 * Use helper function `pmos_get_settings`.
+* Update README docs.
+* Testd up to WP 6.7.2.
 
 = 1.1.4 =
 * Custom filter `ping_me_on_slack_dispatcher` for global Slack client.
