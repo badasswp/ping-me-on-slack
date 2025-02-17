@@ -22,13 +22,11 @@ class Client implements Dispatcher {
 	 * @return SlackClient
 	 */
 	protected function get_slack_client(): SlackClient {
-		$settings = get_option( 'ping_me_on_slack', [] );
-
 		return new SlackClient(
-			$settings['webhook'] ?? '',
+			pmos_get_settings( 'webhook' ),
 			[
-				'channel'  => $settings['channel'] ?? '',
-				'username' => $settings['username'] ?? '',
+				'channel'  => pmos_get_settings( 'channel' ),
+				'username' => pmos_get_settings( 'username' ),
 			]
 		);
 	}

@@ -10,6 +10,7 @@ use Maknz\Slack\Client as SlackClient;
 /**
  * @covers \PingMeOnSlack\Core\Client::ping
  * @covers \PingMeOnSlack\Core\Client::get_slack_client
+ * @covers pmos_get_settings
  */
 class ClientTest extends TestCase {
 	public Client $client;
@@ -29,7 +30,7 @@ class ClientTest extends TestCase {
 		$client->shouldAllowMockingProtectedMethods();
 
 		\WP_Mock::userFunction( 'get_option' )
-			->once()
+			->times( 3 )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[

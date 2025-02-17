@@ -69,6 +69,9 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 
 == Changelog ==
 
+= Unreleased =
+* Use helper function `pmos_get_settings`.
+
 = 1.1.4 =
 * Custom filter `ping_me_on_slack_dispatcher` for global Slack client.
 * Feat: New Password control in Form options.
