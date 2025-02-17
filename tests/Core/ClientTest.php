@@ -29,7 +29,7 @@ class ClientTest extends TestCase {
 		$client->shouldAllowMockingProtectedMethods();
 
 		\WP_Mock::userFunction( 'get_option' )
-			->once()
+			->times( 3 )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
