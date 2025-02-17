@@ -8,7 +8,7 @@ Requires PHP: 8.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Get notifications on Slack when changes are made on your WP website.
+Receive instant Slack notifications whenever updates, edits, or changes are made on your WordPress website, stay informed in real time.
 
 == Installation ==
 
