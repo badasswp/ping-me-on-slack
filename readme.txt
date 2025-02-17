@@ -2,13 +2,13 @@
 Contributors: badasswp
 Tags: slack, ping, notify, chat.
 Requires at least: 4.0
-Tested up to: 6.7.1
-Stable tag: 1.1.4
+Tested up to: 6.7.2
+Stable tag: 1.1.5
 Requires PHP: 8.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Get notifications on Slack when changes are made on your WP website.
+Receive instant Slack notifications whenever updates, edits, or changes are made on your WordPress website, stay informed in real time.
 
 == Installation ==
 
@@ -68,6 +68,11 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 4. Ping Me On Slack Options - Save Options.
 
 == Changelog ==
+
+= 1.1.5 =
+* Use helper function `pmos_get_settings`.
+* Update README docs.
+* Testd up to WP 6.7.2.
 
 = 1.1.4 =
 * Custom filter `ping_me_on_slack_dispatcher` for global Slack client.
