@@ -15,20 +15,33 @@ use PingMeOnSlack\Interfaces\Dispatcher;
 
 class Client implements Dispatcher {
 	/**
+	 * Slack Params.
+	 *
+	 * @var mixed[]
+	 */
+	public array $args;
+
+	/**
+	 * Constructor.
+	 *
+	 * @since 1.2.0
+	 */
+	public function __construct() {
+		$this->args = [
+			'channel'  => pmos_get_settings( 'channel' ),
+			'username' => pmos_get_settings( 'username' ),
+		];
+	}
+
+	/**
 	 * Get Slack Client.
 	 *
 	 * @since 1.1.3
 	 *
 	 * @return SlackClient
 	 */
-	protected function get_slack_client(): SlackClient {
-		return new SlackClient(
-			pmos_get_settings( 'webhook' ),
-			[
-				'channel'  => pmos_get_settings( 'channel' ),
-				'username' => pmos_get_settings( 'username' ),
-			]
-		);
+	protected function get_client(): SlackClient {
+		return new SlackClient( pmos_get_settings( 'webhook' ), $this->args );
 	}
 
 	/**
@@ -44,7 +57,7 @@ class Client implements Dispatcher {
 	 */
 	public function ping( $message ): void {
 		try {
-			$this->get_slack_client()->send( $message );
+			$this->get_client()->send( $message );
 		} catch ( \Exception $e ) {
 			error_log(
 				sprintf(
