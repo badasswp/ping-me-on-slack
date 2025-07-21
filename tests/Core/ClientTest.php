@@ -10,6 +10,7 @@ use Maknz\Slack\Client as SlackClient;
 /**
  * @covers \PingMeOnSlack\Core\Client::ping
  * @covers \PingMeOnSlack\Core\Client::get_client
+ * @covers \PingMeOnSlack\Core\Client::__construct
  * @covers pmos_get_settings
  */
 class ClientTest extends TestCase {
