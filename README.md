@@ -488,3 +488,33 @@ public function user_modification_message( $message, $user_id ): string {
 - message _`{string}`_ By default this will be the passed message.
 - user_id _`{int}`_ By default this will be the User ID.
 <br/>
+
+---
+
+## Contribute
+
+Contributions are __welcome__ and will be fully __credited__. To contribute, please fork this repo and raise a PR (Pull Request) against the `master` branch.
+
+### Pre-requisites
+
+You should have the following tools before proceeding to the next steps:
+
+- Composer
+- Yarn
+- Docker
+
+To enable you start development, please run:
+
+```bash
+yarn start
+```
+
+This should spin up a local WP env instance for you to work with at:
+
+```bash
+http://ping.localhost:4017
+```
+
+You should now have a functioning local WP env to work with. To login to the `wp-admin` backend, please username as `admin` & password as `password`.
+
+__Awesome!__ - Thanks for being interested in contributing your time and code to this project!
