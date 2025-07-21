@@ -23,9 +23,37 @@ class ClientTest extends TestCase {
 		\WP_Mock::tearDown();
 	}
 
+	public function test_constructor_should_set_args() {
+		\WP_Mock::userFunction( 'get_option' )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'channel'  => '#general',
+					'username' => 'Bryan',
+					'webhook'  => 'https://slack.com/services',
+				]
+			);
+
+		$client = new Client();
+
+		$this->assertSame(
+			$client->args,
+			[
+				'channel'  => '#general',
+				'username' => 'Bryan',
+			]
+		);
+		$this->assertConditionsMet();
+	}
+
 	public function test_get_client() {
 		$client = Mockery::mock( Client::class )->makePartial();
 		$client->shouldAllowMockingProtectedMethods();
+
+		$client->args = [
+			'channel'  => '#general',
+			'username' => 'Bryan',
+		];
 
 		\WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
@@ -50,11 +78,14 @@ class ClientTest extends TestCase {
 		$client = Mockery::mock( Client::class )->makePartial();
 		$client->shouldAllowMockingProtectedMethods();
 
-		$client->client = Mockery::mock( SlackClient::class )->makePartial();
-		$client->client->shouldAllowMockingProtectedMethods();
+		$slack_client = Mockery::mock( SlackClient::class )->makePartial();
+		$slack_client->shouldAllowMockingProtectedMethods();
 
-		$client->client->shouldReceive( 'send' )
+		$slack_client->shouldReceive( 'send' )
 			->andReturn( null );
+
+		$client->shouldReceive( 'get_client' )
+			->andReturn( $slack_client );
 
 		$client->ping( 'Ping: A post was just published!' );
 
@@ -67,12 +98,15 @@ class ClientTest extends TestCase {
 		$client = Mockery::mock( Client::class )->makePartial();
 		$client->shouldAllowMockingProtectedMethods();
 
-		$client->client = Mockery::mock( SlackClient::class )->makePartial();
-		$client->client->shouldAllowMockingProtectedMethods();
+		$slack_client = Mockery::mock( SlackClient::class )->makePartial();
+		$slack_client->shouldAllowMockingProtectedMethods();
 
-		$client->client->shouldReceive( 'send' )
+		$slack_client->shouldReceive( 'send' )
 			->with( 'Ping: A post was just published!' )
 			->andThrow( $exception );
+
+		$client->shouldReceive( 'get_client' )
+			->andReturn( $slack_client );
 
 		\WP_Mock::expectAction( 'ping_me_on_slack_on_ping_error', 'No Text Found.' );
 

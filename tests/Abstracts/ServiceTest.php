@@ -57,7 +57,7 @@ class ServiceTest extends TestCase {
 			} );
 
 		\WP_Mock::userFunction( 'get_option' )
-			->times( 3 )
+			->times( 2 )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
