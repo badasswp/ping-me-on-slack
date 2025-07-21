@@ -67,9 +67,11 @@ class ClientTest extends TestCase {
 			);
 
 		\WP_Mock::userFunction( 'wp_parse_args' )
-			->andReturnUsing( function ( $arg1, $arg2 ) {
-				return array_merge( $arg2, $arg1 );
-			} );
+			->andReturnUsing(
+				function ( $arg1, $arg2 ) {
+					return array_merge( $arg2, $arg1 );
+				}
+			);
 
 		$this->assertInstanceOf( SlackClient::class, $client->get_client() );
 		$this->assertConditionsMet();
