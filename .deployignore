@@ -1,6 +1,7 @@
 .editorconfig
 .gitignore
 .github
+.wp-env.json
 CHANGELOG.md
 phpcs.xml
 phpstan.neon
@@ -9,3 +10,5 @@ README.md
 tests
 assets
 *.md
+bin
+package.json
