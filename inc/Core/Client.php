@@ -15,11 +15,11 @@ use PingMeOnSlack\Interfaces\Dispatcher;
 
 class Client implements Dispatcher {
 	/**
-	 * Slack Client.
+	 * Slack Params.
 	 *
-	 * @var SlackClient
+	 * @var mixed[]
 	 */
-	public SlackClient $client;
+	public array $args;
 
 	/**
 	 * Constructor.
@@ -27,42 +27,21 @@ class Client implements Dispatcher {
 	 * @since 1.2.0
 	 */
 	public function __construct() {
-		$this->client = $this->get_client();
-	}
-
-	/**
-	 * Setter function.
-	 *
-	 * @since 1.2.0
-	 *
-	 * @param string $name   Class prop.
-	 * @param mixed  $params Slack params.
-	 */
-	public function __set( $name, $params ) {
-		if ( 'args' === $name ) {
-			$this->client = $this->get_client( $params );
-		}
+		$this->args = [
+			'channel'  => pmos_get_settings( 'channel' ),
+			'username' => pmos_get_settings( 'username' ),
+		];
 	}
 
 	/**
 	 * Get Slack Client.
 	 *
 	 * @since 1.1.3
-	 * @since 1.2.0 Introduce Slack Params.
 	 *
-	 * @params mixed[] $params Slack Params.
 	 * @return SlackClient
 	 */
-	protected function get_client( $params = [] ): SlackClient {
-		$args = wp_parse_args(
-			$params,
-			[
-				'channel'  => pmos_get_settings( 'channel' ),
-				'username' => pmos_get_settings( 'username' ),
-			]
-		);
-
-		return new SlackClient( pmos_get_settings( 'webhook' ), $args );
+	protected function get_client(): SlackClient {
+		return new SlackClient( pmos_get_settings( 'webhook' ), $this->args );
 	}
 
 	/**
@@ -78,7 +57,7 @@ class Client implements Dispatcher {
 	 */
 	public function ping( $message ): void {
 		try {
-			$this->client->send( $message );
+			$this->get_client()->send( $message );
 		} catch ( \Exception $e ) {
 			error_log(
 				sprintf(
