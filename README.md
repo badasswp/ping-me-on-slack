@@ -69,12 +69,10 @@ This custom hook (filter) provides the ability to customise the Slack client. Fo
 add_filter( 'ping_me_on_slack_post_client', [ $this, 'post_client' ], 10, 1 );
 
 public function post_client( $client ) {
-    $client->args = wp_parse_args(
-        [
-            'username' => 'John Doe'
-        ],
-        $client->args
-    )
+    $client->args = [
+        'username' => 'John Doe',
+        'channel'  => '#posts'
+    ];
 
     return $client;
 }
@@ -147,12 +145,10 @@ This custom hook (filter) provides the ability to customise the Slack client. Fo
 add_filter( 'ping_me_on_slack_comment_client', [ $this, 'comment_client' ], 10, 1 );
 
 public function comment_client( $client ) {
-    $client->args = wp_parse_args(
-        [
-            'username' => 'John Doe'
-        ],
-        $client->args
-    )
+    $client->args = [
+        'username' => 'John Doe',
+        'channel'  => '#comments'
+    ];
 
     return $client;
 }
@@ -225,12 +221,10 @@ This custom hook (filter) provides the ability to customise the Slack client. Fo
 add_filter( 'ping_me_on_slack_login_client', [ $this, 'login_client' ], 10, 1 );
 
 public function login_client( $client ) {
-    $client->args = wp_parse_args(
-        [
-            'username' => 'John Doe'
-        ],
-        $client->args
-    )
+    $client->args = [
+        'username' => 'John Doe',
+        'channel'  => '#login-attempts'
+    ];
 
     return $client;
 }
@@ -274,12 +268,10 @@ This custom hook (filter) provides the ability to customise the Slack client. Fo
 add_filter( 'ping_me_on_slack_logout_client', [ $this, 'logout_client' ], 10, 1 );
 
 public function logout_client( $client ) {
-    $client->args = wp_parse_args(
-        [
-            'username' => 'John Doe'
-        ],
-        $client->args
-    )
+    $client->args = [
+        'username' => 'John Doe',
+        'channel'  => '#logout-attempts'
+    ];
 
     return $client;
 }
@@ -323,12 +315,10 @@ This custom hook (filter) provides the ability to customise the Slack client. Fo
 add_filter( 'ping_me_on_slack_theme_client', [ $this, 'theme_client' ], 10, 1 );
 
 public function theme_client( $client ) {
-    $client->args = wp_parse_args(
-        [
-            'username' => 'John Doe'
-        ],
-        $client->args
-    )
+    $client->args = [
+        'username' => 'John Doe',
+        'channel'  => '#theme-changes'
+    ];
 
     return $client;
 }
@@ -372,12 +362,10 @@ This custom hook (filter) provides the ability to customise the Slack client. Fo
 add_filter( 'ping_me_on_slack_user_creation_client', [ $this, 'user_creation_client' ], 10, 1 );
 
 public function user_creation_client( $client ) {
-    $client->args = wp_parse_args(
-        [
-            'username' => 'John Doe'
-        ],
-        $client->args
-    )
+    $client->args = [
+        'username' => 'John Doe',
+        'channel'  => '#user-additions'
+    ];
 
     return $client;
 }
@@ -419,12 +407,10 @@ This custom hook (filter) provides the ability to customise the Slack client. Fo
 add_filter( 'ping_me_on_slack_user_deletion_client', [ $this, 'user_deletion_client' ], 10, 1 );
 
 public function user_deletion_client( $client ) {
-    $client->args = wp_parse_args(
-        [
-            'username' => 'John Doe'
-        ],
-        $client->args
-    )
+    $client->args = [
+        'username' => 'John Doe',
+        'channel'  => '#user-deletions'
+    ];
 
     return $client;
 }
@@ -466,12 +452,10 @@ This custom hook (filter) provides the ability to customise the Slack client. Fo
 add_filter( 'ping_me_on_slack_user_modification_client', [ $this, 'user_modification_client' ], 10, 1 );
 
 public function user_modification_client( $client ) {
-    $client->args = wp_parse_args(
-        [
-            'username' => 'John Doe'
-        ],
-        $client->args
-    )
+    $client->args = [
+        'username' => 'John Doe',
+        'channel'  => '#user-edits'
+    ];
 
     return $client;
 }
@@ -504,3 +488,33 @@ public function user_modification_message( $message, $user_id ): string {
 - message _`{string}`_ By default this will be the passed message.
 - user_id _`{int}`_ By default this will be the User ID.
 <br/>
+
+---
+
+## Contribute
+
+Contributions are __welcome__ and will be fully __credited__. To contribute, please fork this repo and raise a PR (Pull Request) against the `master` branch.
+
+### Pre-requisites
+
+You should have the following tools before proceeding to the next steps:
+
+- Composer
+- Yarn
+- Docker
+
+To enable you start development, please run:
+
+```bash
+yarn start
+```
+
+This should spin up a local WP env instance for you to work with at:
+
+```bash
+http://ping.localhost:4017
+```
+
+You should now have a functioning local WP env to work with. To login to the `wp-admin` backend, please username as `admin` & password as `password`.
+
+__Awesome!__ - Thanks for being interested in contributing your time and code to this project!

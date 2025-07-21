@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0
+* Fix custom filters, ensure `args` is correctly set for Slack `client`.
+* Feat: Add `.wp-env` config for dev env.
+
 ## 1.1.5
 * Use helper function `pmos_get_settings`.
 * Update README docs.
