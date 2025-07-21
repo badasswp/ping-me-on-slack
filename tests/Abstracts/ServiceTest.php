@@ -14,6 +14,7 @@ use PingMeOnSlack\Interfaces\Dispatcher;
  * @covers \PingMeOnSlack\Abstracts\Service::get_dispatcher
  * @covers \PingMeOnSlack\Abstracts\Service::get_client
  * @covers \PingMeOnSlack\Abstracts\Service::register
+ * @covers \PingMeOnSlack\Core\Client::__construct
  */
 class ServiceTest extends TestCase {
 	public Service $service;
