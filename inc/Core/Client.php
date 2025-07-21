@@ -19,7 +19,7 @@ class Client implements Dispatcher {
 	 *
 	 * @var SlackClient
 	 */
-	protected SlackClient $client;
+	public SlackClient $client;
 
 	/**
 	 * Constructor.
@@ -62,13 +62,7 @@ class Client implements Dispatcher {
 			]
 		);
 
-		return new SlackClient(
-			pmos_get_settings( 'webhook' ),
-			[
-				'channel'  => pmos_get_settings( 'channel' ),
-				'username' => pmos_get_settings( 'username' ),
-			]
-		);
+		return new SlackClient( pmos_get_settings( 'webhook' ), $args );
 	}
 
 	/**

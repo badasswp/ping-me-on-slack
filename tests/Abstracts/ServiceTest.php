@@ -51,6 +51,22 @@ class ServiceTest extends TestCase {
 	}
 
 	public function test_get_client_returns_client_instance() {
+		\WP_Mock::userFunction( 'wp_parse_args' )
+			->andReturnUsing( function ( $arg1, $arg2 ) {
+				return array_merge( $arg2, $arg1 );
+			} );
+
+		\WP_Mock::userFunction( 'get_option' )
+			->times( 3 )
+			->with( 'ping_me_on_slack', [] )
+			->andReturn(
+				[
+					'channel'  => '#general',
+					'username' => 'Bryan',
+					'webhook'  => 'https://slack.com/services',
+				]
+			);
+
 		$service = Mockery::mock( ConcreteService::class )->makePartial();
 		$service->shouldAllowMockingProtectedMethods();
 
