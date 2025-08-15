@@ -2,8 +2,8 @@
 Contributors: badasswp
 Tags: slack, ping, notify, chat.
 Requires at least: 4.0
-Tested up to: 6.7.2
-Stable tag: 1.2.0
+Tested up to: 6.8
+Stable tag: 1.2.1
 Requires PHP: 8.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -68,6 +68,11 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 4. Ping Me On Slack Options - Save Options.
 
 == Changelog ==
+
+= 1.2.1 =
+* Bump up plugin version.
+* Tested up to WP 6.8
+* Update README docs.
 
 = 1.2.0 =
 * Fix custom filters, ensure `args` is correctly set for Slack `client`.
