@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.1
+* Bump up plugin version.
+* Tested up to WP 6.8
+* Update README docs.
+
 ## 1.2.0
 * Fix custom filters, ensure `args` is correctly set for Slack `client`.
 * Feat: Add `.wp-env` config for dev env.
