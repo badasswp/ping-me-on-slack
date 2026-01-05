@@ -16,41 +16,29 @@
 
 namespace badasswp\PingMeOnSlack;
 
-if ( ! defined( 'ABSPATH' ) ) {
+if ( ! defined( 'WPINC' ) ) {
 	exit;
 }
 
-define( 'PING_ME_ON_SLACK', __DIR__ . '/vendor/autoload.php' );
+define( 'PMOS_AUTOLOAD', __DIR__ . '/vendor/autoload.php' );
 
-/**
- * Run Notice, if Composer is not installed.
- *
- * @since 1.0.0
- * @return void
- */
-function ping_me_on_slack_notice(): void {
-	echo esc_html__( 'Error: Composer is not installed!', 'ping-me-on-slack' );
-}
+// Composer Check.
+if ( ! file_exists( PMOS_AUTOLOAD ) ) {
+	add_action(
+		'admin_notices',
+		function () {
+			vprintf(
+				/* translators: Plugin directory path. */
+				esc_html__( 'Fatal Error: Composer not setup in %s', 'ping-me-on-slack' ),
+				[ __DIR__ ]
+			);
+		}
+	);
 
-/**
- * Run Plugin.
- *
- * @since 1.0.0
- *
- * @param string $autoload Composer Autoload file.
- * @return void
- */
-function ping_me_on_slack_run( $autoload ): void {
-	require_once $autoload;
-	require_once __DIR__ . '/inc/Helpers/functions.php';
-	( \PingMeOnSlack\Plugin::get_instance() )->run();
-}
-
-// Bail out, if Composer is NOT installed.
-if ( ! file_exists( PING_ME_ON_SLACK ) ) {
-	add_action( 'admin_notices', __NAMESPACE__ . '\ping_me_on_slack_notice' );
 	return;
 }
 
 // Run Plugin.
-ping_me_on_slack_run( PING_ME_ON_SLACK );
+require_once PMOS_AUTOLOAD;
+require_once __DIR__ . '/inc/Helpers/functions.php';
+( \PingMeOnSlack\Plugin::get_instance() )->run();
