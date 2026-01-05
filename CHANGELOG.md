@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.2
+* Specify `wordpress-plugin` as Composer package type.
+* Tested up to WP 6.9.
+
 ## 1.2.1
 * Bump up plugin version.
 * Tested up to WP 6.8
