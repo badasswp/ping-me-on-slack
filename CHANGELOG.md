@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.0
+* Chore: Update CI/CD pipeline.
+* Tested up to WP 7.0.
+
 ## 1.2.2
 * Specify `wordpress-plugin` as Composer package type.
 * Tested up to WP 6.9.
