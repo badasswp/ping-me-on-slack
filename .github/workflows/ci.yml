@@ -2,6 +2,8 @@ name: PingMeOnSlack CI
 
 on:
   push:
+    branches-ignore:
+      - release-*
 
 permissions:
   contents: write
@@ -12,25 +14,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Set up PHP v8.2
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.2'
+      - name: Set up PHP v8.2
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
 
-    - name: Validate Composer
-      run: |
-        composer validate --strict
+      - name: Validate Composer
+        run: |
+          composer validate --strict
 
-    - name: Install Composer
-      run: |
-        composer install --prefer-dist --no-progress
+      - name: Install Composer
+        run: |
+          composer install --prefer-dist --no-progress
 
-    - name: Run Linting
-      run: |
-        composer run lint
+      - name: Run Linting
+        run: |
+          composer run lint
 
-    - name: Run Testing
-      run: |
-        composer run test
+      - name: Run Testing
+        run: |
+          composer run test
