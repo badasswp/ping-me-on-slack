@@ -2,6 +2,7 @@
 
 namespace PingMeOnSlack\Tests\Abstracts;
 
+use WP_Mock;
 use Mockery;
 use WP_Mock\Tools\TestCase;
 use PingMeOnSlack\Core\Client;
@@ -21,13 +22,13 @@ class ServiceTest extends TestCase {
 	public Service $service;
 
 	public function setUp(): void {
-		\WP_Mock::setUp();
+		WP_Mock::setUp();
 
 		$this->service = new ConcreteService();
 	}
 
 	public function tearDown(): void {
-		\WP_Mock::tearDown();
+		WP_Mock::tearDown();
 	}
 
 	public function test_get_instance_returns_singleton() {
@@ -53,14 +54,14 @@ class ServiceTest extends TestCase {
 	}
 
 	public function test_get_client_returns_client_instance() {
-		\WP_Mock::userFunction( 'wp_parse_args' )
+		WP_Mock::userFunction( 'wp_parse_args' )
 			->andReturnUsing(
 				function ( $arg1, $arg2 ) {
 					return array_merge( $arg2, $arg1 );
 				}
 			);
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->times( 2 )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
@@ -91,7 +92,7 @@ class ServiceTest extends TestCase {
 		$client = Mockery::mock( Client::class )->makePartial();
 		$client->shouldAllowMockingProtectedMethods();
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_dispatcher', $client );
+		WP_Mock::expectFilter( 'ping_me_on_slack_dispatcher', $client );
 
 		$this->assertInstanceOf( Dispatcher::class, $service->get_dispatcher( $client ) );
 		$this->assertConditionsMet();

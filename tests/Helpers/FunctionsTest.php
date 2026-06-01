@@ -2,6 +2,7 @@
 
 namespace PingMeOnSlack\Tests\Helpers;
 
+use WP_Mock;
 use WP_Mock\Tools\TestCase;
 
 require_once __DIR__ . '/../../inc/Helpers/functions.php';
@@ -11,7 +12,7 @@ require_once __DIR__ . '/../../inc/Helpers/functions.php';
  */
 class FunctionsTest extends TestCase {
 	public function test_pmos_get_settings() {
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->once()
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(

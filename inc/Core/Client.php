@@ -10,6 +10,7 @@
 
 namespace PingMeOnSlack\Core;
 
+use Exception;
 use Maknz\Slack\Client as SlackClient;
 use PingMeOnSlack\Interfaces\Dispatcher;
 
@@ -58,7 +59,7 @@ class Client implements Dispatcher {
 	public function ping( $message ): void {
 		try {
 			$this->get_client()->send( $message );
-		} catch ( \Exception $e ) {
+		} catch ( Exception $e ) {
 			error_log(
 				sprintf(
 					'Fatal Error: Something went wrong... %s',
