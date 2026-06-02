@@ -71,6 +71,7 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 
 = 1.4.0
 * Refactor: Replaced fully qualified path classes with their `use` counter part.
+* Feat: Added language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Brazil, Portuguese.
 
 = 1.3.0 =
 * Chore: Update CI/CD pipeline.
