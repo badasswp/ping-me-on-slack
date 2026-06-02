@@ -69,6 +69,9 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 
 == Changelog ==
 
+= 1.4.0
+* Feat: Added language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Brazil, Portuguese.
+
 = 1.3.0 =
 * Chore: Update CI/CD pipeline.
 * Tested up to WP 7.0.
