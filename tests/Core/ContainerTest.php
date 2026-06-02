@@ -2,7 +2,7 @@
 
 namespace PingMeOnSlack\Tests\Core;
 
-use Mockery;
+use WP_Mock;
 use WP_Mock\Tools\TestCase;
 
 use PingMeOnSlack\Services\Boot;
@@ -32,13 +32,13 @@ class ContainerTest extends TestCase {
 	public Container $container;
 
 	public function setUp(): void {
-		\WP_Mock::setUp();
+		WP_Mock::setUp();
 
 		$this->container = new Container();
 	}
 
 	public function tearDown(): void {
-		\WP_Mock::tearDown();
+		WP_Mock::tearDown();
 	}
 
 	public function test_container_has_list_of_services() {
@@ -63,7 +63,7 @@ class ContainerTest extends TestCase {
 			$service::get_instance();
 		}
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'init',
 			[
 				Service::$services[ Boot::class ],
@@ -71,7 +71,7 @@ class ContainerTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'wp_login',
 			[
 				Service::$services[ Access::class ],
@@ -81,7 +81,7 @@ class ContainerTest extends TestCase {
 			2
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'wp_logout',
 			[
 				Service::$services[ Access::class ],
@@ -89,7 +89,7 @@ class ContainerTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'admin_init',
 			[
 				Service::$services[ Admin::class ],
@@ -97,7 +97,7 @@ class ContainerTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'admin_menu',
 			[
 				Service::$services[ Admin::class ],
@@ -105,7 +105,7 @@ class ContainerTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'admin_enqueue_scripts',
 			[
 				Service::$services[ Admin::class ],
@@ -113,7 +113,7 @@ class ContainerTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'transition_comment_status',
 			[
 				Service::$services[ Comment::class ],
@@ -123,7 +123,7 @@ class ContainerTest extends TestCase {
 			3
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'transition_post_status',
 			[
 				Service::$services[ Post::class ],
@@ -133,7 +133,7 @@ class ContainerTest extends TestCase {
 			3
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'switch_theme',
 			[
 				Service::$services[ Theme::class ],
@@ -143,7 +143,7 @@ class ContainerTest extends TestCase {
 			3
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'user_register',
 			[
 				Service::$services[ User::class ],
@@ -153,7 +153,7 @@ class ContainerTest extends TestCase {
 			2
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'wp_update_user',
 			[
 				Service::$services[ User::class ],
@@ -163,7 +163,7 @@ class ContainerTest extends TestCase {
 			3
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'deleted_user',
 			[
 				Service::$services[ User::class ],

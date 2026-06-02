@@ -10,6 +10,7 @@
 
 namespace PingMeOnSlack\Services;
 
+use WP_Post;
 use PingMeOnSlack\Core\Client;
 use PingMeOnSlack\Abstracts\Service;
 use PingMeOnSlack\Interfaces\Kernel;
@@ -22,7 +23,7 @@ class Post extends Service implements Kernel {
 	 *
 	 * @var \WP_Post
 	 */
-	public \WP_Post $post;
+	public WP_Post $post;
 
 	/**
 	 * Post Event.

@@ -10,6 +10,7 @@
 
 namespace PingMeOnSlack\Services;
 
+use WP_Comment;
 use PingMeOnSlack\Core\Client;
 use PingMeOnSlack\Abstracts\Service;
 use PingMeOnSlack\Interfaces\Kernel;
@@ -22,7 +23,7 @@ class Comment extends Service implements Kernel {
 	 *
 	 * @var \WP_Comment
 	 */
-	public \WP_Comment $comment;
+	public WP_Comment $comment;
 
 	/**
 	 * Comment Event.

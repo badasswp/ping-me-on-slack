@@ -2,6 +2,9 @@
 
 namespace PingMeOnSlack\Tests\Services;
 
+use WP_User;
+use WP_Mock;
+use WP_Theme;
 use Mockery;
 use WP_Mock\Tools\TestCase;
 use PingMeOnSlack\Core\Client;
@@ -17,7 +20,7 @@ class ThemeTest extends TestCase {
 	public Theme $theme;
 
 	public function setUp(): void {
-		\WP_Mock::setUp();
+		WP_Mock::setUp();
 
 		$this->client = Mockery::mock( Client::class )->makePartial();
 		$this->client->shouldAllowMockingProtectedMethods();
@@ -28,11 +31,11 @@ class ThemeTest extends TestCase {
 	}
 
 	public function tearDown(): void {
-		\WP_Mock::tearDown();
+		WP_Mock::tearDown();
 	}
 
 	public function test_register() {
-		\WP_Mock::expectActionAdded( 'switch_theme', [ $this->theme, 'ping_on_theme_change' ], 10, 3 );
+		WP_Mock::expectActionAdded( 'switch_theme', [ $this->theme, 'ping_on_theme_change' ], 10, 3 );
 
 		$this->theme->register();
 
@@ -40,7 +43,7 @@ class ThemeTest extends TestCase {
 	}
 
 	public function test_ping_on_theme_change_bails_if_theme_is_unchanged() {
-		$theme = Mockery::mock( \WP_Theme::class )->makePartial();
+		$theme = Mockery::mock( WP_Theme::class )->makePartial();
 		$theme->shouldAllowMockingProtectedMethods();
 
 		$this->theme->ping_on_theme_change( 'Elementor', $theme, $theme );
@@ -49,10 +52,10 @@ class ThemeTest extends TestCase {
 	}
 
 	public function test_ping_on_theme_change_passes() {
-		$theme1 = Mockery::mock( \WP_Theme::class )->makePartial();
+		$theme1 = Mockery::mock( WP_Theme::class )->makePartial();
 		$theme1->shouldAllowMockingProtectedMethods();
 
-		$theme2 = Mockery::mock( \WP_Theme::class )->makePartial();
+		$theme2 = Mockery::mock( WP_Theme::class )->makePartial();
 		$theme2->shouldAllowMockingProtectedMethods();
 
 		$client = Mockery::mock( Client::class )->makePartial();
@@ -61,7 +64,7 @@ class ThemeTest extends TestCase {
 		$this->theme->shouldReceive( 'get_client' )
 			->andReturn( $client );
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 1,
@@ -80,7 +83,7 @@ class ThemeTest extends TestCase {
 			->once()
 			->with( 'A Theme was just switched!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_theme_client', $client );
+		WP_Mock::expectFilter( 'ping_me_on_slack_theme_client', $client );
 
 		$this->theme->ping_on_theme_change( 'Divi', $theme1, $theme2 );
 
@@ -88,10 +91,10 @@ class ThemeTest extends TestCase {
 	}
 
 	public function test_get_message() {
-		$theme = Mockery::mock( \WP_Theme::class )->makePartial();
+		$theme = Mockery::mock( WP_Theme::class )->makePartial();
 		$theme->shouldAllowMockingProtectedMethods();
 
-		$user             = Mockery::mock( \WP_User::class )->makePartial();
+		$user             = Mockery::mock( WP_User::class )->makePartial();
 		$user->user_login = 'john@doe.com';
 
 		$theme->ID    = 1;
@@ -99,7 +102,7 @@ class ThemeTest extends TestCase {
 
 		$this->theme->theme = $theme;
 
-		\WP_Mock::userFunction( 'wp_get_current_user' )
+		WP_Mock::userFunction( 'wp_get_current_user' )
 			->once()
 			->with()
 			->andReturn( $user );
@@ -109,7 +112,7 @@ class ThemeTest extends TestCase {
 			->with()
 			->andReturn( '08:57:13, 01-07-2024' );
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 5,
@@ -119,7 +122,7 @@ class ThemeTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html',
 			[
 				'times'  => 5,
@@ -131,7 +134,7 @@ class ThemeTest extends TestCase {
 
 		$message = "Ping: A Theme was just switched! \nID: 1 \nTitle: Diva \nUser: john@doe.com \nDate: 08:57:13, 01-07-2024";
 
-		\WP_Mock::expectFilter(
+		WP_Mock::expectFilter(
 			'ping_me_on_slack_theme_message',
 			$message,
 			$theme,

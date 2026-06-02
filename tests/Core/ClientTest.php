@@ -2,6 +2,8 @@
 
 namespace PingMeOnSlack\Tests\Core;
 
+use Exception;
+use WP_Mock;
 use Mockery;
 use WP_Mock\Tools\TestCase;
 use PingMeOnSlack\Core\Client;
@@ -17,15 +19,15 @@ class ClientTest extends TestCase {
 	public Client $client;
 
 	public function setUp(): void {
-		\WP_Mock::setUp();
+		WP_Mock::setUp();
 	}
 
 	public function tearDown(): void {
-		\WP_Mock::tearDown();
+		WP_Mock::tearDown();
 	}
 
 	public function test_constructor_should_set_args() {
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -56,7 +58,7 @@ class ClientTest extends TestCase {
 			'username' => 'Bryan',
 		];
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -66,7 +68,7 @@ class ClientTest extends TestCase {
 				]
 			);
 
-		\WP_Mock::userFunction( 'wp_parse_args' )
+		WP_Mock::userFunction( 'wp_parse_args' )
 			->andReturnUsing(
 				function ( $arg1, $arg2 ) {
 					return array_merge( $arg2, $arg1 );
@@ -96,7 +98,7 @@ class ClientTest extends TestCase {
 	}
 
 	public function test_ping_throws_exception() {
-		$exception = new \Exception( 'No Text Found.' );
+		$exception = new Exception( 'No Text Found.' );
 
 		$client = Mockery::mock( Client::class )->makePartial();
 		$client->shouldAllowMockingProtectedMethods();
@@ -111,7 +113,7 @@ class ClientTest extends TestCase {
 		$client->shouldReceive( 'get_client' )
 			->andReturn( $slack_client );
 
-		\WP_Mock::expectAction( 'ping_me_on_slack_on_ping_error', 'No Text Found.' );
+		WP_Mock::expectAction( 'ping_me_on_slack_on_ping_error', 'No Text Found.' );
 
 		$client->ping( 'Ping: A post was just published!' );
 
