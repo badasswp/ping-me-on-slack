@@ -69,6 +69,9 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 
 == Changelog ==
 
+= 1.4.0
+* Refactor: Replaced fully qualified path classes with their `use` counter part.
+
 = 1.3.0 =
 * Chore: Update CI/CD pipeline.
 * Tested up to WP 7.0.
