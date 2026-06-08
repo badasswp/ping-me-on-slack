@@ -90,7 +90,7 @@ class AdminTest extends TestCase {
 			->andReturn( null );
 
 		WP_Mock::userFunction( '__' )
-    		->andReturnArg( 0 );
+			->andReturnArg( 0 );
 
 		WP_Mock::userFunction( 'add_submenu_page' )
 			->once()
