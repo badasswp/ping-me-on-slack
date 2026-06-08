@@ -113,6 +113,16 @@ class ContainerTest extends TestCase {
 			]
 		);
 
+		$admin = Service::$services[ Admin::class ];
+
+		WP_Mock::expectActionAdded(
+			'admin_init',
+			[
+				$admin->pluginate,
+				'init',
+			]
+		);
+
 		WP_Mock::expectActionAdded(
 			'transition_comment_status',
 			[
