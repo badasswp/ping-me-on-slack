@@ -29,6 +29,7 @@ use PingMeOnSlack\Services\Comment;
  * @covers \PingMeOnSlack\Services\Post::register
  * @covers \PingMeOnSlack\Services\Theme::register
  * @covers \PingMeOnSlack\Services\User::register
+ * @covers \PingMeOnSlack\Services\Admin::__construct
  */
 class PluginTest extends TestCase {
 	public array $services;
@@ -107,6 +108,16 @@ class PluginTest extends TestCase {
 			[
 				Service::$services['PingMeOnSlack\Services\Admin'],
 				'register_options_styles',
+			]
+		);
+
+		$admin = Service::$services['PingMeOnSlack\Services\Admin'];
+
+		WP_Mock::expectActionAdded(
+			'admin_init',
+			[
+				$admin->pluginate,
+				'init',
 			]
 		);
 

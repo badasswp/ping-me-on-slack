@@ -41,6 +41,7 @@ class AdminTest extends TestCase {
 		WP_Mock::expectActionAdded( 'admin_init', [ $this->admin, 'register_options_init' ] );
 		WP_Mock::expectActionAdded( 'admin_menu', [ $this->admin, 'register_options_menu' ] );
 		WP_Mock::expectActionAdded( 'admin_enqueue_scripts', [ $this->admin, 'register_options_styles' ] );
+		WP_Mock::expectActionAdded( 'admin_init', [ $this->admin->pluginate, 'init' ] );
 
 		$this->admin->register();
 
@@ -87,6 +88,19 @@ class AdminTest extends TestCase {
 				100
 			)
 			->andReturn( null );
+
+		WP_Mock::userFunction( 'add_submenu_page' )
+			->once()
+			->with(
+				'ping-me-on-slack',
+				__( 'More Plugins', 'ping-me-on-slack' ),
+				__( 'More Plugins', 'ping-me-on-slack' ),
+				'manage_options',
+				sprintf( '%s-more-plugins', 'ping-me-on-slack' ),
+				[ $this->admin, 'register_more_plugins' ]
+			)
+			->andReturn( null );
+
 
 		$menu = $this->admin->register_options_menu();
 
