@@ -27,6 +27,7 @@ use PingMeOnSlack\Core\Container;
  * @covers \PingMeOnSlack\Services\Post::register
  * @covers \PingMeOnSlack\Services\Theme::register
  * @covers \PingMeOnSlack\Services\User::register
+ * @covers \PingMeOnSlack\Services\Admin::__construct
  */
 class ContainerTest extends TestCase {
 	public Container $container;

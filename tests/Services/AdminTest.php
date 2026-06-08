@@ -19,6 +19,7 @@ use PingMeOnSlack\Services\Admin;
  * @covers \PingMeOnSlack\Admin\Options::get_form_page
  * @covers \PingMeOnSlack\Admin\Options::get_form_submit
  * @covers \PingMeOnSlack\Admin\Options::init
+ * @covers \PingMeOnSlack\Services\Admin::__construct
  */
 class AdminTest extends TestCase {
 	public Admin $admin;
