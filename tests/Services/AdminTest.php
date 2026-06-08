@@ -97,10 +97,10 @@ class AdminTest extends TestCase {
 			->once()
 			->with(
 				'ping-me-on-slack',
-				__( 'More Plugins', 'ping-me-on-slack' ),
-				__( 'More Plugins', 'ping-me-on-slack' ),
+				'More Plugins',
+				'More Plugins',
 				'manage_options',
-				sprintf( '%s-more-plugins', 'ping-me-on-slack' ),
+				'ping-me-on-slack-more-plugins',
 				[ $this->admin, 'register_more_plugins' ]
 			)
 			->andReturn( null );
