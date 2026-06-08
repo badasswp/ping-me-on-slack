@@ -101,7 +101,6 @@ class AdminTest extends TestCase {
 			)
 			->andReturn( null );
 
-
 		$menu = $this->admin->register_options_menu();
 
 		$this->assertNull( $menu );
