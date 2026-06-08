@@ -27,6 +27,7 @@ use PingMeOnSlack\Core\Container;
  * @covers \PingMeOnSlack\Services\Post::register
  * @covers \PingMeOnSlack\Services\Theme::register
  * @covers \PingMeOnSlack\Services\User::register
+ * @covers \PingMeOnSlack\Services\Admin::__construct
  */
 class ContainerTest extends TestCase {
 	public Container $container;
@@ -110,6 +111,16 @@ class ContainerTest extends TestCase {
 			[
 				Service::$services[ Admin::class ],
 				'register_options_styles',
+			]
+		);
+
+		$admin = Service::$services[ Admin::class ];
+
+		WP_Mock::expectActionAdded(
+			'admin_init',
+			[
+				$admin->pluginate,
+				'init',
 			]
 		);
 

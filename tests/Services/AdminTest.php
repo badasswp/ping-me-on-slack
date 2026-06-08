@@ -19,6 +19,7 @@ use PingMeOnSlack\Services\Admin;
  * @covers \PingMeOnSlack\Admin\Options::get_form_page
  * @covers \PingMeOnSlack\Admin\Options::get_form_submit
  * @covers \PingMeOnSlack\Admin\Options::init
+ * @covers \PingMeOnSlack\Services\Admin::__construct
  */
 class AdminTest extends TestCase {
 	public Admin $admin;
@@ -41,6 +42,7 @@ class AdminTest extends TestCase {
 		WP_Mock::expectActionAdded( 'admin_init', [ $this->admin, 'register_options_init' ] );
 		WP_Mock::expectActionAdded( 'admin_menu', [ $this->admin, 'register_options_menu' ] );
 		WP_Mock::expectActionAdded( 'admin_enqueue_scripts', [ $this->admin, 'register_options_styles' ] );
+		WP_Mock::expectActionAdded( 'admin_init', [ $this->admin->pluginate, 'init' ] );
 
 		$this->admin->register();
 
@@ -85,6 +87,21 @@ class AdminTest extends TestCase {
 				[ $this->admin, 'register_options_page' ],
 				'dashicons-format-chat',
 				100
+			)
+			->andReturn( null );
+
+		WP_Mock::userFunction( '__' )
+			->andReturnUsing( fn( $text, $domain ) => $text );
+
+		WP_Mock::userFunction( 'add_submenu_page' )
+			->once()
+			->with(
+				'ping-me-on-slack',
+				'More Plugins',
+				'More Plugins',
+				'manage_options',
+				'ping-me-on-slack-more-plugins',
+				[ $this->admin, 'register_more_plugins' ]
 			)
 			->andReturn( null );
 
