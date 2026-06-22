@@ -3,7 +3,7 @@ Contributors: badasswp
 Tags: slack, ping, notify, chat.
 Requires at least: 4.0
 Tested up to: 7.0
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 Requires PHP: 8.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -68,6 +68,11 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 4. Ping Me On Slack Options - Save Options.
 
 == Changelog ==
+
+= 1.4.0 =
+* Refactor: Replaced fully qualified path classes with their `use` counter part.
+* Feat: Added language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Brazil, Portuguese.
+* Feat: Add `More Plugins` options page.
 
 = 1.3.0 =
 * Chore: Update CI/CD pipeline.

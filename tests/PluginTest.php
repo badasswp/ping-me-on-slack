@@ -2,7 +2,7 @@
 
 namespace PingMeOnSlack\Tests;
 
-use Mockery;
+use WP_Mock;
 use WP_Mock\Tools\TestCase;
 
 use PingMeOnSlack\Plugin;
@@ -29,16 +29,17 @@ use PingMeOnSlack\Services\Comment;
  * @covers \PingMeOnSlack\Services\Post::register
  * @covers \PingMeOnSlack\Services\Theme::register
  * @covers \PingMeOnSlack\Services\User::register
+ * @covers \PingMeOnSlack\Services\Admin::__construct
  */
 class PluginTest extends TestCase {
 	public array $services;
 
 	public function setUp(): void {
-		\WP_Mock::setUp();
+		WP_Mock::setUp();
 	}
 
 	public function tearDown(): void {
-		\WP_Mock::tearDown();
+		WP_Mock::tearDown();
 	}
 
 	public function test_plugin_returns_same_instance() {
@@ -60,7 +61,7 @@ class PluginTest extends TestCase {
 			'User'    => User::get_instance(),
 		];
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'init',
 			[
 				Service::$services['PingMeOnSlack\Services\Boot'],
@@ -68,7 +69,7 @@ class PluginTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'wp_login',
 			[
 				Service::$services['PingMeOnSlack\Services\Access'],
@@ -78,7 +79,7 @@ class PluginTest extends TestCase {
 			2
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'wp_logout',
 			[
 				Service::$services['PingMeOnSlack\Services\Access'],
@@ -86,7 +87,7 @@ class PluginTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'admin_init',
 			[
 				Service::$services['PingMeOnSlack\Services\Admin'],
@@ -94,7 +95,7 @@ class PluginTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'admin_menu',
 			[
 				Service::$services['PingMeOnSlack\Services\Admin'],
@@ -102,7 +103,7 @@ class PluginTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'admin_enqueue_scripts',
 			[
 				Service::$services['PingMeOnSlack\Services\Admin'],
@@ -110,7 +111,17 @@ class PluginTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::expectActionAdded(
+		$admin = Service::$services['PingMeOnSlack\Services\Admin'];
+
+		WP_Mock::expectActionAdded(
+			'admin_init',
+			[
+				$admin->pluginate,
+				'init',
+			]
+		);
+
+		WP_Mock::expectActionAdded(
 			'transition_comment_status',
 			[
 				Service::$services['PingMeOnSlack\Services\Comment'],
@@ -120,7 +131,7 @@ class PluginTest extends TestCase {
 			3
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'transition_post_status',
 			[
 				Service::$services['PingMeOnSlack\Services\Post'],
@@ -130,7 +141,7 @@ class PluginTest extends TestCase {
 			3
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'switch_theme',
 			[
 				Service::$services['PingMeOnSlack\Services\Theme'],
@@ -140,7 +151,7 @@ class PluginTest extends TestCase {
 			3
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'user_register',
 			[
 				Service::$services['PingMeOnSlack\Services\User'],
@@ -150,7 +161,7 @@ class PluginTest extends TestCase {
 			2
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'wp_update_user',
 			[
 				Service::$services['PingMeOnSlack\Services\User'],
@@ -160,7 +171,7 @@ class PluginTest extends TestCase {
 			3
 		);
 
-		\WP_Mock::expectActionAdded(
+		WP_Mock::expectActionAdded(
 			'deleted_user',
 			[
 				Service::$services['PingMeOnSlack\Services\User'],

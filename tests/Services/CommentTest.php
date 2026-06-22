@@ -2,6 +2,8 @@
 
 namespace PingMeOnSlack\Tests\Services;
 
+use WP_Mock;
+use WP_Comment;
 use Mockery;
 use WP_Mock\Tools\TestCase;
 use PingMeOnSlack\Core\Client;
@@ -18,7 +20,7 @@ class CommentTest extends TestCase {
 	public Comment $comment;
 
 	public function setUp(): void {
-		\WP_Mock::setUp();
+		WP_Mock::setUp();
 
 		$this->client = Mockery::mock( Client::class )->makePartial();
 		$this->client->shouldAllowMockingProtectedMethods();
@@ -29,11 +31,11 @@ class CommentTest extends TestCase {
 	}
 
 	public function tearDown(): void {
-		\WP_Mock::tearDown();
+		WP_Mock::tearDown();
 	}
 
 	public function test_register() {
-		\WP_Mock::expectActionAdded( 'transition_comment_status', [ $this->comment, 'ping_on_comment_status_change' ], 10, 3 );
+		WP_Mock::expectActionAdded( 'transition_comment_status', [ $this->comment, 'ping_on_comment_status_change' ], 10, 3 );
 
 		$this->comment->register();
 
@@ -41,10 +43,10 @@ class CommentTest extends TestCase {
 	}
 
 	public function test_ping_on_comment_status_change_bails() {
-		$comment = Mockery::mock( \WP_Comment::class )->makePartial();
+		$comment = Mockery::mock( WP_Comment::class )->makePartial();
 		$comment->shouldAllowMockingProtectedMethods();
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -58,10 +60,10 @@ class CommentTest extends TestCase {
 	}
 
 	public function test_ping_on_comment_status_change_fails_on_custom_option_false() {
-		$comment = Mockery::mock( \WP_Comment::class )->makePartial();
+		$comment = Mockery::mock( WP_Comment::class )->makePartial();
 		$comment->shouldAllowMockingProtectedMethods();
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -75,7 +77,7 @@ class CommentTest extends TestCase {
 	}
 
 	public function test_ping_on_comment_status_change_passes_on_approved() {
-		$comment = Mockery::mock( \WP_Comment::class )->makePartial();
+		$comment = Mockery::mock( WP_Comment::class )->makePartial();
 		$comment->shouldAllowMockingProtectedMethods();
 
 		$client = Mockery::mock( Client::class )->makePartial();
@@ -84,7 +86,7 @@ class CommentTest extends TestCase {
 		$this->comment->shouldReceive( 'get_client' )
 			->andReturn( $client );
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -93,7 +95,7 @@ class CommentTest extends TestCase {
 				]
 			);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 1,
@@ -114,7 +116,7 @@ class CommentTest extends TestCase {
 			->once()
 			->with( 'A Comment was just approved!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_comment_client', $client );
+		WP_Mock::expectFilter( 'ping_me_on_slack_comment_client', $client );
 
 		$this->comment->ping_on_comment_status_change( 'approved', 'draft', $comment );
 
@@ -122,7 +124,7 @@ class CommentTest extends TestCase {
 	}
 
 	public function test_ping_on_comment_status_change_passes_on_approved_with_custom_option() {
-		$comment = Mockery::mock( \WP_Comment::class )->makePartial();
+		$comment = Mockery::mock( WP_Comment::class )->makePartial();
 		$comment->shouldAllowMockingProtectedMethods();
 
 		$client = Mockery::mock( Client::class )->makePartial();
@@ -131,7 +133,7 @@ class CommentTest extends TestCase {
 		$this->comment->shouldReceive( 'get_client' )
 			->andReturn( $client );
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -140,7 +142,7 @@ class CommentTest extends TestCase {
 				]
 			);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 1,
@@ -161,7 +163,7 @@ class CommentTest extends TestCase {
 			->once()
 			->with( 'Custom Message: Your comment is approved!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_comment_client', $client );
+		WP_Mock::expectFilter( 'ping_me_on_slack_comment_client', $client );
 
 		$this->comment->ping_on_comment_status_change( 'approved', 'draft', $comment );
 
@@ -169,7 +171,7 @@ class CommentTest extends TestCase {
 	}
 
 	public function test_ping_on_comment_status_change_passes_on_trash() {
-		$comment = Mockery::mock( \WP_Comment::class )->makePartial();
+		$comment = Mockery::mock( WP_Comment::class )->makePartial();
 		$comment->shouldAllowMockingProtectedMethods();
 
 		$client = Mockery::mock( Client::class )->makePartial();
@@ -178,7 +180,7 @@ class CommentTest extends TestCase {
 		$this->comment->shouldReceive( 'get_client' )
 			->andReturn( $client );
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -187,7 +189,7 @@ class CommentTest extends TestCase {
 				]
 			);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 1,
@@ -208,7 +210,7 @@ class CommentTest extends TestCase {
 			->once()
 			->with( 'A Comment was just trashed!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_comment_client', $client );
+		WP_Mock::expectFilter( 'ping_me_on_slack_comment_client', $client );
 
 		$this->comment->ping_on_comment_status_change( 'trash', 'approved', $comment );
 
@@ -216,7 +218,7 @@ class CommentTest extends TestCase {
 	}
 
 	public function test_ping_on_comment_status_change_passes_on_trash_with_custom_option() {
-		$comment = Mockery::mock( \WP_Comment::class )->makePartial();
+		$comment = Mockery::mock( WP_Comment::class )->makePartial();
 		$comment->shouldAllowMockingProtectedMethods();
 
 		$client = Mockery::mock( Client::class )->makePartial();
@@ -225,7 +227,7 @@ class CommentTest extends TestCase {
 		$this->comment->shouldReceive( 'get_client' )
 			->andReturn( $client );
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -234,7 +236,7 @@ class CommentTest extends TestCase {
 				]
 			);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 1,
@@ -255,7 +257,7 @@ class CommentTest extends TestCase {
 			->once()
 			->with( 'Custom Message: Your comment is trashed!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_comment_client', $client );
+		WP_Mock::expectFilter( 'ping_me_on_slack_comment_client', $client );
 
 		$this->comment->ping_on_comment_status_change( 'trash', 'approved', $comment );
 
@@ -263,7 +265,7 @@ class CommentTest extends TestCase {
 	}
 
 	public function test_get_message() {
-		$comment = Mockery::mock( \WP_Comment::class )->makePartial();
+		$comment = Mockery::mock( WP_Comment::class )->makePartial();
 		$comment->shouldAllowMockingProtectedMethods();
 
 		$comment->comment_content      = 'What a wonderful world!';
@@ -278,7 +280,7 @@ class CommentTest extends TestCase {
 			->with()
 			->andReturn( '08:57:13, 01-07-2024' );
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 5,
@@ -288,7 +290,7 @@ class CommentTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html',
 			[
 				'times'  => 5,
@@ -298,14 +300,14 @@ class CommentTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::userFunction( 'get_the_title' )
+		WP_Mock::userFunction( 'get_the_title' )
 			->once()
 			->with( 1 )
 			->andReturn( 'Hello World!' );
 
 		$message = "Ping: A Comment was just trashed! \nComment: What a wonderful world! \nUser: john@doe.com \nPost: Hello World! \nDate: 08:57:13, 01-07-2024";
 
-		\WP_Mock::expectFilter(
+		WP_Mock::expectFilter(
 			'ping_me_on_slack_comment_message',
 			$message,
 			$comment,

@@ -2,7 +2,7 @@
 
 namespace PingMeOnSlack\Tests\Admin;
 
-use Mockery;
+use WP_Mock;
 use WP_Mock\Tools\TestCase;
 use PingMeOnSlack\Admin\Options;
 
@@ -14,15 +14,15 @@ use PingMeOnSlack\Admin\Options;
  */
 class OptionsTest extends TestCase {
 	public function setUp(): void {
-		\WP_Mock::setUp();
+		WP_Mock::setUp();
 	}
 
 	public function tearDown(): void {
-		\WP_Mock::tearDown();
+		WP_Mock::tearDown();
 	}
 
 	public function test_get_form_page() {
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 2,
@@ -46,7 +46,7 @@ class OptionsTest extends TestCase {
 	}
 
 	public function test_get_form_submit() {
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 2,
@@ -75,7 +75,7 @@ class OptionsTest extends TestCase {
 	}
 
 	public function test_get_form_fields() {
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'return' => function ( $text, $domain = 'ping-me-on-slack' ) {
@@ -84,7 +84,7 @@ class OptionsTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_attr',
 			[
 				'return' => function ( $text, $domain = 'ping-me-on-slack' ) {
@@ -93,7 +93,7 @@ class OptionsTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_attr__',
 			[
 				'return' => function ( $text, $domain = 'ping-me-on-slack' ) {
@@ -235,7 +235,7 @@ class OptionsTest extends TestCase {
 	}
 
 	public function test_get_form_notice() {
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 1,

@@ -2,7 +2,9 @@
 
 namespace PingMeOnSlack\Tests\Services;
 
+use WP_Mock;
 use Mockery;
+use ReflectionClass;
 use WP_Mock\Tools\TestCase;
 use PingMeOnSlack\Core\Client;
 use PingMeOnSlack\Services\Boot;
@@ -16,7 +18,7 @@ class BootTest extends TestCase {
 	public Boot $boot;
 
 	public function setUp(): void {
-		\WP_Mock::setUp();
+		WP_Mock::setUp();
 
 		$this->client = Mockery::mock( Client::class )->makePartial();
 		$this->client->shouldAllowMockingProtectedMethods();
@@ -27,11 +29,11 @@ class BootTest extends TestCase {
 	}
 
 	public function tearDown(): void {
-		\WP_Mock::tearDown();
+		WP_Mock::tearDown();
 	}
 
 	public function test_register() {
-		\WP_Mock::expectActionAdded( 'init', [ $this->boot, 'ping_me_on_slack_translation' ] );
+		WP_Mock::expectActionAdded( 'init', [ $this->boot, 'ping_me_on_slack_translation' ] );
 
 		$this->boot->register();
 
@@ -39,14 +41,14 @@ class BootTest extends TestCase {
 	}
 
 	public function test_translation_setup() {
-		$boot = new \ReflectionClass( Boot::class );
+		$boot = new ReflectionClass( Boot::class );
 
-		\WP_Mock::userFunction( 'plugin_basename' )
+		WP_Mock::userFunction( 'plugin_basename' )
 			->once()
 			->with( $boot->getFileName() )
 			->andReturn( '/inc/Services/Boot.php' );
 
-		\WP_Mock::userFunction( 'load_plugin_textdomain' )
+		WP_Mock::userFunction( 'load_plugin_textdomain' )
 			->once()
 			->with(
 				'ping-me-on-slack',

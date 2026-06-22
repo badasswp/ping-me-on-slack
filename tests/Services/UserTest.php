@@ -2,6 +2,8 @@
 
 namespace PingMeOnSlack\Tests\Services;
 
+use WP_Mock;
+use WP_User;
 use Mockery;
 use WP_Mock\Tools\TestCase;
 use PingMeOnSlack\Core\Client;
@@ -19,7 +21,7 @@ class UserTest extends TestCase {
 	public User $user;
 
 	public function setUp(): void {
-		\WP_Mock::setUp();
+		WP_Mock::setUp();
 
 		$this->client = Mockery::mock( Client::class )->makePartial();
 		$this->client->shouldAllowMockingProtectedMethods();
@@ -30,13 +32,13 @@ class UserTest extends TestCase {
 	}
 
 	public function tearDown(): void {
-		\WP_Mock::tearDown();
+		WP_Mock::tearDown();
 	}
 
 	public function test_register() {
-		\WP_Mock::expectActionAdded( 'user_register', [ $this->user, 'ping_on_user_creation' ], 10, 2 );
-		\WP_Mock::expectActionAdded( 'wp_update_user', [ $this->user, 'ping_on_user_modification' ], 10, 3 );
-		\WP_Mock::expectActionAdded( 'deleted_user', [ $this->user, 'ping_on_user_deletion' ], 10, 3 );
+		WP_Mock::expectActionAdded( 'user_register', [ $this->user, 'ping_on_user_creation' ], 10, 2 );
+		WP_Mock::expectActionAdded( 'wp_update_user', [ $this->user, 'ping_on_user_modification' ], 10, 3 );
+		WP_Mock::expectActionAdded( 'deleted_user', [ $this->user, 'ping_on_user_deletion' ], 10, 3 );
 
 		$this->user->register();
 
@@ -46,11 +48,11 @@ class UserTest extends TestCase {
 	public function test_ping_on_user_creation_fails() {
 		$user_login = 'john@doe.com';
 
-		$user             = Mockery::mock( \WP_User::class )->makePartial();
+		$user             = Mockery::mock( WP_User::class )->makePartial();
 		$user->ID         = 1;
 		$user->user_login = 'john@doe.com';
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -66,7 +68,7 @@ class UserTest extends TestCase {
 	public function test_ping_on_user_creation() {
 		$user_login = 'john@doe.com';
 
-		$user             = Mockery::mock( \WP_User::class )->makePartial();
+		$user             = Mockery::mock( WP_User::class )->makePartial();
 		$user->ID         = 1;
 		$user->user_login = 'john@doe.com';
 
@@ -76,9 +78,9 @@ class UserTest extends TestCase {
 		$this->user->shouldReceive( 'get_client' )
 			->andReturn( $client );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_user_creation_client', $client );
+		WP_Mock::expectFilter( 'ping_me_on_slack_user_creation_client', $client );
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -86,7 +88,7 @@ class UserTest extends TestCase {
 				]
 			);
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -94,7 +96,7 @@ class UserTest extends TestCase {
 				]
 			);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 5,
@@ -104,7 +106,7 @@ class UserTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html',
 			[
 				'times'  => 4,
@@ -114,14 +116,14 @@ class UserTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::userFunction( 'get_user_by' )
+		WP_Mock::userFunction( 'get_user_by' )
 			->once()
 			->with( 'id', 1 )
 			->andReturn( $user );
 
 		$message = "Ping: A User was just created! \nID: 1 \nUser: john@doe.com \nDate: 08:57:13, 01-07-2024";
 
-		\WP_Mock::expectFilter(
+		WP_Mock::expectFilter(
 			'ping_me_on_slack_user_creation_message',
 			$message,
 			$user->ID
@@ -144,11 +146,11 @@ class UserTest extends TestCase {
 	public function test_ping_on_user_modification_fails() {
 		$user_login = 'john@doe.com';
 
-		$user             = Mockery::mock( \WP_User::class )->makePartial();
+		$user             = Mockery::mock( WP_User::class )->makePartial();
 		$user->ID         = 1;
 		$user->user_login = 'john@doe.com';
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -164,7 +166,7 @@ class UserTest extends TestCase {
 	public function test_ping_on_user_modification() {
 		$user_login = 'john@doe.com';
 
-		$user             = Mockery::mock( \WP_User::class )->makePartial();
+		$user             = Mockery::mock( WP_User::class )->makePartial();
 		$user->ID         = 1;
 		$user->user_login = 'john@doe.com';
 
@@ -174,9 +176,9 @@ class UserTest extends TestCase {
 		$this->user->shouldReceive( 'get_client' )
 			->andReturn( $client );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_user_modification_client', $client );
+		WP_Mock::expectFilter( 'ping_me_on_slack_user_modification_client', $client );
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -184,7 +186,7 @@ class UserTest extends TestCase {
 				]
 			);
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -192,7 +194,7 @@ class UserTest extends TestCase {
 				]
 			);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 5,
@@ -202,7 +204,7 @@ class UserTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html',
 			[
 				'times'  => 4,
@@ -212,14 +214,14 @@ class UserTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::userFunction( 'get_user_by' )
+		WP_Mock::userFunction( 'get_user_by' )
 			->once()
 			->with( 'id', 1 )
 			->andReturn( $user );
 
 		$message = "Ping: A User was just modified! \nID: 1 \nUser: john@doe.com \nDate: 08:57:13, 01-07-2024";
 
-		\WP_Mock::expectFilter(
+		WP_Mock::expectFilter(
 			'ping_me_on_slack_user_modification_message',
 			$message,
 			$user->ID
@@ -242,11 +244,11 @@ class UserTest extends TestCase {
 	public function test_ping_on_user_deletion_fails() {
 		$user_login = 'john@doe.com';
 
-		$user             = Mockery::mock( \WP_User::class )->makePartial();
+		$user             = Mockery::mock( WP_User::class )->makePartial();
 		$user->ID         = 1;
 		$user->user_login = 'john@doe.com';
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -262,7 +264,7 @@ class UserTest extends TestCase {
 	public function test_ping_on_user_deletion() {
 		$user_login = 'john@doe.com';
 
-		$user             = Mockery::mock( \WP_User::class )->makePartial();
+		$user             = Mockery::mock( WP_User::class )->makePartial();
 		$user->ID         = 1;
 		$user->user_login = 'john@doe.com';
 
@@ -272,9 +274,9 @@ class UserTest extends TestCase {
 		$this->user->shouldReceive( 'get_client' )
 			->andReturn( $client );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_user_deletion_client', $client );
+		WP_Mock::expectFilter( 'ping_me_on_slack_user_deletion_client', $client );
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -282,7 +284,7 @@ class UserTest extends TestCase {
 				]
 			);
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -290,7 +292,7 @@ class UserTest extends TestCase {
 				]
 			);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 5,
@@ -300,7 +302,7 @@ class UserTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html',
 			[
 				'times'  => 4,
@@ -312,7 +314,7 @@ class UserTest extends TestCase {
 
 		$message = "Ping: A User was just deleted! \nID: 1 \nUser: john@doe.com \nDate: 08:57:13, 01-07-2024";
 
-		\WP_Mock::expectFilter(
+		WP_Mock::expectFilter(
 			'ping_me_on_slack_user_deletion_message',
 			$message,
 			$user->ID

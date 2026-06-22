@@ -2,6 +2,9 @@
 
 namespace PingMeOnSlack\Tests\Services;
 
+use WP_Mock;
+use WP_Post;
+use WP_User;
 use Mockery;
 use WP_Mock\Tools\TestCase;
 use PingMeOnSlack\Core\Client;
@@ -18,7 +21,7 @@ class PostTest extends TestCase {
 	public Post $post;
 
 	public function setUp(): void {
-		\WP_Mock::setUp();
+		WP_Mock::setUp();
 
 		$this->client = Mockery::mock( Client::class )->makePartial();
 		$this->client->shouldAllowMockingProtectedMethods();
@@ -29,11 +32,11 @@ class PostTest extends TestCase {
 	}
 
 	public function tearDown(): void {
-		\WP_Mock::tearDown();
+		WP_Mock::tearDown();
 	}
 
 	public function test_register() {
-		\WP_Mock::expectActionAdded( 'transition_post_status', [ $this->post, 'ping_on_post_status_change' ], 10, 3 );
+		WP_Mock::expectActionAdded( 'transition_post_status', [ $this->post, 'ping_on_post_status_change' ], 10, 3 );
 
 		$this->post->register();
 
@@ -41,10 +44,10 @@ class PostTest extends TestCase {
 	}
 
 	public function test_ping_on_post_status_change_fails() {
-		$post = Mockery::mock( \WP_Post::class )->makePartial();
+		$post = Mockery::mock( WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -58,10 +61,10 @@ class PostTest extends TestCase {
 	}
 
 	public function test_ping_on_post_status_change_bails_if_status_is_unchanged() {
-		$post = Mockery::mock( \WP_Post::class )->makePartial();
+		$post = Mockery::mock( WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -75,10 +78,10 @@ class PostTest extends TestCase {
 	}
 
 	public function test_ping_on_post_status_change_bails_if_new_status_is_auto_draft() {
-		$post = Mockery::mock( \WP_Post::class )->makePartial();
+		$post = Mockery::mock( WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -92,7 +95,7 @@ class PostTest extends TestCase {
 	}
 
 	public function test_ping_on_post_status_change_passes_on_publish() {
-		$post = Mockery::mock( \WP_Post::class )->makePartial();
+		$post = Mockery::mock( WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
 		$post->post_type = 'post';
 
@@ -104,7 +107,7 @@ class PostTest extends TestCase {
 
 		$this->post->post = $post;
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -113,7 +116,7 @@ class PostTest extends TestCase {
 				]
 			);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 1,
@@ -134,7 +137,7 @@ class PostTest extends TestCase {
 			->once()
 			->with( 'A Post was just published!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
+		WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
 
 		$this->post->ping_on_post_status_change( 'publish', 'draft', $post );
 
@@ -142,7 +145,7 @@ class PostTest extends TestCase {
 	}
 
 	public function test_ping_on_post_status_change_passes_on_publish_with_custom_post_option() {
-		$post = Mockery::mock( \WP_Post::class )->makePartial();
+		$post = Mockery::mock( WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
 		$post->post_type = 'post';
 
@@ -154,7 +157,7 @@ class PostTest extends TestCase {
 
 		$this->post->post = $post;
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -163,7 +166,7 @@ class PostTest extends TestCase {
 				]
 			);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 1,
@@ -184,7 +187,7 @@ class PostTest extends TestCase {
 			->once()
 			->with( 'Custom Message: Your post is now published!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
+		WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
 
 		$this->post->ping_on_post_status_change( 'publish', 'draft', $post );
 
@@ -192,7 +195,7 @@ class PostTest extends TestCase {
 	}
 
 	public function test_ping_on_post_status_change_passes_on_draft() {
-		$post = Mockery::mock( \WP_Post::class )->makePartial();
+		$post = Mockery::mock( WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
 		$post->post_type = 'post';
 
@@ -204,7 +207,7 @@ class PostTest extends TestCase {
 
 		$this->post->post = $post;
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -213,7 +216,7 @@ class PostTest extends TestCase {
 				]
 			);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 1,
@@ -234,7 +237,7 @@ class PostTest extends TestCase {
 			->once()
 			->with( 'A Post draft was just created!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
+		WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
 
 		$this->post->ping_on_post_status_change( 'draft', 'auto-draft', $post );
 
@@ -242,7 +245,7 @@ class PostTest extends TestCase {
 	}
 
 	public function test_ping_on_post_status_change_passes_on_draft_with_custom_post_option() {
-		$post = Mockery::mock( \WP_Post::class )->makePartial();
+		$post = Mockery::mock( WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
 		$post->post_type = 'post';
 
@@ -254,7 +257,7 @@ class PostTest extends TestCase {
 
 		$this->post->post = $post;
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -263,7 +266,7 @@ class PostTest extends TestCase {
 				]
 			);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 1,
@@ -284,7 +287,7 @@ class PostTest extends TestCase {
 			->once()
 			->with( 'Custom Message: Your post is now drafted!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
+		WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
 
 		$this->post->ping_on_post_status_change( 'draft', 'auto-draft', $post );
 
@@ -292,7 +295,7 @@ class PostTest extends TestCase {
 	}
 
 	public function test_ping_on_post_status_change_passes_on_trash() {
-		$post = Mockery::mock( \WP_Post::class )->makePartial();
+		$post = Mockery::mock( WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
 		$post->post_type = 'post';
 
@@ -304,7 +307,7 @@ class PostTest extends TestCase {
 
 		$this->post->post = $post;
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -313,7 +316,7 @@ class PostTest extends TestCase {
 				]
 			);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 1,
@@ -334,7 +337,7 @@ class PostTest extends TestCase {
 			->once()
 			->with( 'A Post was just trashed!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
+		WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
 
 		$this->post->ping_on_post_status_change( 'trash', 'publish', $post );
 
@@ -342,7 +345,7 @@ class PostTest extends TestCase {
 	}
 
 	public function test_ping_on_post_status_change_passes_on_trash_with_custom_post_option() {
-		$post = Mockery::mock( \WP_Post::class )->makePartial();
+		$post = Mockery::mock( WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
 		$post->post_type = 'post';
 
@@ -354,7 +357,7 @@ class PostTest extends TestCase {
 
 		$this->post->post = $post;
 
-		\WP_Mock::userFunction( 'get_option' )
+		WP_Mock::userFunction( 'get_option' )
 			->with( 'ping_me_on_slack', [] )
 			->andReturn(
 				[
@@ -363,7 +366,7 @@ class PostTest extends TestCase {
 				]
 			);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 1,
@@ -384,7 +387,7 @@ class PostTest extends TestCase {
 			->once()
 			->with( 'Custom Message: Your post is now trashed!' );
 
-		\WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
+		WP_Mock::expectFilter( 'ping_me_on_slack_post_client', $client );
 
 		$this->post->ping_on_post_status_change( 'trash', 'publish', $post );
 
@@ -392,10 +395,10 @@ class PostTest extends TestCase {
 	}
 
 	public function test_get_message() {
-		$post = Mockery::mock( \WP_Post::class )->makePartial();
+		$post = Mockery::mock( WP_Post::class )->makePartial();
 		$post->shouldAllowMockingProtectedMethods();
 
-		$user             = Mockery::mock( \WP_User::class )->makePartial();
+		$user             = Mockery::mock( WP_User::class )->makePartial();
 		$user->user_login = 'john@doe.com';
 
 		$post->ID          = 1;
@@ -406,7 +409,7 @@ class PostTest extends TestCase {
 		$this->post->event = 'publish';
 		$this->post->post  = $post;
 
-		\WP_Mock::userFunction( 'get_user_by' )
+		WP_Mock::userFunction( 'get_user_by' )
 			->once()
 			->with( 'id', 1 )
 			->andReturn( $user );
@@ -416,7 +419,7 @@ class PostTest extends TestCase {
 			->with()
 			->andReturn( '08:57:13, 01-07-2024' );
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html__',
 			[
 				'times'  => 5,
@@ -426,7 +429,7 @@ class PostTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::userFunction(
+		WP_Mock::userFunction(
 			'esc_html',
 			[
 				'times'  => 5,
@@ -438,7 +441,7 @@ class PostTest extends TestCase {
 
 		$message = "Ping: A Post was just published! \nID: 1 \nTitle: Hello World! \nUser: john@doe.com \nDate: 08:57:13, 01-07-2024";
 
-		\WP_Mock::expectFilter(
+		WP_Mock::expectFilter(
 			'ping_me_on_slack_post_message',
 			$message,
 			$post,
